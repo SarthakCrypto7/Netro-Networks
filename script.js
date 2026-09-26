@@ -643,8 +643,14 @@
       visible = entry.isIntersecting;
       story.classList.toggle('is-offscreen', !visible);
       if (visible) {
-        preload(events[(active + 1) % events.length]);
-        preloadSecondary(events[(active + 1) % events.length]);
+        // The exhibition gallery is a small, fixed five-event sequence. Once the
+        // section enters the viewport, prepare the complete gallery in the
+        // background so later transitions never wait for network/decode work.
+        // This is intentionally scoped to this section rather than page load.
+        events.forEach(ev => {
+          preload(ev);
+          preloadSecondary(ev);
+        });
         scheduleNext();
       } else {
         clearTimer();
