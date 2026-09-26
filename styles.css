@@ -2691,3 +2691,33 @@ main > section.section-dormant {
 .industry-event-progress{display:none !important;}
 /* Keep the photo and timeline static during scrolling; event changes remain interactive. */
 .industry-photo-main img,.industry-photo-secondary img{transition:none !important;}
+
+/* V67 — Chrome/Windows native select readability
+   Keep the native dropdown for performance, but explicitly tell the browser
+   which color scheme to use for the opened options popup. */
+.finder-fields select{
+  color-scheme:dark;
+}
+.finder-fields select option{
+  background-color:#0b1722;
+  color:#f1f8fc;
+}
+.finder-fields select option:checked{
+  background-color:#1769c2;
+  color:#ffffff;
+}
+.finder-fields select option:disabled{
+  color:#8193a2;
+}
+
+html[data-theme="light"] .finder-fields select{
+  color-scheme:light;
+}
+html[data-theme="light"] .finder-fields select option{
+  background-color:#ffffff;
+  color:#202a36;
+}
+html[data-theme="light"] .finder-fields select option:checked{
+  background-color:#168edb;
+  color:#ffffff;
+}
