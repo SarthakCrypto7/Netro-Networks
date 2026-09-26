@@ -475,10 +475,45 @@
   let timer = 0;
   let transitionToken = 0;
 
+  const imageCache = new Map();
+
   const preload = ev => {
+    if (imageCache.has(ev.main)) return imageCache.get(ev.main);
     const img = new Image();
     img.decoding = 'async';
+    const promise = new Promise(resolve => {
+      img.onload = () => {
+        if (img.decode) {
+          img.decode().catch(() => {}).finally(() => resolve(img));
+        } else {
+          resolve(img);
+        }
+      };
+      img.onerror = () => resolve(img);
+    });
+    imageCache.set(ev.main, promise);
     img.src = ev.main;
+    return promise;
+  };
+
+  const secondaryCache = new Map();
+  const preloadSecondary = ev => {
+    if (secondaryCache.has(ev.secondary)) return secondaryCache.get(ev.secondary);
+    const img = new Image();
+    img.decoding = 'async';
+    const promise = new Promise(resolve => {
+      img.onload = () => {
+        if (img.decode) {
+          img.decode().catch(() => {}).finally(() => resolve(img));
+        } else {
+          resolve(img);
+        }
+      };
+      img.onerror = () => resolve(img);
+    });
+    secondaryCache.set(ev.secondary, promise);
+    img.src = ev.secondary;
+    return promise;
   };
 
   const prepareThumb = (step, i) => {
@@ -535,21 +570,22 @@
       return;
     }
 
-    // Preload only the image we are about to show; don't decode the whole gallery at once.
-    preload(ev);
+    // Fetch and decode the next image before starting the visual transition.
+    // This prevents the brief blank/loading flash while keeping the rest of the gallery unloaded.
     photoMain.classList.add('is-changing');
     mainImage.style.opacity = '0';
     secondaryImage.style.opacity = '0';
 
-    window.setTimeout(() => {
-      if (token !== transitionToken) return;
-      updateUI(ev);
-      mainImage.style.opacity = '1';
-      secondaryImage.style.opacity = '1';
-      window.setTimeout(() => {
-        if (token === transitionToken) photoMain.classList.remove('is-changing');
-      }, 560);
-    }, 180);
+    Promise.all([preload(ev), preloadSecondary(ev)])
+      .then(() => {
+        if (token !== transitionToken) return;
+        updateUI(ev);
+        mainImage.style.opacity = '1';
+        secondaryImage.style.opacity = '1';
+        window.setTimeout(() => {
+          if (token === transitionToken) photoMain.classList.remove('is-changing');
+        }, 560);
+      });
   };
 
   const clearTimer = () => {
@@ -608,6 +644,7 @@
       story.classList.toggle('is-offscreen', !visible);
       if (visible) {
         preload(events[(active + 1) % events.length]);
+        preloadSecondary(events[(active + 1) % events.length]);
         scheduleNext();
       } else {
         clearTimer();
