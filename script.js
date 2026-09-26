@@ -3,7 +3,42 @@
   const year = document.getElementById('year');
   year.textContent = new Date().getFullYear();
 
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 35), { passive:true });
+  let navTicking = false;
+  window.addEventListener('scroll', () => {
+    if (navTicking) return;
+    navTicking = true;
+    requestAnimationFrame(() => {
+      nav.classList.toggle('scrolled', window.scrollY > 35);
+      navTicking = false;
+    });
+  }, { passive:true });
+
+  // During a rapid scroll, temporarily quiet the exhibition's non-essential
+  // transitions. This targets the exact Ecosystem → Exhibition hand-off without
+  // adding another per-frame animation loop.
+  let fastScrollTimer = 0;
+  let lastScrollY = window.scrollY;
+  let lastScrollTime = performance.now();
+  let fastScrollRaf = 0;
+  window.addEventListener('scroll', () => {
+    if (fastScrollRaf) return;
+    fastScrollRaf = requestAnimationFrame(() => {
+      fastScrollRaf = 0;
+      const now = performance.now();
+      const dy = Math.abs(window.scrollY - lastScrollY);
+      const dt = Math.max(16, now - lastScrollTime);
+      const velocity = dy / dt;
+      lastScrollY = window.scrollY;
+      lastScrollTime = now;
+      const industry = document.querySelector('.industry-story');
+      if (!industry) return;
+      if (velocity > 1.25) {
+        industry.classList.add('is-fast-scroll');
+        clearTimeout(fastScrollTimer);
+        fastScrollTimer = window.setTimeout(() => industry.classList.remove('is-fast-scroll'), 140);
+      }
+    });
+  }, {passive:true});
 
   const reveal = document.querySelectorAll('.reveal:not(.eco-panel):not(.eco-trust)');
   if (window.gsap && window.ScrollTrigger) {
@@ -46,8 +81,87 @@
     const showMoreName = index => names.forEach((name, i) => name.classList.toggle('is-active', i === index));
     showMoreName(0);
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && names.length > 1) {
-      window.setInterval(() => { active = (active + 1) % names.length; showMoreName(active); }, 2200);
+      let cycleTimer = null;
+      const cycle = () => {
+        active = (active + 1) % names.length;
+        showMoreName(active);
+      };
+      const startCycle = () => {
+        if (!cycleTimer) cycleTimer = window.setInterval(cycle, 2200);
+      };
+      const stopCycle = () => {
+        if (cycleTimer) { window.clearInterval(cycleTimer); cycleTimer = null; }
+      };
+      const eco = moreCycle.closest('.ecosystem');
+      if (eco) {
+        const ecoVisibility = new IntersectionObserver(entries => {
+          const visible = entries[0]?.isIntersecting;
+          eco.classList.toggle('is-offscreen', !visible);
+          if (visible && document.visibilityState === 'visible') startCycle();
+          else stopCycle();
+        }, { threshold: 0.02 });
+        ecoVisibility.observe(eco);
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible' && !eco.classList.contains('is-offscreen')) startCycle();
+          else stopCycle();
+        });
+      } else {
+        startCycle();
+      }
     }
+  }
+
+  // Pause small continuous CSS effects when their sections are outside the viewport.
+  const motionSections = document.querySelectorAll('.hero, .statement, .contact');
+  if (motionSections.length) {
+    const motionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
+    }, { threshold: 0.02 });
+    motionSections.forEach(section => motionObserver.observe(section));
+  }
+
+  // Presentation-style section lifecycle: keep normal scrolling, but only let the
+  // section currently being viewed keep its CSS animation workload active.
+  const presentationSections = [...document.querySelectorAll('main > section')];
+  if (presentationSections.length && 'IntersectionObserver' in window) {
+    let activeSection = null;
+    let raf = 0;
+    const ratios = new Map();
+
+    const applySectionState = () => {
+      raf = 0;
+      let winner = null;
+      let bestRatio = 0;
+      presentationSections.forEach(section => {
+        const ratio = ratios.get(section) || 0;
+        if (ratio > bestRatio) { bestRatio = ratio; winner = section; }
+      });
+      if (!winner && presentationSections.length) winner = presentationSections[0];
+      if (winner === activeSection) return;
+      activeSection = winner;
+
+      presentationSections.forEach(section => {
+        const ratio = ratios.get(section) || 0;
+        const near = ratio > 0 || section === winner;
+        section.classList.toggle('section-active', section === winner);
+        section.classList.toggle('section-nearby', near);
+        section.classList.toggle('section-dormant', !near);
+        section.classList.toggle('section-past', !!winner && presentationSections.indexOf(section) < presentationSections.indexOf(winner));
+      });
+
+      // GSAP scrub triggers are intentionally left intact here. Enabling/disabling
+      // ScrollTriggers on every section hand-off can itself cause work during a
+      // fast scroll. Their animated properties are compositor-friendly, while
+      // the presentation lifecycle handles the heavier CSS effects.
+    };
+
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => ratios.set(entry.target, entry.isIntersecting ? entry.intersectionRatio : 0));
+      if (!raf) raf = requestAnimationFrame(applySectionState);
+    }, { threshold: [0, .08, .2, .4, .6, .8], rootMargin: '-18% 0px -18% 0px' });
+
+    presentationSections.forEach(section => sectionObserver.observe(section));
+    applySectionState();
   }
 
   // Keep the hero product/finder container static. Product motion is handled
@@ -338,7 +452,6 @@
   const eventTitle = root.querySelector('.industry-event-title');
   const eventLocation = root.querySelector('.industry-event-location');
   const captionTitle = root.querySelector('.industry-photo-caption-title');
-  const eventProgress = root.querySelector('.industry-event-progress span');
   const progress = root.querySelector('.industry-timeline-track span');
   const steps = [...root.querySelectorAll('.industry-step')];
   const visual = root.querySelector('.industry-visual');
@@ -363,33 +476,26 @@
   let transitionToken = 0;
 
   const preload = ev => {
-    [ev.main, ev.secondary].forEach(src => {
-      const img = new Image();
-      img.decoding = 'async';
-      img.src = src;
-    });
+    const img = new Image();
+    img.decoding = 'async';
+    img.src = ev.main;
+  };
+
+  const prepareThumb = (step, i) => {
+    const thumb = step.querySelector('.industry-step-thumb');
+    if (!thumb || thumb.dataset.loaded === '1') return;
+    thumb.style.backgroundImage = `url("${events[i].secondary}")`;
+    thumb.dataset.loaded = '1';
   };
 
   steps.forEach((step, i) => {
-    const thumb = step.querySelector('.industry-step-thumb');
-    if (thumb) thumb.style.backgroundImage = `url("${events[i].secondary}")`;
     step.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    step.addEventListener('mouseenter', () => prepareThumb(step, i), {passive:true});
+    step.addEventListener('focusin', () => prepareThumb(step, i));
   });
 
-  // Keep the initial viewport cheap: only the current image is warmed.
-  preload(events[0]);
-
-  const restartProgress = () => {
-    if (!eventProgress) return;
-    eventProgress.classList.remove('is-running');
-    // Force a tiny style read so the animation can restart deterministically.
-    void eventProgress.offsetWidth;
-    eventProgress.classList.add('is-running');
-  };
-
-  const stopProgress = () => {
-    if (eventProgress) eventProgress.classList.remove('is-running');
-  };
+  // The image element is already lazy-loaded by the browser; don't force a decode
+  // before the user reaches the exhibition section.
 
   const updateSteps = () => {
     steps.forEach((step, i) => {
@@ -426,7 +532,6 @@
       photoMain.classList.remove('is-changing');
       mainImage.style.opacity = '1';
       secondaryImage.style.opacity = '1';
-      restartProgress();
       return;
     }
 
@@ -445,8 +550,6 @@
         if (token === transitionToken) photoMain.classList.remove('is-changing');
       }, 560);
     }, 180);
-
-    restartProgress();
   };
 
   const clearTimer = () => {
@@ -467,13 +570,11 @@
     hovering = true;
     story.classList.add('is-paused');
     clearTimer();
-    if (eventProgress) eventProgress.style.animationPlayState = 'paused';
   };
 
   const resumeInteraction = () => {
     hovering = false;
     story.classList.remove('is-paused');
-    if (eventProgress) eventProgress.style.animationPlayState = 'running';
     scheduleNext();
   };
 
@@ -508,10 +609,8 @@
       if (visible) {
         preload(events[(active + 1) % events.length]);
         scheduleNext();
-        if (eventProgress) eventProgress.style.animationPlayState = 'running';
       } else {
         clearTimer();
-        stopProgress();
       }
     });
   }, {threshold:0.08, rootMargin:'40px 0px 40px'});
@@ -521,12 +620,10 @@
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') {
       if (visible) {
-        restartProgress();
         scheduleNext();
       }
     } else {
       clearTimer();
-      if (eventProgress) eventProgress.style.animationPlayState = 'paused';
     }
   });
 
