@@ -1344,7 +1344,7 @@ html[data-theme="light"] .ctc-wire{opacity:.9;}
 .industry-recognition-image{
   position:absolute;
   inset:-7% -3% -7% 8%;
-  background-image:url("images/industry/recognition-wall.jpg");
+  background-image:url("images/industry/recognition-wall.webp");
   background-size:cover;
   background-position:center 30%;
   filter:grayscale(.78) sepia(.12) saturate(.72) contrast(1.06) brightness(.58);
