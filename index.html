@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Netro Networks — optical networking, switching and FTTx infrastructure for real-world deployments." />
+  <title>Netro Networks</title>
+  <link rel="icon" type="image/png" href="images/netro_favicon.png" />
+  <link rel="apple-touch-icon" href="images/netro_favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem("netro-theme");
+        if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+      } catch (_) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="nav" id="nav">
+  <div class="nav-shell">
+    <a class="brand" href="#top" aria-label="Netro Networks home"><img class="logo-dark" src="images/netro_logo.png" alt="Netro Networks" /><img class="logo-light" src="images/netro_logo_light.png" alt="Netro Networks" /></a>
+
+    <nav class="nav-links" aria-label="Primary navigation">
+      <div class="nav-item has-menu">
+        <button class="nav-link" type="button" aria-expanded="false">Products <i class="chevron" aria-hidden="true"></i></button>
+        <div class="mega-menu products-mega">
+          <div class="mega-visual product-visual">
+            <div class="visual-grid"></div><div class="visual-orbit orbit-a"></div><div class="visual-orbit orbit-b"></div>
+            <div class="visual-chip"><span>NETRO</span><b>OPTICAL<br>INFRA</b><i></i><i></i><i></i><i></i></div>
+            <small>PRODUCTS</small>
+          </div>
+          <div class="mega-links">
+            <div class="mega-group"><h4>OPTICAL</h4><a href="#products">Optical Transceivers</a><a href="#products">SFP / SFP+</a><a href="#products">BiDi & CWDM</a><a href="#products">DWDM</a></div>
+            <div class="mega-group"><h4>NETWORKING</h4><a href="#products">Managed Switches</a><a href="#products">L2 / L3 Switching</a><a href="#products">Industrial Switches</a><a href="#products">Media Converters</a></div>
+            <div class="mega-group"><h4>FTTx</h4><a href="#products">GPON / EPON</a><a href="#products">OLT / ONU</a><a href="#products">Fiber Splitters</a><a href="#products">FTTH Accessories</a></div>
+            <div class="mega-group"><h4>PASSIVE</h4><a href="#products">Fiber Cables</a><a href="#products">ODF & Patch Panels</a><a href="#products">Connectors</a><a href="#products">Racks & Accessories</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-menu">
+        <button class="nav-link" type="button" aria-expanded="false">Solutions <i class="chevron" aria-hidden="true"></i></button>
+        <div class="mega-menu solutions-mega">
+          <div class="mega-visual solutions-visual"><div class="network-map"><span></span><span></span><span></span><span></span><span></span><b></b></div><small>SOLUTIONS</small></div>
+          <div class="mega-links">
+            <div class="mega-group"><h4>CONNECTIVITY</h4><a href="#solutions">ISP Solutions</a><a href="#solutions">FTTH / Broadband</a><a href="#solutions">Last-Mile Networks</a></div>
+            <div class="mega-group"><h4>ENTERPRISE</h4><a href="#solutions">Enterprise Networks</a><a href="#solutions">Data Centers</a><a href="#solutions">Industrial Networks</a></div>
+            <div class="mega-group"><h4>CRITICAL INFRASTRUCTURE</h4><a href="#solutions">Government & PSU</a><a href="#solutions">Defense</a><a href="#solutions">Power & Utilities</a></div>
+            <div class="mega-group"><h4>DEPLOYMENTS</h4><a href="#solutions">Rural Connectivity</a><a href="#solutions">Secure Networks</a><a href="#solutions">Power & Utilities</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-menu">
+        <button class="nav-link" type="button" aria-expanded="false">Resources <i class="chevron" aria-hidden="true"></i></button>
+        <div class="mega-menu resources-mega">
+          <div class="mega-visual resources-visual"><div class="terminal"><span>NETRO / RESOURCES</span><b>01</b><i></i><i></i><i></i><em></em></div><small>RESOURCES</small></div>
+          <div class="mega-links">
+            <div class="mega-group"><h4>ENGINEERING</h4><a href="#resources">Rikom Firmwares</a><a href="#resources">Configuration Guides</a><a href="#resources">Datasheets</a><a href="#resources">Application Notes</a></div>
+            <div class="mega-group"><h4>KNOWLEDGE</h4><a href="#resources">Knowledge Base</a><a href="#resources">Troubleshooting</a><a href="#resources">Deployment Guides</a><a href="#resources">FAQs</a></div>
+            <div class="mega-group"><h4>TOOLS</h4><a href="#tools">Fiber Budget Calculator</a><a href="#tools">Optical Power Calculator</a><a href="#tools">GPON Split Calculator</a><a href="#tools">Network Calculators</a></div>
+            <div class="mega-group"><h4>MEDIA</h4><a href="#resources">Gallery</a><a href="#resources">Project Stories</a><a href="#resources">Announcements</a><a href="#resources">Partner Updates</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-menu">
+        <button class="nav-link" type="button" aria-expanded="false">Company <i class="chevron" aria-hidden="true"></i></button>
+        <div class="mega-menu company-mega">
+          <div class="mega-visual company-visual"><div class="company-mark">N<span>•</span></div><div class="company-lines"></div><small>NETRO NETWORKS</small></div>
+          <div class="mega-links">
+            <div class="mega-group"><h4>ABOUT</h4><a href="#company">About Netro</a><a href="#company">Our Team</a><a href="#company">Projects</a><a href="#company">Partners</a></div>
+            <div class="mega-group"><h4>WORK WITH US</h4><a href="#company">Careers</a><a href="#contact">Contact Us</a><a href="#contact">Request a Quote</a><a href="#contact">Technical Support</a></div>
+            <div class="mega-group"><h4>COMPANY</h4><a href="#company">News & Updates</a><a href="#company">Gallery</a><a href="#company">Social</a></div>
+            <div class="mega-group"><h4>CONTACT</h4><a href="#contact">Sales</a><a href="#contact">Support</a><a href="#contact">Partnerships</a><a href="#contact">Locations</a></div>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav-link ctc-nav-link" href="#ctc-global"><b>CTC</b> ACCC Conductors</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+        <span class="theme-icon theme-sun" aria-hidden="true"></span>
+        <span class="theme-icon theme-moon" aria-hidden="true"></span>
+      </button>
+      <button class="search-btn" aria-label="Search"><span></span></button>
+      <a class="nav-cta" href="#contact">Talk to us <b>↗</b></a>
+    </div>
+    <button class="menu" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+  <main id="top">
+    <section class="hero dark-section">
+      <div class="hero-grid"></div>
+      <div class="hero-orb orb-a"></div><div class="hero-orb orb-b"></div><div class="hero-orb orb-c"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">DESIGNED AND MANUFACTURED BY NETRO</p>
+        <h1><span>The hardware</span><span>layer behind</span><span><em>India's networks.</em></span></h1>
+        <p class="hero-lead">We design and build our own SFP optics, 1G to 400G — backed by a wider range of switching, wireless, and routing hardware.</p>
+        <p class="hero-trust"><span>✓</span> Designed, tested, and supported by our own team.</p>
+        <div class="hero-buttons">
+          <a class="button primary" href="#contact">Get Pricing <span>→</span></a>
+          <a class="button ghost" href="#products">View full range <span>↗</span></a>
+        </div>
+        <div class="hero-stats">
+          <div><strong data-count="16">0</strong><span>+<small>years in networking</small></span></div>
+          <div><strong data-count="55">0</strong><span>+<small>partners</small></span></div>
+          <div><strong data-count="135">0</strong><span>+<small>products</small></span></div>
+          <div><strong data-count="1200">0</strong><span>+<small>customers</small></span></div>
+        </div>
+      </div>
+      <div class="hero-visual hero-product-visual" id="networkViz">
+        <div class="hero-sfp-scene">
+          <div class="hero-sfp-halo"></div>
+          <img src="images/sfp/generic-sfp.svg" alt="Close-up Netro SFP optical transceiver" class="hero-sfp-image" />
+          <div class="hero-sfp-tag">Made by Netro <span>·</span> 1G–400G <span>·</span> In stock</div>
+        </div>
+        <div class="compat-finder" id="compatFinder">
+          <div class="finder-head">
+            <div><span class="finder-kicker">NETRO OPTICS FINDER</span><strong>Find the right SFP</strong><p class="finder-subtitle">Match speed, reach and fiber architecture — instantly.</p></div>
+            <span class="finder-live"><i></i> Live catalogue</span>
+          </div>
+          <div class="finder-fields">
+            <label>Speed<select id="finderSpeed" aria-label="SFP speed"></select></label>
+            <label>Distance<select id="finderDistance" aria-label="SFP distance"></select></label>
+            <label>Fiber type<select id="finderFiber" aria-label="SFP fiber type"></select></label>
+          </div>
+          <div class="finder-result" id="finderResult" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="scroll-cue"><span></span> SCROLL TO EXPLORE</div>
+    </section>
+
+    <section class="intro light-section">
+      <div class="section-wrap split reveal">
+        <div><p class="eyebrow blue">THE NETRO ECOSYSTEM</p><h2>Everything between<br><em>connection and impact.</em></h2></div>
+        <div class="intro-copy"><p>Built around our own optics, extended through Rikom, Nokia, Huawei, and Juniper hardware.</p></div>
+      </div>
+      <div class="ecosystem section-wrap">
+        <article class="eco-panel eco-panel-large eco-optics reveal">
+          <div class="eco-panel-top"><span class="eco-number">01</span><span class="eco-tag">Own Manufacturing</span></div>
+          <div class="eco-optics-visual">
+            <div class="eco-sfp-stage"><span class="eco-sfp-glow"></span><img src="images/sfp/generic-sfp.svg" alt="Netro SFP optical transceiver" class="eco-sfp-image" /></div>
+            <div class="eco-spec-callout"><span>1G → 400G</span><i></i></div>
+          </div>
+          <div class="eco-panel-copy"><h3>SFP &amp; Optics</h3><p>SFP/SFP+/QSFP modules, 1G–400G, DWDM, Fiber Cable, and Passive FTTH — manufactured in-house</p><div class="eco-optics-spec-strip"><span><b>1G–400G</b><small>Optical speeds</small></span><span><b>DWDM</b><small>Dense wavelength</small></span><span><b>FTTH</b><small>Passive infrastructure</small></span></div></div>
+        </article>
+
+        <article class="eco-panel eco-panel-medium eco-switching reveal">
+          <div class="eco-circuit-bg" aria-hidden="true"></div>
+          <div class="eco-panel-top"><span class="eco-number">02</span><span class="eco-tag">Switching &amp; Routing</span></div>
+          <div class="eco-partner-list">
+            <div class="eco-partner">
+              <div class="eco-logo-box"><img src="images/partners/rikom-real.png" alt="Rikom" /></div>
+              <div class="eco-partner-copy"><strong>Rikom</strong><span>Master Distributor · Gold Partner</span><p>Switching, routing, MPLS &amp; VXLAN hardware — our highest-volume partnership</p></div>
+            </div>
+            <div class="eco-partner">
+              <div class="eco-logo-box"><img src="images/partners/nokia-real.png" alt="Nokia" /></div>
+              <div class="eco-partner-copy"><strong>Nokia</strong><span>Exclusive India Partner — BNG &amp; L3 Managed Switches</span><p>Finnish networking leader, providing BNG routers and L3 managed switches</p></div>
+            </div>
+            <div class="eco-partner">
+              <div class="eco-logo-box"><img src="images/partners/huawei-real.png" alt="Huawei" /></div>
+              <div class="eco-partner-copy"><strong>Huawei</strong><span>Gold Partner</span><p>Global networking infrastructure leader, offering enterprise-grade routing and switching</p></div>
+            </div>
+            <div class="eco-partner">
+              <div class="eco-logo-box"><img src="images/partners/juniper-real.png" alt="Juniper" /></div>
+              <div class="eco-partner-copy"><strong>Juniper</strong><span>MPS Partner, North India</span><p>High-performance routing and switching, part of HPE Networking</p></div>
+            </div>
+          </div>
+          <div class="eco-device-stack" aria-hidden="true"><div class="stack-device stack-a"></div><div class="stack-device stack-b"></div><div class="stack-device stack-c"></div><div class="stack-device stack-d"></div></div>
+        </article>
+
+        <article class="eco-panel eco-panel-small eco-wireless reveal">
+          <div class="eco-panel-top"><span class="eco-number">03</span><span class="eco-tag">AI &amp; Wireless</span></div>
+          <div class="eco-wireless-visual" aria-hidden="true">
+            <div class="wireless-ap">
+              <div class="wireless-ap-body"><span></span><i></i><i></i></div>
+              <div class="wireless-ap-base"></div>
+            </div>
+            <div class="wireless-waves"><b></b><b></b><b></b></div>
+          </div>
+          <div class="eco-panel-copy">
+            <div class="eco-ai-partner eco-wireless-plain">
+              <div class="eco-mini-logo"><img src="images/partners/aprecomm-real.png" alt="Aprecomm" /></div>
+              <div><strong>Aprecomm</strong><p>AI-driven network management, built on TR-069/TR-369 standards</p></div>
+            </div>
+            <div class="eco-wireless-core eco-zcom-card">
+              <div class="eco-wireless-brand"><img src="images/partners/zcom-real.png" alt="Zcom" /></div>
+              <p class="eco-primary-tag">Master Distributor — Wireless Access Points</p>
+              <p class="eco-partner-description">Carrier-grade Wi-Fi manufacturer, known for smart-city and rural wireless deployments</p>
+            </div>
+            <div class="eco-radwin-partner eco-partner-mini">
+              <div class="eco-mini-logo"><img src="images/partners/radwin-real.png" alt="Radwin" /></div>
+              <div><strong>Radwin</strong><p>Point-to-point and point-to-multipoint wireless broadband systems</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="eco-more section-wrap" aria-live="polite">and more — <span class="eco-more-cycle"><span>TP-Link</span><span>Cisco</span><span>MikroTik</span><span>Digisol</span></span></div>
+      </div>
+      <div class="section-wrap eco-trust reveal">
+        <div class="eco-trust-strip">
+          <div class="eco-cert" tabindex="0" data-tooltip="ISO certified management systems and quality processes"><img src="images/certifications/iso.svg" alt="ISO Certified" /><span>ISO Certified</span></div><i></i>
+          <div class="eco-cert" tabindex="0" data-tooltip="CE and FCC marks indicate applicable conformity and electromagnetic compatibility requirements"><img src="images/certifications/ce.svg" alt="CE &amp; FCC Certified" /><span>CE &amp; FCC Certified</span></div><i></i>
+          <div class="eco-cert" tabindex="0" data-tooltip="RoHS compliant means restricted hazardous substances are controlled in the product"><img src="images/certifications/rohs.svg" alt="RoHS Compliant" /><span>RoHS Compliant</span></div><i></i>
+          <div class="eco-cert eco-cert-gem" tabindex="0" data-tooltip="Registered on India’s Government e-Marketplace (GeM)"><img src="images/certifications/gem.svg" alt="GeM Registered" /><span>GeM Registered</span></div><i></i>
+          <div class="eco-cert eco-cert-partners"><b data-count="12" data-suffix="+">0+</b><span>Global OEM Partners</span></div>
+        </div>
+        <p class="eco-credibility">Trusted by <strong class="client-isro">ISRO</strong>, <strong class="client-bsnl">BSNL</strong>, <strong class="client-hcl">HCL</strong>, and <strong><span data-count="50" data-suffix="+">0+</span> enterprises</strong></p>
+      </div>
+    </section>
+
+    <section class="statement industry-story dark-section" aria-label="Netro in the industry">
+  <div class="statement-glow industry-glow"></div>
+  <div class="industry-recognition-wall" aria-hidden="true">
+    <div class="industry-recognition-image"></div>
+    <div class="industry-recognition-wash"></div>
+    <div class="industry-recognition-label">RECOGNITION / BEHIND THE NETWORK</div>
+  </div>
+  <div class="industry-grid-lines" aria-hidden="true"></div>
+  <div class="industry-network-field" aria-hidden="true">
+    <svg viewBox="0 0 900 700" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="industryLineBlue" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4fb8ff" stop-opacity="0"/>
+          <stop offset=".5" stop-color="#4fb8ff" stop-opacity=".42"/>
+          <stop offset="1" stop-color="#ff8b2a" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="industryNodeGlow">
+          <stop offset="0" stop-color="#71cfff" stop-opacity=".75"/>
+          <stop offset="1" stop-color="#71cfff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <g class="industry-network-lines">
+        <path d="M80 130 C210 70 260 190 390 135 S610 70 820 155"/>
+        <path d="M35 350 C180 265 265 400 415 320 S625 270 875 385"/>
+        <path d="M120 565 C260 470 330 600 470 520 S680 445 845 570"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="section-wrap industry-inner">
+    <div class="industry-copy reveal">
+      <div class="industry-kicker-row">
+        <p class="eyebrow">NETRO / IN THE INDUSTRY</p>
+        <span class="industry-presence"><i></i> REAL PEOPLE · REAL EVENTS · REAL HARDWARE</span>
+      </div>
+      <h2>Networks are built from<br><em>connections.</em></h2>
+      <h2 class="accent-line">So is <em>Netro.</em></h2>
+
+      <p class="statement-copy">
+        The booth, the handshake, the product demo, the conversation that turns into a deployment. A look at the people, places and moments behind the network.
+      </p>
+      <button class="industry-gallery-button" type="button" aria-label="View full gallery">
+        <span class="industry-gallery-button-copy">
+          <small>EXHIBITIONS · RECOGNITION · MORE</small>
+          <strong>View full gallery</strong>
+        </span>
+        <span class="industry-gallery-button-arrow" aria-hidden="true">↗</span>
+      </button>
+    </div>
+
+    <div class="industry-visual" data-industry-story>
+      <div class="industry-photo-wrap" data-photo-parallax>
+        <div class="industry-photo-shadow"></div>
+        <div class="industry-photo-halo" aria-hidden="true"></div>
+        <div class="industry-photo-corner corner-tl" aria-hidden="true"></div>
+        <div class="industry-photo-corner corner-br" aria-hidden="true"></div>
+        <div class="industry-photo-main">
+          <div class="industry-photo-loader"></div>
+          <img class="industry-main-image" src="images/industry/2021-delhi-main.jpg" alt="Netro Networks exhibition booth at Pragati Maidan, New Delhi, March 2021" loading="eager" decoding="async" fetchpriority="high">
+          <div class="industry-photo-overlay"></div>
+          <div class="industry-photo-grain"></div>
+          <div class="industry-photo-scan"></div>
+          <div class="industry-scanline"></div>
+          <div class="industry-photo-index">01</div>
+          <div class="industry-photo-caption">
+            <span>FIELD NOTE</span>
+            <strong class="industry-photo-caption-title">THE FLOOR IS WHERE CONNECTIONS START.</strong>
+          </div>
+        </div>
+
+        <div class="industry-photo-secondary">
+          <img class="industry-secondary-image" src="images/industry/2021-delhi-secondary.jpg" alt="" loading="lazy" decoding="async">
+          <span>ON THE FLOOR</span>
+        </div>
+
+        <div class="industry-event-card">
+          <span class="industry-event-kicker">MARCH 2021 · PRAGATI MAIDAN</span>
+          <strong class="industry-event-title">New Delhi</strong>
+          <small class="industry-event-location">Pragati Maidan · India</small>
+          <div class="industry-event-progress"><span></span></div>
+        </div>
+      </div>
+
+      <div class="industry-timeline" role="tablist" aria-label="Netro industry timeline">
+        <button class="industry-step is-active" type="button" role="tab" aria-selected="true" data-industry="0">
+          <span>01</span><strong>2021</strong><small>NEW DELHI</small><i class="industry-step-thumb" aria-hidden="true"></i>
+        </button>
+        <button class="industry-step" type="button" role="tab" aria-selected="false" data-industry="1">
+          <span>02</span><strong>2021</strong><small>HYDERABAD</small><i class="industry-step-thumb" aria-hidden="true"></i>
+        </button>
+        <button class="industry-step" type="button" role="tab" aria-selected="false" data-industry="2">
+          <span>03</span><strong>2022</strong><small>NEW DELHI</small><i class="industry-step-thumb" aria-hidden="true"></i>
+        </button>
+        <button class="industry-step" type="button" role="tab" aria-selected="false" data-industry="3">
+          <span>04</span><strong>2022</strong><small>HYDERABAD</small><i class="industry-step-thumb" aria-hidden="true"></i>
+        </button>
+        <button class="industry-step" type="button" role="tab" aria-selected="false" data-industry="4">
+          <span>05</span><strong>2023</strong><small>KOLKATA</small><i class="industry-step-thumb" aria-hidden="true"></i>
+        </button>
+        <div class="industry-timeline-track" aria-hidden="true"><span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="products light-section" id="products">
+      <div class="section-wrap">
+        <div class="section-heading split reveal"><div><p class="eyebrow blue">FEATURED PRODUCTS</p><h2>Hardware that earns<br>its place in the network.</h2></div><div><p>Optical transceivers, switches and access platforms selected for practical deployment — not just a spec sheet.</p><a class="text-link" href="#contact">View all products <span>→</span></a></div></div>
+        <div class="product-stage reveal">
+          <div class="product-visual"><div class="sfp-large"><div class="sfp-label">NETRO</div><div class="sfp-cage"><i></i><i></i><i></i><i></i></div><div class="sfp-pcb"></div></div><div class="product-glow"></div></div>
+          <div class="product-info"><p class="eyebrow blue">NNS-1312-10D</p><h3>1.25G SFP<br><em>1310nm · 10km</em></h3><p>Single-mode optical transceiver designed for reliable Ethernet connectivity across enterprise, access and aggregation environments.</p><div class="spec-row"><span><b>1.25G</b>Speed</span><span><b>1310nm</b>Wavelength</span><span><b>10km</b>Distance</span></div><a class="button dark-button" href="#contact">View product <span>→</span></a></div>
+        </div>
+        <div class="product-rail">
+          <div class="rail-card"><span>SFP / OPTICS</span><strong>1G & 10G optical transceivers</strong><a href="#contact">Explore →</a></div>
+          <div class="rail-card"><span>SWITCHING</span><strong>Access, aggregation & L3 switching</strong><a href="#contact">Explore →</a></div>
+          <div class="rail-card"><span>OLT / ONU</span><strong>GPON & EPON access platforms</strong><a href="#contact">Explore →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ctc-feature" id="ctc-global">
+      <div class="ctc-sky" aria-hidden="true"></div>
+      <div class="ctc-horizon" aria-hidden="true"></div>
+      <div class="section-wrap ctc-inner">
+        <div class="ctc-copy reveal">
+          <p class="eyebrow">CTC GLOBAL · ACCC® CONDUCTORS</p>
+          <h2>Moving more power with <em>ACCC® conductor.</em></h2>
+          <p>Netro Networks partners with CTC Global to deploy ACCC® high-capacity conductor technology across transmission networks in Bangladesh, Nepal, Sri Lanka, and many more markets.</p>
+          <div class="ctc-meta"><span>Bangladesh</span><i></i><span>Nepal</span><i></i><span>Sri Lanka</span><i></i><span>And many more</span></div>
+          <a class="ctc-project-link" href="ctc-project.html">View project details <span>↗</span></a>
+        </div>
+        <div class="ctc-visual reveal" aria-label="Electricity transmission towers with animated current flowing along ACCC conductor lines">
+          <svg class="ctc-grid" viewBox="0 0 760 430" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="ctcWire" x1="0" x2="1"><stop offset="0" stop-color="#8f9ba3"/><stop offset=".48" stop-color="#f7fbff"/><stop offset="1" stop-color="#89949c"/></linearGradient>
+              <linearGradient id="ctcEnergy" x1="0" x2="1"><stop offset="0" stop-color="#63c8ff"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#ff9a42"/></linearGradient>
+              <filter id="ctcGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <filter id="ctcSoft"><feGaussianBlur stdDeviation="12"/></filter>
+            </defs>
+            <path class="ctc-wire" d="M45 155 C160 126 270 126 380 151 S610 179 715 142"/>
+            <path class="ctc-wire ctc-wire-low" d="M45 171 C160 142 270 142 380 167 S610 195 715 158"/>
+            <path class="ctc-energy" d="M45 155 C160 126 270 126 380 151 S610 179 715 142" pathLength="1"/>
+            <path class="ctc-energy ctc-energy-low" d="M45 171 C160 142 270 142 380 167 S610 195 715 158" pathLength="1"/>
+            <g class="ctc-ground" aria-hidden="true">
+              <path d="M28 331 H730"/>
+              <path d="M54 346 H705"/>
+            </g>
+            <g class="ctc-tower tower-a">
+              <path class="tower-leg" d="M76 331 L112 122 L120 105 L128 122 L156 331"/>
+              <path d="M84 284 H148 M88 258 H144 M92 232 H140 M96 206 H136 M101 180 H131 M106 154 H126 M110 130 H122"/>
+              <path d="M82 300 L148 258 M89 258 L142 232 M94 232 L136 206 M99 206 L131 180 M104 180 L126 154 M108 154 L122 130"/>
+              <path class="tower-arm" d="M92 158 H140 M98 146 H134"/>
+              <path d="M76 331 L66 348 H96 L112 331 M156 331 L166 348 H136 L120 331"/>
+            </g>
+            <g class="ctc-tower tower-b">
+              <path class="tower-leg" d="M348 331 L377 100 L383 84 L389 100 L412 331"/>
+              <path d="M354 286 H406 M357 258 H403 M360 230 H400 M363 202 H397 M366 174 H394 M369 146 H391 M372 120 H388"/>
+              <path d="M355 286 L403 258 M359 258 L400 230 M362 230 L397 202 M365 202 L394 174 M368 174 L391 146 M371 146 L388 120"/>
+              <path class="tower-arm" d="M357 142 H403 M365 128 H395"/>
+              <path d="M348 331 L338 348 H368 L377 331 M412 331 L422 348 H392 L383 331"/>
+            </g>
+            <g class="ctc-tower tower-c">
+              <path class="tower-leg" d="M625 331 L654 125 L660 108 L666 125 L689 331"/>
+              <path d="M631 286 H683 M634 260 H680 M637 234 H677 M640 208 H674 M643 182 H671 M646 156 H668 M650 132 H664"/>
+              <path d="M632 286 L680 260 M636 260 L677 234 M639 234 L674 208 M642 208 L671 182 M645 182 L668 156 M648 156 L664 132"/>
+              <path class="tower-arm" d="M635 160 H679 M643 146 H671"/>
+              <path d="M625 331 L615 348 H645 L654 331 M689 331 L699 348 H669 L660 331"/>
+            </g>
+            <g class="ctc-insulators">
+              <circle cx="96" cy="158" r="4"/><circle cx="140" cy="158" r="4"/><circle cx="116" cy="146" r="3"/>
+              <circle cx="361" cy="142" r="4"/><circle cx="399" cy="142" r="4"/><circle cx="380" cy="128" r="3"/>
+              <circle cx="639" cy="160" r="4"/><circle cx="677" cy="160" r="4"/><circle cx="658" cy="146" r="3"/>
+            </g>
+          </svg>
+          <div class="ctc-project-badge"><small>CTC GLOBAL</small><strong>ACCC®</strong><span>High-capacity<br>conductor technology</span></div>
+        </div>
+      </div>
+    </section>
+
+<section class="solutions dark-section" id="solutions">
+      <div class="section-wrap">
+        <div class="section-heading split reveal"><div><p class="eyebrow">SOLUTIONS</p><h2>Built around the<br><em>network challenge.</em></h2></div><div><p>From rural broadband to enterprise connectivity, the infrastructure changes. The engineering discipline doesn't.</p><a class="text-link light-link" href="#contact">Explore solutions <span>→</span></a></div></div>
+        <div class="solution-grid">
+          <article class="solution-card tall reveal"><div class="solution-art art-rural"></div><div class="solution-content"><span>FTTx · BROADBAND</span><h3>Connect communities at scale.</h3><p>GPON/EPON access architecture for distributed deployments.</p><a href="#contact">Explore solution →</a></div></article>
+          <article class="solution-card reveal"><div class="solution-art art-data"></div><div class="solution-content"><span>ISP · AGGREGATION</span><h3>Keep traffic moving.</h3><p>Reliable switching and optical aggregation.</p><a href="#contact">Explore solution →</a></div></article>
+          <article class="solution-card reveal"><div class="solution-art art-enterprise"></div><div class="solution-content"><span>ENTERPRISE</span><h3>Connect every layer.</h3><p>Secure, high-performance network infrastructure.</p><a href="#contact">Explore solution →</a></div></article>
+          <article class="solution-card reveal"><div class="solution-art art-industrial"></div><div class="solution-content"><span>INDUSTRIAL</span><h3>Built for demanding environments.</h3><p>Connectivity where uptime matters.</p><a href="#contact">Explore solution →</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="tools light-section" id="tools">
+      <div class="section-wrap">
+        <div class="section-heading split reveal"><div><p class="eyebrow blue">ENGINEERING TOOLS</p><h2>Useful things for<br><em>people who build networks.</em></h2></div><div><p>Practical calculators and references for planning, deploying and troubleshooting network infrastructure.</p><a class="text-link" href="#contact">View all tools <span>→</span></a></div></div>
+        <div class="tools-grid">
+          <article class="tool-card reveal"><div class="tool-icon">⌁</div><span>OPTICS</span><h3>Fiber Budget</h3><p>Calculate optical power budget across distance, connectors and splices.</p><a href="#contact">Open tool →</a></article>
+          <article class="tool-card reveal"><div class="tool-icon">◈</div><span>FTTx</span><h3>GPON Split Ratio</h3><p>Plan split architecture and understand optical budget constraints.</p><a href="#contact">Open tool →</a></article>
+          <article class="tool-card reveal"><div class="tool-icon">⌘</div><span>NETWORKING</span><h3>VLAN Planner</h3><p>Map access, trunk, PVID and QinQ requirements before deployment.</p><a href="#contact">Open tool →</a></article>
+          <article class="tool-card reveal"><div class="tool-icon">▣</div><span>POWER</span><h3>PoE Budget</h3><p>Estimate switch power requirements for connected endpoints.</p><a href="#contact">Open tool →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="knowledge dark-section" id="resources">
+      <div class="section-wrap">
+        <div class="section-heading split reveal"><div><p class="eyebrow">KNOWLEDGE CENTER</p><h2>Learn. Deploy.<br><em>Solve.</em></h2></div><div><p>Technical explainers, deployment guides and practical networking knowledge for engineers and teams.</p><a class="text-link light-link" href="#contact">Browse resources <span>→</span></a></div></div>
+        <div class="article-grid">
+          <article class="article-feature reveal"><div class="article-image optic-art"><div class="optic-core"></div></div><div class="article-body"><span>SFP & OPTICS</span><h3>What is an SFP? A practical guide for network engineers.</h3><a href="#contact">Read article →</a></div></article>
+          <article class="article-card reveal"><div class="article-image fiber-art"></div><span>FTTx</span><h3>GPON vs EPON: understanding the access layer.</h3><a href="#contact">Read article →</a></article>
+          <article class="article-card reveal"><div class="article-image vlan-art"></div><span>SWITCHING</span><h3>VLAN, trunk, PVID and QinQ explained.</h3><a href="#contact">Read article →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cases light-section">
+      <div class="section-wrap">
+        <div class="section-heading split reveal"><div><p class="eyebrow blue">DEPLOYMENTS</p><h2>Real networks.<br><em>Real scale.</em></h2></div><div><p>Engineering experience across rural broadband, industrial connectivity and high-security network environments.</p><a class="text-link" href="#contact">View case studies <span>→</span></a></div></div>
+        <div class="case-grid">
+          <article class="case-card big reveal"><div class="case-image rural-photo"><div class="case-overlay"></div><span>900+ LOCATIONS</span></div><div><h3>Rural broadband at scale.</h3><p>FTTx · GPON · Government</p></div></article>
+          <article class="case-card reveal"><div class="case-image industrial-photo"><div class="case-overlay"></div><span>INDUSTRIAL</span></div><div><h3>Reliable connectivity for critical infrastructure.</h3><p>Switching · Optical · Support</p></div></article>
+          <article class="case-card reveal"><div class="case-image secure-photo"><div class="case-overlay"></div><span>SECURE NETWORKS</span></div><div><h3>Infrastructure where reliability matters.</h3><p>Enterprise · Optical · Deployment</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact dark-section" id="contact">
+      <div class="contact-glow"></div>
+      <div class="section-wrap contact-inner reveal">
+        <p class="eyebrow">LET'S BUILD TOGETHER</p>
+        <h2>Ready to power<br><em>your next network?</em></h2>
+        <p>Talk to our team about products, network infrastructure, deployment requirements and technical support.</p>
+        <div class="hero-buttons"><a class="button primary" href="mailto:info@netronetworks.in">Talk to Netro <span>→</span></a><a class="button ghost" href="mailto:info@netronetworks.in?subject=Request%20a%20Quote">Request a quote <span>↗</span></a></div>
+      </div>
+      <footer id="company">
+        <div class="section-wrap footer-mega">
+          <div class="footer-brand-column">
+            <a class="footer-logo" href="#top" aria-label="Netro Networks home">
+              <img class="logo-dark" src="images/netro_logo.png" alt="Netro Networks" /><img class="logo-light" src="images/netro_logo_light.png" alt="Netro Networks" />
+            </a>
+            <p class="footer-tagline">Network infrastructure.<br><span>Real-world ready.</span></p>
+            <a class="footer-mail" href="mailto:sales@netronetworks.in">sales@netronetworks.in</a>
+            <div class="footer-address footer-brand-address">
+  <p>C-21, 3rd Floor, Sector 63<br>Noida, Uttar Pradesh — 201301, India</p>
+</div>
+          </div>
+
+          <div class="footer-column">
+            <h4>PRODUCTS</h4>
+            <a href="#products">Optical Transceivers</a>
+            <a href="#products">Network Switches</a>
+            <a href="#products">GPON / EPON</a>
+            <a href="#products">OLT / ONU</a>
+            <a href="#products">Passive Fiber</a>
+            <a href="#products">DWDM</a>
+            <a href="#products">Media Converters</a>
+            <a href="#products">Testing Equipment</a>
+            <a href="#products">Accessories</a>
+          </div>
+
+          <div class="footer-column">
+            <h4>SOLUTIONS</h4>
+            <a href="#solutions">ISP Solutions</a>
+            <a href="#solutions">Enterprise</a>
+            <a href="#solutions">Government & PSU</a>
+            <a href="#solutions">Defense</a>
+            <a href="#solutions">Data Centers</a>
+            <a href="#solutions">Power & Utilities</a>
+            <a href="#solutions">FTTH / Broadband</a>
+            <a href="#solutions">Industrial Networks</a>
+          </div>
+
+          <div class="footer-column">
+            <h4>RESOURCES</h4>
+            <a href="#resources">Rikom Firmwares</a>
+            <a href="#resources">Configuration Guides</a>
+            <a href="#resources">Datasheets</a>
+            <a href="#resources">Gallery</a>
+            <a href="#tools">Network Tools</a>
+            <a href="#resources">Knowledge Base</a>
+          </div>
+
+          <div class="footer-column">
+            <h4>COMPANY</h4>
+            <a href="#company">About Netro</a>
+            <a href="#company">Our Partners</a>
+            <a href="#company">Projects</a>
+            <a href="#company">Support</a>
+            <a href="#contact">Contact Us</a>
+            <a href="#contact">Request a Quote</a>
+            <a href="#company">Careers</a>
+            <a href="#company">News & Updates</a>
+          </div>
+        </div>
+
+        
+        <div class="section-wrap footer-social-row">
+  <div class="footer-legal-social-row">
+    <span>© <span id="year"></span> Netro Networks Private Limited. All rights reserved.</span>
+    <a href="#company">Privacy Policy</a>
+    <a href="#company">Terms of Service</a>
+    <span class="footer-made-india" aria-label="Made in India">
+      Made in India <b aria-hidden="true">↗</b>
+    </span>
+  </div>
+  <div class="footer-socials" aria-label="Social media">
+  <a href="https://x.com/netro_networks" target="_blank" rel="noopener noreferrer" aria-label="X">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 3.5h4.65l3.18 4.28 3.72-4.28h4.05l-5.77 6.63 6.04 8.37h-4.64l-3.53-4.88-4.23 4.88H3.62l6.3-7.25L4.2 3.5Zm3.9 1.95 8.3 11.4h1.58L9.68 5.45H8.1Z"/></svg>
+  </a>
+  <a href="https://www.youtube.com/channel/UC1aRez-lEJpDdEZnfZw4e8w" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.58 7.15a2.85 2.85 0 0 0-2-2C17.8 4.65 12 4.65 12 4.65s-5.8 0-7.58.5a2.85 2.85 0 0 0-2 2C1.92 8.93 1.92 12 1.92 12s0 3.07.5 4.85a2.85 2.85 0 0 0 2 2c1.78.5 7.58.5 7.58.5s5.8 0 7.58-.5a2.85 2.85 0 0 0 2-2c.5-1.78.5-4.85.5-4.85s0-3.07-.5-4.85ZM10 15.3V8.7l5.7 3.3-5.7 3.3Z"/></svg>
+  </a>
+  <a href="https://www.instagram.com/netronetworks/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 2.8h9.6A3.4 3.4 0 0 1 20.2 6v12a3.4 3.4 0 0 1-3.4 3.2H7.2A3.4 3.4 0 0 1 3.8 18V6a3.4 3.4 0 0 1 3.4-3.2Zm0 2A1.4 1.4 0 0 0 5.8 6v12c0 .77.63 1.2 1.4 1.2h9.6c.77 0 1.4-.43 1.4-1.2V6c0-.77-.63-1.2-1.4-1.2H7.2Zm4.8 2.1A5.1 5.1 0 1 1 11.99 17.1 5.1 5.1 0 0 1 12 6.9Zm0 2A3.1 3.1 0 1 0 15.1 12 3.1 3.1 0 0 0 12 8.9Zm5.35-2.45a1.15 1.15 0 1 1-1.15 1.15 1.15 0 0 1 1.15-1.15Z"/></svg>
+  </a>
+  <a href="https://www.facebook.com/netronetworkspvtltd" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.8 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3 0-1.35-.1-2.55-.1-2.52 0-4.25 1.54-4.25 4.37v2.03H7.5V13h2.7v8h3.6Z"/></svg>
+  </a>
+  <a href="https://www.linkedin.com/company/netronetworks/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.1 3.7A2.3 2.3 0 1 1 5.1 8.3 2.3 2.3 0 0 1 5.1 3.7ZM3.3 9.8h3.6V21H3.3V9.8Zm5.8 0h3.4v1.5h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45V21h-3.55v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9.1V9.8Z"/></svg>
+  </a>
+</div>
+</div>
+          <div class="footer-legal-right">
+          </div>
+        </div>
+      </footer>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
