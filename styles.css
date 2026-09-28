@@ -2721,3 +2721,537 @@ html[data-theme="light"] .finder-fields select option:checked{
   background-color:#168edb;
   color:#ffffff;
 }
+
+
+/* =========================================================
+   V68 — ecosystem: Aprecomm "Tech Partner" headline
+   Same headline design Zcom used (size/weight/colour);
+   Zcom's "Master Distributor" line has been removed from the markup.
+   ========================================================= */
+.eco-wireless-plain .eco-primary-tag{display:block;margin:0 0 4px!important;font-size:11px!important;font-weight:600;line-height:1.35!important;color:#4f7188!important;}
+html[data-theme="dark"] .eco-wireless-plain .eco-primary-tag{color:#9fdcff!important;}
+@media(max-width:650px){
+  .eco-wireless-plain .eco-primary-tag{font-size:10.5px!important;}
+}
+
+
+/* V69 — refined wireless access-point visual
+   Inspired by modern enterprise AP hardware: compact rounded-square chassis,
+   slight front perspective, blue edge glow, and no vendor branding. */
+.eco-wireless-visual .wireless-ap{
+  width:176px;
+  height:112px;
+  align-items:center;
+  transform:translateY(0) perspective(420px) rotateX(8deg) rotateY(-9deg);
+}
+.eco-wireless-visual .wireless-ap-body{
+  width:82px;
+  height:76px;
+  border:1.5px solid rgba(96,190,226,.88);
+  border-radius:17px;
+  background:
+    radial-gradient(circle at 48% 28%,rgba(84,207,255,.28),transparent 34%),
+    linear-gradient(145deg,#f7fcff 0%,#d9edf7 48%,#b7d4e2 100%);
+  box-shadow:
+    0 18px 32px rgba(23,112,157,.18),
+    0 0 24px rgba(40,184,238,.18),
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -7px 15px rgba(55,139,177,.08);
+  transform:translateY(2px);
+}
+.eco-wireless-visual .wireless-ap-body:before,
+.eco-wireless-visual .wireless-ap-body:after{
+  bottom:13px;
+  width:5px;
+  height:5px;
+  background:#35c9ef;
+  box-shadow:0 0 9px rgba(38,205,246,.78),0 0 18px rgba(38,205,246,.28);
+}
+.eco-wireless-visual .wireless-ap-body:before{left:18px;}
+.eco-wireless-visual .wireless-ap-body:after{left:30px;}
+.eco-wireless-visual .wireless-ap-body span{
+  right:16px;
+  top:16px;
+  width:11px;
+  height:11px;
+  border:1.5px solid #55aac8;
+  border-radius:50%;
+  box-shadow:0 0 10px rgba(48,191,232,.22);
+}
+.eco-wireless-visual .wireless-ap-body i{
+  right:-29px;
+  top:-17px;
+  width:40px;
+  height:40px;
+  border:1.8px solid rgba(38,160,216,.68);
+  border-left-color:transparent;
+  border-bottom-color:transparent;
+  border-radius:50%;
+  transform:rotate(45deg);
+}
+.eco-wireless-visual .wireless-ap-body i:nth-of-type(2){
+  right:-43px;
+  top:-30px;
+  width:63px;
+  height:63px;
+  border-color:rgba(38,160,216,.40);
+  border-left-color:transparent;
+  border-bottom-color:transparent;
+}
+.eco-wireless-visual .wireless-ap-base{
+  bottom:12px;
+  width:112px;
+  height:8px;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(42,151,197,.25) 0%,rgba(42,151,197,.09) 42%,transparent 72%);
+  filter:blur(.2px);
+}
+html[data-theme="dark"] .eco-wireless-visual .wireless-ap-body .ap-ai-label{color:#0b79a9!important;}
+
+html[data-theme="dark"] .eco-wireless-visual .wireless-ap-body{
+  background:
+    radial-gradient(circle at 48% 25%,rgba(73,217,255,.25),transparent 35%),
+    linear-gradient(145deg,#d9edf5 0%,#a9cad8 52%,#83aebf 100%);
+  border-color:#6dd7f3;
+  box-shadow:
+    0 18px 34px rgba(0,0,0,.28),
+    0 0 28px rgba(34,211,238,.16),
+    inset 0 1px 0 rgba(255,255,255,.82),
+    inset 0 -8px 16px rgba(24,100,127,.10);
+}
+@media(max-width:650px){
+  .eco-wireless-visual .wireless-ap{transform:translateY(0) perspective(420px) rotateX(8deg) rotateY(-9deg) scale(.88);}
+}
+
+/* V70 — enterprise AP detailing + matched Zcom/Radwin partner cards
+   Keeps the existing wireless illustration silhouette and ecosystem layout intact. */
+.eco-wireless-visual .wireless-ap-body{
+  overflow:visible;
+  border-radius:18px 18px 15px 15px;
+  background:
+    radial-gradient(circle at 50% 18%,rgba(255,255,255,.96) 0 2px,transparent 2.8px),
+    repeating-linear-gradient(90deg,transparent 0 6px,rgba(72,133,163,.13) 6px 7px,transparent 7px 12px) 50% 58% / 42px 7px no-repeat,
+    radial-gradient(ellipse at 50% 78%,rgba(61,124,153,.14),transparent 42%),
+    linear-gradient(145deg,#fbfeff 0%,#e2f1f7 43%,#b9d6e3 100%);
+  box-shadow:
+    0 20px 34px rgba(23,112,157,.19),
+    0 0 26px rgba(40,184,238,.18),
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -1px 0 rgba(75,131,155,.20),
+    inset 0 -9px 17px rgba(55,139,177,.08);
+}
+.eco-wireless-visual .wireless-ap-body:after{
+  left:30px;
+  bottom:13px;
+  width:5px;
+  height:5px;
+  box-shadow:0 0 9px rgba(38,205,246,.78),0 0 18px rgba(38,205,246,.28),
+             28px 0 0 #35c9ef,28px 0 9px rgba(38,205,246,.65);
+}
+.eco-wireless-visual .wireless-ap-body:before{
+  left:18px;
+  bottom:13px;
+}
+.eco-wireless-visual .wireless-ap-body span{
+  right:auto;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:15px;
+  height:15px;
+  border:1px solid rgba(72,146,175,.72);
+  background:radial-gradient(circle,#64dcf5 0 2px,rgba(100,220,245,.18) 3px,transparent 6px);
+  box-shadow:0 0 12px rgba(48,191,232,.24),inset 0 0 4px rgba(255,255,255,.65);
+}
+.eco-wireless-visual .wireless-ap-body:where(:not(.x)){
+  outline:1px solid rgba(93,170,199,.20);
+  outline-offset:-6px;
+}
+html[data-theme="dark"] .eco-wireless-visual .wireless-ap-body{
+  background:
+    radial-gradient(circle at 50% 18%,rgba(255,255,255,.78) 0 2px,transparent 2.8px),
+    repeating-linear-gradient(90deg,transparent 0 6px,rgba(42,102,126,.22) 6px 7px,transparent 7px 12px) 50% 58% / 42px 7px no-repeat,
+    radial-gradient(ellipse at 50% 78%,rgba(36,93,119,.20),transparent 42%),
+    linear-gradient(145deg,#e0f0f5 0%,#afd0dc 48%,#87b2c1 100%);
+}
+
+/* Make Zcom use the same compact partner-card geometry and logo tile as Radwin. */
+.eco-wireless .eco-zcom-card{
+  display:grid;
+  grid-template-columns:82px minmax(0,1fr);
+  align-items:center;
+  gap:10px;
+  min-height:52px;
+  box-sizing:border-box;
+  padding:10px 9px;
+  margin:0 0 0;
+  border:1px solid #dbe6ed;
+  border-radius:9px;
+  background:rgba(255,255,255,.55);
+}
+.eco-wireless .eco-zcom-card .eco-wireless-brand{
+  width:82px;
+  height:31px;
+  margin:0;
+  border:1px solid #dbe6ed;
+  border-radius:6px;
+  background:rgba(255,255,255,.88);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.eco-wireless .eco-zcom-card .eco-wireless-brand img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:4px;
+  box-sizing:border-box;
+}
+.eco-wireless .eco-zcom-card .eco-partner-description{
+  margin:0!important;
+  font-size:10.5px!important;
+  line-height:1.42!important;
+}
+.eco-wireless .eco-zcom-card:hover,
+.eco-wireless .eco-zcom-card:focus-within{
+  background:rgba(37,150,205,.075);
+  border-color:rgba(37,150,205,.28);
+  transform:translateX(3px);
+  box-shadow:0 8px 20px rgba(29,111,153,.08);
+}
+html[data-theme="dark"] .eco-wireless .eco-zcom-card{
+  background:rgba(255,255,255,.035);
+  border-color:rgba(255,255,255,.10);
+}
+html[data-theme="dark"] .eco-wireless .eco-zcom-card .eco-wireless-brand{
+  background:rgba(255,255,255,.88);
+  border-color:rgba(255,255,255,.14);
+}
+html[data-theme="dark"] .eco-wireless .eco-zcom-card:hover,
+html[data-theme="dark"] .eco-wireless .eco-zcom-card:focus-within{
+  background:rgba(34,211,238,.08);
+  border-color:rgba(34,211,238,.24);
+}
+@media(max-width:650px){
+  .eco-wireless .eco-zcom-card{grid-template-columns:78px minmax(0,1fr);gap:10px;}
+  .eco-wireless .eco-zcom-card .eco-wireless-brand{width:78px;height:31px;}
+}
+
+/* V71 — simplified wireless AP + cleaner ecosystem optics partner mark */
+/* Remove the SFP callout connector line; keep the 1G → 400G label. */
+.eco-optics .eco-spec-callout i{display:none!important;}
+.eco-optics .eco-spec-callout{gap:0;}
+
+/* Aprecomm should read as a floating logo, not a logo tile/card. */
+.eco-wireless .eco-wireless-plain .eco-mini-logo,
+.eco-wireless .eco-wireless-plain .eco-mini-logo:hover,
+.eco-wireless .eco-wireless-plain .eco-mini-logo:focus-within{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+.eco-wireless .eco-wireless-plain .eco-mini-logo img{
+  background:transparent!important;
+}
+
+/* Strip the AP back to the essential hardware face:
+   one blue status light at the top centre + an abstract signal-line motif. */
+.eco-wireless-visual .wireless-ap-body:before,
+.eco-wireless-visual .wireless-ap-body:after{
+  display:none!important;
+}
+.eco-wireless-visual .wireless-ap-body{
+  background:linear-gradient(145deg,#fbfeff 0%,#e3f2f8 48%,#c0dbe7 100%)!important;
+  box-shadow:
+    0 18px 32px rgba(23,112,157,.16),
+    0 0 25px rgba(40,184,238,.14),
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -8px 16px rgba(55,139,177,.07)!important;
+  outline:none!important;
+}
+.eco-wireless-visual .wireless-ap-body span{
+  left:50%!important;
+  right:auto!important;
+  top:12px!important;
+  transform:translateX(-50%)!important;
+  width:9px!important;
+  height:9px!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:#48d8ff!important;
+  box-shadow:
+    0 0 6px rgba(72,216,255,.95),
+    0 0 14px rgba(40,190,238,.75),
+    0 0 24px rgba(40,184,238,.32)!important;
+}
+.eco-wireless-visual .wireless-ap-body .ap-ai-label{
+  position:absolute!important;
+  left:50%!important;
+  top:38px!important;
+  transform:translateX(-50%)!important;
+  margin:0!important;
+  color:#178dcc!important;
+  font:800 12px/1 Manrope,sans-serif!important;
+  letter-spacing:.08em!important;
+  text-shadow:0 0 7px rgba(30,181,235,.32)!important;
+  z-index:3!important;
+}
+.eco-wireless-visual .wireless-ap-body i.ap-signal-line{
+  position:absolute!important;
+  top:auto!important;
+  right:auto!important;
+  bottom:19px!important;
+  width:3px!important;
+  border:0!important;
+  border-radius:4px!important;
+  background:linear-gradient(to bottom,#59dfff,#168dcc)!important;
+  box-shadow:0 0 7px rgba(44,190,236,.30)!important;
+  opacity:.88!important;
+  transform:none!important;
+  animation:none!important;
+}
+.eco-wireless-visual .wireless-ap-body .ap-signal-1{left:25px!important;height:7px!important;}
+.eco-wireless-visual .wireless-ap-body .ap-signal-2{left:31px!important;height:12px!important;}
+.eco-wireless-visual .wireless-ap-body .ap-signal-3{left:37px!important;height:17px!important;}
+.eco-wireless-visual .wireless-ap-body .ap-signal-4{left:43px!important;height:17px!important;}
+.eco-wireless-visual .wireless-ap-body .ap-signal-5{left:49px!important;height:12px!important;}
+.eco-wireless-visual .wireless-ap-body .ap-signal-6{left:55px!important;height:7px!important;}
+
+html[data-theme="dark"] .eco-wireless-visual .wireless-ap-body{
+  background:linear-gradient(145deg,#e2f1f6 0%,#b4d1dd 50%,#8eb8c7 100%)!important;
+}
+
+
+/* V72 — static wireless signal waves on both sides of the AP. */
+.eco-wireless .eco-wireless-visual .wireless-waves {
+  display:block!important;
+  position:absolute!important;
+  top:29px!important;
+  width:62px!important;
+  height:62px!important;
+  overflow:hidden!important;
+  transform:none!important;
+  pointer-events:none!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-left {
+  left:calc(50% - 112px)!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-right {
+  left:calc(50% + 50px)!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-left b,
+.eco-wireless .eco-wireless-visual .wireless-waves-right b {
+  position:absolute!important;
+  border:1.5px solid rgba(37,136,199,.48)!important;
+  border-left-color:transparent!important;
+  border-bottom-color:transparent!important;
+  border-radius:50%!important;
+  opacity:.68!important;
+  transform:none!important;
+  animation:none!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-left b {
+  right:-18px!important;
+  left:auto!important;
+  top:18px!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-left b:nth-child(2) {
+  right:-28px!important;
+  left:auto!important;
+  top:8px!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-left b:nth-child(3) {
+  right:-38px!important;
+  left:auto!important;
+  top:-2px!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-right b {
+  left:-18px!important;
+  top:18px!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-right b:nth-child(2) {
+  left:-28px!important;
+  top:8px!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-right b:nth-child(3) {
+  left:-38px!important;
+  top:-2px!important;
+}
+@media(max-width:650px){
+  .eco-wireless .eco-wireless-visual .wireless-waves-left { left:calc(50% - 101px)!important; }
+  .eco-wireless .eco-wireless-visual .wireless-waves-right { left:calc(50% + 39px)!important; }
+}
+
+/* V73 — mirror the left wireless waves so both sides are geometrically identical. */
+.eco-wireless .eco-wireless-visual .wireless-waves-left b,
+.eco-wireless .eco-wireless-visual .wireless-waves-left b:nth-child(2),
+.eco-wireless .eco-wireless-visual .wireless-waves-left b:nth-child(3){
+  transform:scaleX(-1)!important;
+  transform-origin:center center!important;
+}
+
+/* V74 — balanced static wireless waves + Zcom/Radwin typography alignment. */
+.eco-wireless .wireless-ap-body i{display:none!important;}
+.eco-wireless .eco-wireless-visual .wireless-waves{
+  display:block!important;
+  position:absolute!important;
+  top:29px!important;
+  width:68px!important;
+  height:68px!important;
+  overflow:visible!important;
+  pointer-events:none!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-left{left:calc(50% - 114px)!important;}
+.eco-wireless .eco-wireless-visual .wireless-waves-right{left:calc(50% + 46px)!important;}
+.eco-wireless .eco-wireless-visual .wireless-waves b{
+  position:absolute!important;
+  width:30px!important;
+  height:30px!important;
+  border:1.5px solid rgba(37,136,199,.48)!important;
+  border-left-color:transparent!important;
+  border-bottom-color:transparent!important;
+  border-radius:50%!important;
+  opacity:.68!important;
+  transform:none!important;
+  animation:none!important;
+  box-sizing:border-box!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves b:nth-child(1){width:30px!important;height:30px!important;top:22px!important;}
+.eco-wireless .eco-wireless-visual .wireless-waves b:nth-child(2){width:47px!important;height:47px!important;top:13px!important;}
+.eco-wireless .eco-wireless-visual .wireless-waves b:nth-child(3){width:64px!important;height:64px!important;top:4px!important;}
+.eco-wireless .eco-wireless-visual .wireless-waves-right b{left:0!important;}
+.eco-wireless .eco-wireless-visual .wireless-waves-left b{
+  left:38px!important;
+  transform:scaleX(-1)!important;
+  transform-origin:center!important;
+}
+.eco-wireless .eco-zcom-copy strong{
+  display:block;
+  font:800 11px/1.1 Manrope;
+  color:#29475a;
+  margin:0 0 3px;
+}
+.eco-wireless .eco-zcom-copy .eco-partner-description{margin:0!important;}
+html[data-theme="dark"] .eco-wireless .eco-zcom-copy strong{color:#eef8fc;}
+.eco-wireless .eco-radwin-partner .eco-partner-description{
+  font-size:10.5px!important;
+  line-height:1.42!important;
+  color:#647d8d!important;
+}
+html[data-theme="dark"] .eco-wireless .eco-radwin-partner .eco-partner-description{color:#bdd6e2!important;}
+@media(max-width:650px){
+  .eco-wireless .eco-wireless-visual .wireless-waves-left{left:calc(50% - 103px)!important;}
+  .eco-wireless .eco-wireless-visual .wireless-waves-right{left:calc(50% + 35px)!important;}
+  .eco-wireless .eco-radwin-partner .eco-partner-description{font-size:10px!important;}
+}
+
+/* V75 — true mirrored static Wi-Fi waves around the AP.
+   Each side is a clean parenthesis-shaped set of three arcs, vertically centered
+   and mirrored so the left and right sides have identical geometry. */
+.eco-wireless .eco-wireless-visual .wireless-waves{
+  top:50%!important;
+  width:72px!important;
+  height:72px!important;
+  overflow:visible!important;
+  transform:translateY(-50%)!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-left{
+  left:calc(50% - 117px)!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-right{
+  left:calc(50% + 45px)!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves b,
+.eco-wireless .eco-wireless-visual .wireless-waves-left b,
+.eco-wireless .eco-wireless-visual .wireless-waves-right b{
+  position:absolute!important;
+  top:50%!important;
+  left:auto!important;
+  right:auto!important;
+  width:24px!important;
+  height:36px!important;
+  margin:0!important;
+  border:1.5px solid rgba(37,136,199,.48)!important;
+  border-radius:50%!important;
+  opacity:.68!important;
+  transform:translateY(-50%)!important;
+  animation:none!important;
+  box-sizing:border-box!important;
+}
+/* Right side: ) */
+.eco-wireless .eco-wireless-visual .wireless-waves-right b{
+  left:0!important;
+  border-left-color:transparent!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-right b:nth-child(1){
+  width:24px!important;height:36px!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-right b:nth-child(2){
+  width:34px!important;height:50px!important;
+  left:0!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-right b:nth-child(3){
+  width:44px!important;height:64px!important;
+  left:0!important;
+}
+/* Left side: ( — exact horizontal mirror of the right side */
+.eco-wireless .eco-wireless-visual .wireless-waves-left b{
+  right:0!important;
+  border-right-color:transparent!important;
+  border-left-color:rgba(37,136,199,.48)!important;
+  transform:translateY(-50%)!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-left b:nth-child(1){
+  width:24px!important;height:36px!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-left b:nth-child(2){
+  width:34px!important;height:50px!important;
+  right:0!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-waves-left b:nth-child(3){
+  width:44px!important;height:64px!important;
+  right:0!important;
+}
+@media(max-width:650px){
+  .eco-wireless .eco-wireless-visual .wireless-waves-left{left:calc(50% - 106px)!important;}
+  .eco-wireless .eco-wireless-visual .wireless-waves-right{left:calc(50% + 34px)!important;}
+}
+
+/* V76 — use the supplied static wireless-wave artwork on both sides of the AP. */
+.eco-wireless .eco-wireless-visual .wireless-waves{display:none!important;}
+.eco-wireless .eco-wireless-visual .wireless-wave-image{
+  position:absolute!important;
+  top:50%!important;
+  width:100px!important;
+  height:100px!important;
+  object-fit:contain!important;
+  pointer-events:none!important;
+  user-select:none!important;
+  opacity:.82!important;
+  filter:drop-shadow(0 0 7px rgba(0,157,255,.12))!important;
+  transform:translateY(-50%)!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-wave-left{
+  left:calc(37% - 85px)!important;
+  transform:translateY(-50%) scaleX(-1)!important;
+  opacity:.50!important;
+}
+.eco-wireless .eco-wireless-visual .wireless-wave-right{
+  left:calc(50% + 35px)!important;
+  opacity:.50!important;
+}
+@media(max-width:650px){
+  .eco-wireless .eco-wireless-visual .wireless-wave-image{
+    width:86px!important;
+    height:86px!important;
+  }
+  .eco-wireless .eco-wireless-visual .wireless-wave-left{
+    left:calc(50% - 76px)!important;
+  }
+  .eco-wireless .eco-wireless-visual .wireless-wave-right{
+    left:calc(50% + 30px)!important;
+  }
+}
