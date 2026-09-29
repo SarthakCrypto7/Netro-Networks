@@ -418,22 +418,54 @@
 })();
 
 
-/* V29 theme toggle — dark remains the default; preference persists locally. */
+/* Global Netro theme — one preference shared by every page. */
 (() => {
+  const KEY = 'netro-theme';
   const root = document.documentElement;
-  const toggle = document.getElementById('themeToggle');
-  if (!toggle) return;
-
-  const apply = theme => {
-    root.dataset.theme = theme;
-    const light = theme === 'light';
-    toggle.setAttribute('aria-pressed', String(light));
-    toggle.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
-    try { localStorage.setItem('netro-theme', theme); } catch (_) {}
+  const read = () => {
+    try {
+      const saved = localStorage.getItem(KEY);
+      if (saved === 'light' || saved === 'dark') return saved;
+      const cookie = document.cookie.match(/(?:^|;\s*)netro-theme=(light|dark)(?:;|$)/);
+      if (cookie) return cookie[1];
+    } catch (_) {}
+    return root.dataset.theme === 'light' ? 'light' : 'dark';
+  };
+  const write = theme => {
+    try {
+      localStorage.setItem(KEY, theme);
+      document.cookie = `${KEY}=${theme};path=/;max-age=31536000;SameSite=Lax`;
+    } catch (_) {}
+  };
+  const update = theme => {
+    const normalized = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = normalized;
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) {
+      const light = normalized === 'light';
+      toggle.setAttribute('aria-pressed', String(light));
+      toggle.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+    }
+    return normalized;
   };
 
-  apply(root.dataset.theme === 'light' ? 'light' : 'dark');
-  toggle.addEventListener('click', () => apply(root.dataset.theme === 'light' ? 'dark' : 'light'));
+  // Always restore the saved global preference; never silently reset to dark.
+  update(read());
+  write(root.dataset.theme);
+
+  const sync = () => update(read());
+  window.addEventListener('pageshow', sync);
+  window.addEventListener('focus', sync);
+  window.addEventListener('storage', e => { if (e.key === KEY) sync(); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) sync(); });
+
+  const toggle = document.getElementById('themeToggle');
+  toggle?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    write(next);
+    update(next);
+    window.dispatchEvent(new CustomEvent('netro-theme-change', { detail: next }));
+  });
 })();
 
 /* =========================================================

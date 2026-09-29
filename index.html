@@ -11,13 +11,38 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <script>
-    (() => {
-      try {
-        const saved = localStorage.getItem("netro-theme");
-        if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
-      } catch (_) {}
-    })();
-  </script>
+(() => {
+  try {
+    const saved = localStorage.getItem('netro-theme');
+    if (saved === 'light' || saved === 'dark') {
+      document.documentElement.dataset.theme = saved;
+    } else {
+      const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = systemDark ? 'dark' : 'light';
+    }
+  } catch (_) {
+    document.documentElement.dataset.theme = 'light';
+  }
+})();
+</script>
+
+<script>
+(() => {
+  const KEY = 'netro-theme';
+  const root = document.documentElement;
+  const syncTheme = () => {
+    try {
+      const saved = localStorage.getItem(KEY);
+      if (saved === 'light' || saved === 'dark') root.dataset.theme = saved;
+    } catch (_) {}
+  };
+  syncTheme();
+  window.addEventListener('pageshow', syncTheme);
+  window.addEventListener('storage', e => { if (e.key === KEY) syncTheme(); });
+  window.addEventListener('netro-theme-change', syncTheme);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) syncTheme(); });
+})();
+</script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -62,7 +87,7 @@
         <div class="mega-menu resources-mega">
           <div class="mega-visual resources-visual"><div class="terminal"><span>NETRO / RESOURCES</span><b>01</b><i></i><i></i><i></i><em></em></div><small>RESOURCES</small></div>
           <div class="mega-links">
-            <div class="mega-group"><h4>ENGINEERING</h4><a href="#resources">Rikom Firmwares</a><a href="#resources">Configuration Guides</a><a href="#resources">Datasheets</a><a href="#resources">Application Notes</a></div>
+            <div class="mega-group"><h4>ENGINEERING</h4><a href="rikom-firmware.html">Rikom Firmwares</a><a href="#resources">Configuration Guides</a><a href="#resources">Datasheets</a><a href="#resources">Application Notes</a></div>
             <div class="mega-group"><h4>KNOWLEDGE</h4><a href="#resources">Knowledge Base</a><a href="#resources">Troubleshooting</a><a href="#resources">Deployment Guides</a><a href="#resources">FAQs</a></div>
             <div class="mega-group"><h4>TOOLS</h4><a href="#tools">Fiber Budget Calculator</a><a href="#tools">Optical Power Calculator</a><a href="#tools">GPON Split Calculator</a><a href="#tools">Network Calculators</a></div>
             <div class="mega-group"><h4>MEDIA</h4><a href="#resources">Gallery</a><a href="#resources">Project Stories</a><a href="#resources">Announcements</a><a href="#resources">Partner Updates</a></div>
@@ -451,67 +476,62 @@
         <div class="hero-buttons"><a class="button primary" href="mailto:info@netronetworks.in">Talk to Netro <span>→</span></a><a class="button ghost" href="mailto:info@netronetworks.in?subject=Request%20a%20Quote">Request a quote <span>↗</span></a></div>
       </div>
       <footer id="company">
-        <div class="section-wrap footer-mega">
-          <div class="footer-brand-column">
-            <a class="footer-logo" href="#top" aria-label="Netro Networks home">
-              <img class="logo-dark" src="images/netro_logo.webp" alt="Netro Networks" /><img class="logo-light" src="images/netro_logo_light.webp" alt="Netro Networks" />
-            </a>
-            <p class="footer-tagline">Network infrastructure.<br><span>Real-world ready.</span></p>
-            <a class="footer-mail" href="mailto:sales@netronetworks.in">sales@netronetworks.in</a>
-            <div class="footer-address footer-brand-address">
-  <p>C-21, 3rd Floor, Sector 63<br>Noida, Uttar Pradesh — 201301, India</p>
-</div>
-          </div>
+        <div class="section-wrap footer-mega footer-mega-enhanced">
+  <div class="footer-top-row">
+    <div class="footer-brand-column footer-brand-enhanced">
+      <a class="footer-logo" href="#top" aria-label="Netro Networks home">
+        <img class="logo-dark" src="images/netro_logo.webp" alt="Netro Networks" /><img class="logo-light" src="images/netro_logo_light.webp" alt="Netro Networks" />
+      </a>
 
-          <div class="footer-column">
-            <h4>PRODUCTS</h4>
-            <a href="#products">Optical Transceivers</a>
-            <a href="#products">Network Switches</a>
-            <a href="#products">GPON / EPON</a>
-            <a href="#products">OLT / ONU</a>
-            <a href="#products">Passive Fiber</a>
-            <a href="#products">DWDM</a>
-            <a href="#products">Media Converters</a>
-            <a href="#products">Testing Equipment</a>
-            <a href="#products">Accessories</a>
+      <div class="footer-contact-column">
+        <h4>CONTACT</h4>
+        <div class="footer-contact-groups">
+          <div class="footer-contact-group">
+            <span class="footer-contact-group-label">SUPPORT</span>
+            <a href="mailto:support@netronetworks.in" class="footer-contact-item"><span class="footer-contact-icon" aria-hidden="true">✉</span><span>support@netronetworks.in</span></a>
+            <a href="tel:+918447979550" class="footer-contact-item"><span class="footer-contact-icon" aria-hidden="true">☎</span><span>+91-84479 79550</span></a>
           </div>
-
-          <div class="footer-column">
-            <h4>SOLUTIONS</h4>
-            <a href="#solutions">ISP Solutions</a>
-            <a href="#solutions">Enterprise</a>
-            <a href="#solutions">Government & PSU</a>
-            <a href="#solutions">Defense</a>
-            <a href="#solutions">Data Centers</a>
-            <a href="#solutions">Power & Utilities</a>
-            <a href="#solutions">FTTH / Broadband</a>
-            <a href="#solutions">Industrial Networks</a>
-          </div>
-
-          <div class="footer-column">
-            <h4>RESOURCES</h4>
-            <a href="#resources">Rikom Firmwares</a>
-            <a href="#resources">Configuration Guides</a>
-            <a href="#resources">Datasheets</a>
-            <a href="#resources">Gallery</a>
-            <a href="#tools">Network Tools</a>
-            <a href="#resources">Knowledge Base</a>
-          </div>
-
-          <div class="footer-column">
-            <h4>COMPANY</h4>
-            <a href="#company">About Netro</a>
-            <a href="#company">Our Partners</a>
-            <a href="#company">Projects</a>
-            <a href="#company">Support</a>
-            <a href="#contact">Contact Us</a>
-            <a href="#contact">Request a Quote</a>
-            <a href="#company">Careers</a>
-            <a href="#company">News & Updates</a>
+          <div class="footer-contact-group">
+            <span class="footer-contact-group-label">SALES</span>
+            <a href="mailto:sales@netronetworks.in" class="footer-contact-item"><span class="footer-contact-icon" aria-hidden="true">✉</span><span>sales@netronetworks.in</span></a>
+            <a href="tel:+917755006777" class="footer-contact-item"><span class="footer-contact-icon" aria-hidden="true">☎</span><span>+91-77550 06777</span></a>
+            <a href="tel:+918888888158" class="footer-contact-item"><span class="footer-contact-icon" aria-hidden="true">☎</span><span>+91-88888 88158</span></a>
           </div>
         </div>
+      </div>
+    </div>
 
-        
+    <div class="footer-map-column">
+      <h4>FIND US</h4>
+      <div class="footer-map-card">
+        <iframe title="Netro Networks location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=28.6159178,77.3816036&z=15&output=embed"></iframe>
+        <a class="footer-map-overlay" href="https://maps.app.goo.gl/6ky6R2pVxZU5AjcM8" target="_blank" rel="noopener noreferrer" aria-label="Open Netro Networks location in Google Maps">
+          <span class="footer-map-pin">●</span><span>Open in Google Maps <b>↗</b></span>
+        </a>
+      </div>
+      <div class="footer-map-address"><strong>NETRO NETWORKS</strong><p>C-21, 3rd Floor, Sector 63<br>Noida, Uttar Pradesh — 201301, India</p></div>
+    </div>
+
+    <div class="footer-links-column">
+      <div class="footer-column">
+        <h4>PRODUCTS</h4>
+        <a href="#products">Optical Transceivers</a><a href="#products">Network Switches</a><a href="#products">GPON / EPON</a><a href="#products">OLT / ONU</a><a href="#products">Passive Fiber</a><a href="#products">DWDM</a><a href="#products">Media Converters</a><a href="#products">Testing Equipment</a><a href="#products">Accessories</a>
+      </div>
+      <div class="footer-column">
+        <h4>SOLUTIONS</h4>
+        <a href="#solutions">ISP Solutions</a><a href="#solutions">Enterprise</a><a href="#solutions">Government &amp; PSU</a><a href="#solutions">Defense</a><a href="#solutions">Data Centers</a><a href="#solutions">Power &amp; Utilities</a><a href="#solutions">FTTH / Broadband</a><a href="#solutions">Industrial Networks</a>
+      </div>
+      <div class="footer-column">
+        <h4>RESOURCES</h4>
+        <a class="active-resource-link" href="rikom-firmware.html">Rikom Firmwares</a><a href="#resources">Configuration Guides</a><a href="#resources">Datasheets</a><a href="#resources">Gallery</a><a href="#tools">Network Tools</a><a href="#resources">Knowledge Base</a>
+      </div>
+      <div class="footer-column">
+        <h4>COMPANY</h4>
+        <a href="#company">About Netro</a><a href="#company">Our Partners</a><a href="#company">Projects</a><a href="#company">Support</a><a href="#contact">Contact Us</a><a href="#contact">Request a Quote</a><a href="#company">Careers</a><a href="#company">News &amp; Updates</a>
+      </div>
+    </div>
+  </div>
+
         <div class="section-wrap footer-social-row">
   <div class="footer-legal-social-row">
     <span>© <span id="year"></span> Netro Networks Private Limited. All rights reserved.</span>
