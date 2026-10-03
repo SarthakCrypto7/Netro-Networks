@@ -3424,9 +3424,1518 @@ html[data-theme="light"] .footer-links-column{border-top-color:#dfe7ed}}
 
 /* Footer spacing + readability refinements */
 .footer-mega-enhanced{padding-top:45px;padding-bottom:0px}
-.footer-contact-item{font-size:14.5px;line-height:1.45}
+.footer-contact-item{font-size:13.5px;line-height:1.45}
 .footer-map-address strong{font-size:10.5px}
 .footer-map-address p{font-size:13px;line-height:1.6;padding-bottom:10px}
 .footer-map-overlay{font-size:10px}
 .footer-social-row{padding-top:21px;padding-bottom:21px}
 @media(max-width:760px){.footer-mega-enhanced{padding-top:52px;padding-bottom:64px}}
+
+
+/* ===== FINAL RESPONSIVE NAVBAR ===== */
+@media (min-width:801px){
+  .nav-item.has-menu:hover > .mega-menu,
+  .nav-item.has-menu:focus-within > .mega-menu,
+  .nav-item.has-menu.open > .mega-menu{
+    transform:translate(-50%,0);
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .nav-item.has-menu:hover > .nav-link,
+  .nav-item.has-menu:focus-within > .nav-link{
+    color:#fff;
+  }
+  html[data-theme="light"] .nav-item.has-menu:hover > .nav-link,
+  html[data-theme="light"] .nav-item.has-menu:focus-within > .nav-link{color:#111820}
+}
+
+@media (max-width:800px){
+  .nav{height:68px;padding:0 15px;z-index:1200}
+  .nav.scrolled{height:64px}
+  .nav-shell{width:100%;height:100%;display:flex;align-items:center;gap:12px}
+  .brand{width:118px;height:40px;margin-right:auto}
+  .brand img{max-height:40px}
+  .nav-actions{display:flex;align-items:center;gap:8px;margin-left:auto}
+  .nav-actions .search-btn{display:none}
+  .nav-actions .theme-toggle{width:34px;height:34px;flex:none}
+  .nav-actions .nav-cta{padding:9px 10px;font-size:10px;border-radius:8px;white-space:nowrap;display:inline-flex;align-items:center}
+  .nav-actions .nav-cta b{margin-left:6px}
+  .menu{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    width:44px;
+    height:44px;
+    padding:0;
+    margin-left:0;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:10px;
+    background:rgba(3,7,12,.45);
+    cursor:pointer;
+    position:relative;
+    z-index:1301;
+  }
+  .menu span{display:block;width:20px;height:1.5px;background:#fff;border-radius:2px;transition:transform .22s ease,opacity .18s ease}
+  .menu[aria-expanded="true"] span:first-child{transform:translateY(3.75px) rotate(45deg)}
+  .menu[aria-expanded="true"] span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+  html[data-theme="light"] .menu{background:rgba(255,255,255,.92);border-color:rgba(25,35,48,.14)}
+  html[data-theme="light"] .menu span{background:#172431}
+
+  .nav-links{
+    position:absolute;
+    top:calc(100% + 8px);
+    left:15px;
+    right:15px;
+    height:auto;
+    max-height:calc(100vh - 84px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    margin:0;
+    padding:9px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:16px;
+    background:rgba(4,9,15,.985);
+    box-shadow:0 25px 70px rgba(0,0,0,.55);
+    backdrop-filter:blur(18px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(-8px);
+    transition:opacity .2s ease,transform .2s ease,visibility .2s ease;
+  }
+  .nav.mobile-open .nav-links{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0);
+  }
+  .nav-item{height:auto;position:relative;min-width:0;width:100%;max-width:100%;}
+  .nav-link{
+    width:100%;
+    min-height:48px;
+    justify-content:space-between;
+    padding:0 12px;
+    color:#dce5ed;
+    font-size:14px;
+    border-radius:9px;
+  }
+  .nav-link:hover{background:rgba(255,255,255,.045);color:#fff}
+  .nav-item.open > .nav-link{color:#fff;background:rgba(255,255,255,.045)}
+  .nav-link .chevron{margin-left:auto}
+  .nav-item.open .chevron{transform:rotate(225deg) translateY(-1px);border-color:#ff8b2a}
+  .ctc-nav-link{margin:5px 0 0!important;padding:12px!important;min-height:48px!important;border-left:0!important;border-top:1px solid rgba(255,255,255,.09);border-radius:9px}
+
+  .mega-menu{
+    position:static;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    overflow:hidden;
+    max-width:none;
+    transform:none;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    display:none;
+    grid-template-columns:1fr;
+    gap:0;
+    padding:8px 7px 10px;
+    margin:0;
+    border:0;
+    border-radius:10px;
+    box-shadow:none;
+    background:rgba(255,255,255,.025);
+    backdrop-filter:none;
+  }
+  .nav-item.has-menu.open .mega-menu{display:grid!important}
+  .mega-menu:before{display:none}
+  .mega-visual{display:none}
+  .mega-links{display:flex;flex-direction:column;gap:0;padding:5px 10px 8px;min-width:0;width:100%;box-sizing:border-box}
+  .mega-group{display:block;min-width:0;max-width:100%;padding:0 0 7px;margin:0 0 7px;border-bottom:1px solid rgba(255,255,255,.06)} .mega-group:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
+  .mega-group h4{font-size:9px;margin:4px 0 8px;color:#718191}
+  .mega-group a{display:block;max-width:100%;min-width:0;font-size:12px;line-height:1.4;margin:0 0 9px;color:#b9c6d1;overflow-wrap:anywhere;word-break:break-word}
+  .mega-group a:hover{transform:none;color:#ff8b2a}
+  html[data-theme="light"] .nav-links{background:rgba(255,255,255,.98);border-color:rgba(25,35,48,.12);box-shadow:0 25px 70px rgba(32,48,65,.16)}
+  html[data-theme="light"] .nav-link{color:#394555}
+  html[data-theme="light"] .nav-link:hover,
+  html[data-theme="light"] .nav-item.open > .nav-link{color:#111820;background:rgba(25,35,48,.045)}
+  html[data-theme="light"] .ctc-nav-link{border-top-color:rgba(25,35,48,.10)!important}
+  html[data-theme="light"] .mega-menu{background:rgba(25,35,48,.035)}
+  html[data-theme="light"] .mega-group a{color:#435364}
+}
+
+@media (max-width:480px){
+  .nav{padding:0 10px}
+  .brand{width:104px}
+  .nav-actions{gap:6px}
+  .nav-actions .nav-cta{padding:8px 8px;font-size:9px}
+  .nav-actions .nav-cta b{margin-left:4px}
+  .nav-actions .theme-toggle{width:32px;height:32px}
+  .menu{width:40px;height:40px}
+  .nav-links{left:10px;right:10px}
+  .mega-links{grid-template-columns:minmax(0,1fr);gap:7px}
+  .mega-group{padding-bottom:5px}
+  .mega-group:not(:last-child){border-bottom:1px solid rgba(255,255,255,.055)}
+  html[data-theme="light"] .mega-group:not(:last-child){border-bottom-color:rgba(25,35,48,.07)}
+}
+
+/* ===== MOBILE NAV SUBMENU HARD RESET =====
+   Keep every submenu link in normal document flow on touch/mobile.
+   This intentionally removes desktop mega-menu positioning/layout state. */
+@media (max-width:800px){
+  .nav-item.has-menu .mega-menu,
+  .nav-item.has-menu.open .mega-menu{
+    position:static !important;
+    inset:auto !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+    transform:none !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    margin:0 !important;
+    padding:8px 0 10px !important;
+    box-sizing:border-box !important;
+    overflow:visible !important;
+    display:none !important;
+    grid-template-columns:1fr !important;
+  }
+
+  .nav-item.has-menu.open .mega-menu{
+    display:block !important;
+  }
+
+  .nav-item.has-menu .mega-links{
+    position:static !important;
+    inset:auto !important;
+    left:auto !important;
+    right:auto !important;
+    transform:none !important;
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+    padding:4px 8px 8px !important;
+  }
+
+  .nav-item.has-menu .mega-group{
+    position:static !important;
+    left:auto !important;
+    right:auto !important;
+    transform:none !important;
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+    margin:0 0 9px !important;
+    padding:0 0 8px !important;
+  }
+
+  .nav-item.has-menu .mega-group h4,
+  .nav-item.has-menu .mega-group a{
+    position:static !important;
+    left:auto !important;
+    right:auto !important;
+    transform:none !important;
+    width:auto !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+    margin-left:0 !important;
+    padding-left:0 !important;
+    text-indent:0 !important;
+  }
+
+  .nav-item.has-menu .mega-group a{
+    display:block !important;
+    white-space:normal !important;
+    overflow:visible !important;
+    overflow-wrap:anywhere !important;
+    word-break:normal !important;
+  }
+}
+
+/* =========================================================
+   V91 — deep mobile responsive hardening
+   Goal: keep real content inside its containing box at narrow
+   phone widths without changing the desktop composition.
+   ========================================================= */
+@media (max-width: 800px){
+  html,body{max-width:100%;min-width:0;}
+  body{overflow-x:hidden;}
+
+  /* Prevent grid/flex min-content sizes from forcing their tracks wider. */
+  .section-wrap,
+  .nav-shell,
+  .split,
+  .ecosystem,
+  .product-stage,
+  .product-rail,
+  .solution-grid,
+  .tools-grid,
+  .article-grid,
+  .case-grid,
+  .ctc-inner,
+  .contact-inner,
+  .industry-inner,
+  .footer-top-row,
+  .footer-links-column,
+  .fw-hero-inner,
+  .fw-support-inner,
+  .fw-grid{min-width:0;max-width:100%;}
+
+  .section-wrap{width:min(calc(100% - 32px),1400px);}
+  .dark-section,.light-section,.products,.solutions,.tools,.knowledge,.cases,.contact,.ctc-feature,.statement,.industry-story{min-width:0;overflow-x:clip;}
+
+  /* Hero: never let the optical visual or heading become wider than the phone. */
+  .hero{overflow:hidden;}
+  .hero-copy{width:100%;min-width:0;max-width:100%;}
+  .hero h1{max-width:100%;overflow-wrap:normal;word-break:normal;}
+  .hero-product-visual{width:100%;max-width:100%;min-width:0;right:auto;left:auto;}
+  .hero-sfp-scene{width:100%;max-width:100%;min-width:0;}
+  .hero-sfp-image{width:100%;max-width:100%;margin-left:0;}
+  .hero-sfp-halo{max-width:100%;}
+  .hero-sfp-tag{max-width:calc(100% - 8px);}
+  .compat-finder{width:100%;max-width:100%;min-width:0;box-sizing:border-box;}
+  .finder-head,.finder-match,.finder-product-meta{min-width:0;max-width:100%;}
+  .finder-product-meta{overflow:hidden;}
+  .finder-product-name,.finder-specs{overflow-wrap:anywhere;word-break:break-word;}
+
+  /* Product showcase: fixed SFP artwork must shrink with its grid track. */
+  .product-stage{grid-template-columns:minmax(0,1fr);}
+  .product-visual,.product-info{min-width:0;width:100%;max-width:100%;}
+  .sfp-large{width:min(300px,calc(100vw - 58px));max-width:100%;}
+  .product-glow{max-width:100%;}
+  .product-info{box-sizing:border-box;}
+  .spec-row{flex-wrap:wrap;min-width:0;}
+
+  /* Ecosystem cards and their visual callouts. */
+  .eco-panel,.eco-panel-top,.eco-panel-copy,.eco-visual,.eco-partner-list,.eco-partner,.eco-secondary-partners{min-width:0;max-width:100%;}
+  .eco-visual{flex-wrap:wrap;}
+  .eco-visual>span{white-space:normal;overflow-wrap:anywhere;}
+  .eco-partner{grid-template-columns:minmax(64px,78px) minmax(0,1fr);}
+  .eco-partner-copy,.eco-partner-copy p{min-width:0;overflow-wrap:anywhere;}
+  .eco-spec-callout{right:0!important;max-width:calc(100% - 6px);box-sizing:border-box;}
+
+  /* All card grids must be allowed to shrink below their content's natural width. */
+  .solution-card,.tool-card,.article-feature,.article-card,.case-card,.rail-card{min-width:0;max-width:100%;}
+  .solution-content,.article-body,.case-card>div:last-child{min-width:0;max-width:100%;box-sizing:border-box;}
+  .solution-content p,.article-body h3,.article-body p,.case-card h3,.case-card p{overflow-wrap:anywhere;}
+
+  /* CTC visual is an SVG composition: keep its containing box bounded. */
+  .ctc-copy,.ctc-visual,.ctc-grid,.ctc-project-badge{min-width:0;max-width:100%;}
+  .ctc-grid{width:100%;height:auto;}
+  .ctc-project-badge{right:4px;max-width:calc(100% - 8px);box-sizing:border-box;}
+
+  /* Industry photo/timeline: no fixed desktop offsets on narrow screens. */
+  .industry-copy,.industry-visual,.industry-photo-wrap,.industry-photo-main,.industry-photo-secondary,.industry-event-card,.industry-timeline{min-width:0;max-width:100%;}
+  .industry-photo-main{left:auto;right:auto;}
+  .industry-event-card{max-width:calc(100% - 20px);}
+  .industry-step{min-width:0;}
+
+  /* Contact/footer content should wrap rather than create a min-content track. */
+  .contact h2,.contact-inner>p:not(.eyebrow){max-width:100%;overflow-wrap:anywhere;}
+  .footer-brand-enhanced,.footer-contact-column,.footer-map-column,.footer-links-column,.footer-column{min-width:0;max-width:100%;}
+  .footer-contact-item{min-width:0;max-width:100%;}
+  .footer-contact-item>span:last-child{min-width:0;overflow-wrap:anywhere;word-break:break-word;}
+  .footer-map-card{max-width:100%;}
+  .footer-socials{max-width:100%;}
+}
+
+@media (max-width: 430px){
+  .section-wrap{width:calc(100% - 36px);}
+  .hero{padding-left:18px;padding-right:18px;}
+  .hero h1{font-size:clamp(40px,12.2vw,46px);letter-spacing:-.06em;}
+  .hero-lead{max-width:100%;}
+  .hero-stats{gap:18px 16px;}
+  .hero-stats>div{min-width:calc(50% - 8px);}
+  .product-stage{border-radius:22px;}
+  .product-info{padding:32px 22px;}
+  .sfp-large{width:min(280px,calc(100vw - 52px));}
+  .fw-card{min-width:0;}
+  .fw-card-head{min-width:0;}
+  .fw-group{font-size:21px;}
+  .fw-models span,.fw-file{max-width:100%;overflow-wrap:anywhere;}
+}
+
+@media (max-width: 360px){
+  .section-wrap{width:calc(100% - 28px);}
+  .hero{padding-left:14px;padding-right:14px;}
+  .hero h1{font-size:40px;}
+  .hero-buttons .button{padding-left:13px;padding-right:13px;}
+  .nav{padding-left:8px;padding-right:8px;}
+  .nav-shell{gap:9px;}
+  .brand{width:98px;}
+  .nav-actions{gap:5px;}
+  .nav-actions .nav-cta{padding-left:7px;padding-right:7px;font-size:8.5px;}
+  .nav-actions .theme-toggle{width:31px;height:31px;}
+  .menu{width:38px;height:38px;}
+  .nav-links{left:8px;right:8px;}
+  .fw-hero h1{font-size:46px;}
+  .fw-card{padding:18px;}
+  .fw-btn{width:100%;}
+}
+
+
+/* =========================================================
+   V92 — MOBILE HERO OPTICS BOUNDARY FIX
+   The SFP artwork must scale from the scene box itself.
+   This prevents the product image from being wider than the
+   phone viewport and eliminates clipped artwork on 320–800px.
+   Desktop composition is intentionally untouched.
+   ========================================================= */
+@media (max-width: 800px){
+  .hero-product-visual{
+    position:relative !important;
+    inset:auto !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    margin:38px auto 0 !important;
+    padding:0 !important;
+    transform:none !important;
+    overflow:visible !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    gap:14px !important;
+  }
+
+  .hero-sfp-scene{
+    position:relative !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:3 / 2 !important;
+    margin:0 !important;
+    padding:0 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    overflow:hidden !important;
+    box-sizing:border-box !important;
+  }
+
+  .hero-sfp-halo{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    max-height:none !important;
+    pointer-events:none !important;
+  }
+
+  .hero-sfp-image,
+  .hero-sfp-image.is-product{
+    position:relative !important;
+    display:block !important;
+    flex:none !important;
+    width:100% !important;
+    max-width:100% !important;
+    height:100% !important;
+    max-height:100% !important;
+    margin:0 !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    transform:none !important;
+    animation:none !important;
+    box-sizing:border-box !important;
+  }
+
+  /* Touch devices should not inherit the desktop hover enlargement. */
+  .hero-sfp-scene:hover .hero-sfp-image{
+    transform:none !important;
+  }
+
+  .hero-sfp-tag{
+    right:8px !important;
+    bottom:8px !important;
+    left:auto !important;
+    width:auto !important;
+    max-width:calc(100% - 16px) !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+    padding:7px 9px !important;
+    font-size:clamp(7px,2vw,8px) !important;
+    line-height:1.2 !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+  }
+
+  .compat-finder{
+    position:relative !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    margin:0 !important;
+    box-sizing:border-box !important;
+  }
+}
+
+@media (max-width: 430px){
+  .hero-product-visual{
+    width:100% !important;
+    margin-top:32px !important;
+    gap:12px !important;
+  }
+
+  .hero-sfp-scene{
+    width:100% !important;
+    aspect-ratio:3 / 2 !important;
+  }
+
+  .hero-sfp-image{
+    width:100% !important;
+    height:100% !important;
+    max-width:100% !important;
+    max-height:100% !important;
+  }
+
+  .hero-sfp-tag{
+    right:6px !important;
+    bottom:6px !important;
+    max-width:calc(100% - 12px) !important;
+    padding:6px 8px !important;
+  }
+}
+
+@media (max-width: 360px){
+  .hero-product-visual{
+    margin-top:28px !important;
+  }
+
+  .hero-sfp-tag{
+    font-size:7px !important;
+    padding:6px 7px !important;
+  }
+}
+
+/* ========================================================================
+   V94 — DEEP RESPONSIVE PASS
+   Direction: Cloudflare-style responsive discipline, adapted to Netro.
+   Goals: one fluid layout, predictable containers, no viewport overflow,
+   mobile-first media sizing, lighter motion on touch devices.
+   ======================================================================== */
+
+:root{
+  --page-gutter:clamp(18px,4vw,72px);
+  --content-max:1400px;
+  --mobile-gutter:18px;
+}
+
+html,body{max-width:100%;overflow-x:clip;}
+body{min-width:0;}
+main,header,section,footer,div,article,aside,nav{min-width:0;}
+
+/* A single container rule keeps every section aligned instead of allowing
+   individual components to invent their own viewport widths. */
+.section-wrap,
+.nav-shell,
+.ctc-inner,
+.contact-inner{
+  width:min(var(--content-max),calc(100% - (2 * var(--page-gutter))));
+  max-width:var(--content-max);
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Never let replaced media create an intrinsic-width overflow. */
+img,svg,video,canvas,iframe{max-width:100%;}
+img{height:auto;}
+svg{max-inline-size:100%;}
+
+/* ----------------------------- NAVIGATION ----------------------------- */
+.nav{
+  padding-inline:0;
+}
+.nav-shell{
+  height:100%;
+  display:flex;
+  align-items:center;
+  gap:clamp(14px,2vw,28px);
+}
+.brand{flex:0 0 136px;}
+.nav-links{margin-left:auto;gap:clamp(18px,2.15vw,31px);}
+.nav-actions{margin-left:auto;gap:clamp(8px,1.2vw,18px);}
+
+@media (max-width:1100px) and (min-width:801px){
+  .nav-shell{width:calc(100% - 32px);}
+  .nav-links{gap:16px;}
+  .nav-links a,.nav-link{font-size:12px;}
+  .nav-actions{gap:8px;}
+  .nav-cta{padding:10px 12px;}
+}
+
+/* ------------------------------ HERO --------------------------------- */
+.hero{
+  min-width:0;
+  overflow:clip;
+}
+.hero-copy{min-width:0;}
+.hero h1 span{display:block;max-width:100%;}
+.hero-lead{max-width:58ch;}
+
+/* The visual must be contained by its own box. The previous implementation
+   used negative viewport offsets and oversized images, which is what caused
+   the SFP to disappear off the left/right edge on phones. */
+.hero-product-visual,
+.hero-sfp-scene,
+.hero-sfp-image,
+.compat-finder{min-width:0;max-width:100%;}
+.hero-product-visual{overflow:visible;}
+.hero-sfp-scene{overflow:visible;}
+.hero-sfp-image{
+  display:block;
+  object-fit:contain;
+  object-position:center;
+  max-width:100%;
+  margin-inline:auto;
+}
+
+@media (max-width:1100px){
+  .hero{
+    padding-top:128px;
+    padding-bottom:72px;
+  }
+  .hero-copy{width:min(820px,100%);margin-inline:auto;}
+  .hero-product-visual{
+    position:relative;
+    inset:auto;
+    width:min(820px,100%);
+    height:auto;
+    margin:54px auto 0;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:18px;
+  }
+  .hero-sfp-scene{
+    width:100%;
+    height:clamp(230px,38vw,360px);
+    min-height:0;
+    margin:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:visible;
+  }
+  .hero-sfp-image{
+    width:100%;
+    height:100%;
+    max-width:100%;
+    max-height:100%;
+    margin:0;
+    object-fit:contain;
+  }
+  .hero-sfp-halo{
+    width:85%;
+    max-width:650px;
+  }
+  .compat-finder{width:100%;}
+}
+
+@media (max-width:760px){
+  .hero{
+    padding:112px var(--mobile-gutter) 58px;
+  }
+  .hero-copy{width:100%;}
+  .hero h1{
+    font-size:clamp(42px,11.8vw,60px);
+    line-height:.94;
+    letter-spacing:-.058em;
+  }
+  .hero h1 span{max-width:100%;}
+  .hero-lead{font-size:14px;line-height:1.65;max-width:52ch;margin:22px 0 14px;}
+  .hero-buttons{width:100%;gap:10px;}
+  .hero-buttons .button{min-width:0;}
+  .hero-product-visual{
+    width:100%;
+    margin-top:42px;
+    gap:14px;
+  }
+  .hero-sfp-scene{
+    width:100%;
+    height:clamp(175px,48vw,270px);
+    padding:0;
+  }
+  .hero-sfp-image{
+    width:100%;
+    max-width:100%;
+    height:100%;
+    max-height:100%;
+    transform:none!important;
+  }
+  .hero-sfp-scene:hover .hero-sfp-image{transform:none!important;}
+  .hero-sfp-halo{width:88%;height:78%;}
+  .hero-sfp-tag{
+    position:static;
+    width:max-content;
+    max-width:100%;
+    margin:0 auto;
+    transform:none;
+  }
+  .compat-finder{padding:14px;border-radius:14px;}
+}
+
+@media (max-width:430px){
+  .hero{padding-inline:var(--mobile-gutter);}
+  .hero h1{font-size:clamp(39px,11.7vw,48px);}
+  .hero-buttons .button{width:100%;flex:1 1 100%;justify-content:space-between;}
+  .hero-product-visual{margin-top:34px;}
+  .hero-sfp-scene{height:clamp(145px,43vw,205px);}
+  .hero-sfp-image{width:100%;}
+  .compat-finder{padding:13px;}
+}
+
+@media (max-width:360px){
+  .hero{padding-inline:15px;}
+  .hero h1{font-size:39px;}
+  .hero-sfp-scene{height:145px;}
+  .finder-head{gap:8px;}
+  .finder-live{white-space:nowrap;}
+}
+
+/* --------------------------- SECTION FLOW ---------------------------- */
+@media (max-width:1100px){
+  .intro,.products,.tools,.cases{padding-top:110px;padding-bottom:90px;}
+  .statement,.solutions,.knowledge{padding-top:110px;padding-bottom:90px;}
+  .split{grid-template-columns:minmax(0,1fr) minmax(260px,.65fr);gap:42px;}
+  .section-heading>div:last-child p{max-width:44ch;}
+}
+
+@media (max-width:800px){
+  .section-wrap,
+  .nav-shell,
+  .ctc-inner,
+  .contact-inner{
+    width:calc(100% - (2 * var(--mobile-gutter)));
+  }
+  .split{grid-template-columns:1fr;gap:22px;}
+  .section-heading>div:last-child{padding-bottom:0;}
+  .section-heading h2,.intro h2{font-size:clamp(38px,10vw,52px);line-height:.98;}
+  .section-heading>div:last-child p,.intro-copy p{font-size:15px;line-height:1.65;}
+  .text-link{margin-top:6px;}
+}
+
+/* --------------------------- ECOSYSTEM -------------------------------- */
+.ecosystem,
+.eco-panel,
+.eco-optics-visual,
+.eco-partner-list,
+.eco-wireless-visual{min-width:0;}
+
+.ecosystem{grid-template-columns:minmax(0,1.38fr) minmax(0,1fr) minmax(0,.72fr);}
+.eco-panel{overflow:hidden;}
+.eco-partner-copy{min-width:0;}
+.eco-partner-copy p{overflow-wrap:anywhere;}
+
+@media (max-width:1100px) and (min-width:761px){
+  .ecosystem{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .eco-panel-large{grid-column:1/-1;}
+  .eco-panel-medium,.eco-panel-small{grid-column:auto;}
+}
+
+@media (max-width:760px){
+  .ecosystem{
+    grid-template-columns:1fr;
+    gap:12px;
+    margin-top:58px;
+  }
+  .eco-panel,
+  .eco-panel-large,
+  .eco-panel-medium,
+  .eco-panel-small{
+    grid-column:auto;
+    min-height:0;
+    padding:20px;
+  }
+  .eco-panel h3{font-size:clamp(27px,8vw,36px);}
+  .eco-panel p{font-size:13px;}
+  .eco-partner{
+    grid-template-columns:minmax(64px,88px) minmax(0,1fr);
+    gap:10px;
+  }
+  .eco-partner-copy strong,.eco-partner-copy span,.eco-partner-copy p{min-width:0;}
+  .eco-trust{margin-top:30px;}
+  .eco-trust-strip{
+    justify-content:flex-start;
+    overflow:visible;
+    flex-wrap:wrap;
+    gap:10px 14px;
+  }
+  .eco-cert{min-width:0;}
+  .eco-cert-partners{flex:1 1 100%;justify-content:flex-start;}
+  .eco-credibility{font-size:11px;line-height:1.7;}
+}
+
+/* ----------------------------- PRODUCTS ------------------------------- */
+.product-stage{min-width:0;}
+.product-visual,.product-info{min-width:0;}
+.product-visual{overflow:hidden;}
+
+@media (max-width:900px){
+  .product-stage{grid-template-columns:1fr;}
+  .product-visual{min-height:360px;}
+  .product-info{padding:42px clamp(24px,5vw,48px);}
+  .product-rail{grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+
+@media (max-width:760px){
+  .product-stage{display:grid;grid-template-columns:1fr;}
+  .product-visual{min-height:300px;}
+  .product-info{padding:34px 22px;}
+  .product-info h3{font-size:clamp(36px,10vw,54px);}
+  .spec-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+  .product-rail{grid-template-columns:1fr;gap:10px;}
+  .rail-card{min-width:0;}
+}
+
+@media (max-width:430px){
+  .product-visual{min-height:250px;}
+  .spec-row{grid-template-columns:1fr 1fr;}
+}
+
+/* ----------------------------- CTC ------------------------------------ */
+.ctc-inner,.ctc-copy,.ctc-visual{min-width:0;}
+.ctc-visual svg{width:100%;height:auto;display:block;}
+
+@media (max-width:800px){
+  .ctc-inner{grid-template-columns:1fr;gap:24px;}
+  .ctc-copy h2{font-size:clamp(40px,10.5vw,56px);}
+  .ctc-visual{height:auto;min-height:260px;}
+  .ctc-project-badge{max-width:calc(100% - 12px);}
+  .ctc-meta{row-gap:7px;}
+}
+
+@media (max-width:430px){
+  .ctc-feature{padding-top:72px;padding-bottom:58px;}
+  .ctc-visual{min-height:220px;}
+  .ctc-project-badge{right:0;bottom:0;transform:scale(.78);transform-origin:right bottom;}
+}
+
+/* --------------------------- SOLUTIONS / GRIDS ----------------------- */
+.solution-grid,.tools-grid,.article-grid,.case-grid{min-width:0;}
+.solution-card,.tool-card,.article-card,.case-card{min-width:0;}
+
+@media (max-width:900px){
+  .solution-grid,.tools-grid,.article-grid,.case-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:650px){
+  .solution-grid,.tools-grid,.article-grid,.case-grid{grid-template-columns:1fr;}
+}
+
+/* ----------------------------- FOOTER --------------------------------- */
+.footer-top-row,.footer-links-column,.footer-contact-groups,.footer-map-column{min-width:0;}
+.footer-map-card{max-width:100%;}
+.footer-contact-item,.footer-column a{overflow-wrap:anywhere;}
+
+@media (max-width:1100px) and (min-width:761px){
+  .footer-top-row{grid-template-columns:1fr 1fr;}
+  .footer-map-column{grid-column:1/-1;}
+  .footer-links-column{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+
+@media (max-width:760px){
+  .footer-top-row{grid-template-columns:1fr;gap:36px;}
+  .footer-brand-enhanced{padding-right:0;}
+  .footer-contact-groups{grid-template-columns:1fr 1fr;gap:20px;}
+  .footer-map-card{width:min(100%,330px);}
+  .footer-links-column{grid-template-columns:1fr 1fr;gap:30px 20px;}
+}
+
+@media (max-width:480px){
+  .footer-contact-groups,.footer-links-column{grid-template-columns:1fr;}
+  .footer-map-card{width:100%;max-width:330px;}
+}
+
+/* ----------------------- TOUCH / PERFORMANCE -------------------------- */
+@media (hover:none), (pointer:coarse){
+  .eco-panel:hover,
+  .button.primary:hover,
+  .theme-toggle:hover,
+  .brand:hover img,
+  .hero-sfp-scene:hover .hero-sfp-image{transform:none;}
+  .hero-sfp-scene:hover .hero-sfp-image{filter:inherit;}
+}
+
+@media (max-width:800px){
+  /* Do not run desktop-scale parallax on a small viewport. */
+  .hero-product-visual{transform:none!important;}
+  .hero-orb{filter:blur(35px);}
+  .orb-a{width:280px;height:280px;}
+  .orb-b{width:220px;height:220px;}
+  .orb-c{width:180px;height:180px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+}
+
+/* Final overflow guard for long labels/URLs. This is deliberately paired
+   with real sizing rules above; it is not being used to hide the SFP bug. */
+.nav-link,.button,.eco-tag,.eco-secondary-partners span,.eco-trust-strip,.footer-column a{max-width:100%;}
+
+
+
+/* ========================================================================
+   V95 — responsive architecture pass
+   Inspired by the responsive principles visible on Ahrefs and Cloudflare:
+   - one fluid content system instead of device-specific positioning
+   - content reflows before it scales down
+   - media is constrained by its own layout box
+   - mobile keeps hierarchy/content but removes desktop-only motion
+   - grids use minmax(0, 1fr) so long content cannot widen a track
+   ======================================================================== */
+:root{
+  --page-max:1400px;
+  --gutter:clamp(18px,4vw,64px);
+  --gutter-mobile:clamp(16px,5vw,22px);
+}
+
+html{max-width:100%;}
+body{max-width:100%;min-width:0;overflow-x:hidden;}
+main{max-width:100%;min-width:0;}
+
+/* A strict container system. No child is allowed to establish a wider
+   layout than the section that owns it. */
+.section-wrap,
+.nav-shell,
+.ctc-inner,
+.contact-inner{
+  width:min(var(--page-max),calc(100% - 2 * var(--gutter)));
+  max-width:var(--page-max);
+  margin-inline:auto;
+  min-width:0;
+}
+
+/* Grid/flex children need min-width:0 or long labels can force a track wider
+   than the viewport even when the parent itself is width:100%. */
+.grid,
+[class*="-grid"],
+.ecosystem,
+.product-stage,
+.solution-grid,
+.tools-grid,
+.article-grid,
+.case-grid,
+.split,
+.ctc-inner,
+.footer-top-row,
+.footer-links-column{min-width:0;}
+
+[class*="-grid"] > *,
+.ecosystem > *,
+.product-stage > *,
+.solution-grid > *,
+.tools-grid > *,
+.article-grid > *,
+.case-grid > *,
+.split > *,
+.ctc-inner > *{min-width:0;max-width:100%;}
+
+img,svg,video,canvas,iframe{max-inline-size:100%;}
+img{height:auto;}
+
+/* ----------------------------- HERO ---------------------------------- */
+/* Desktop keeps the cinematic composition. Tablet/mobile switches to normal
+   document flow — this is the key difference from the earlier negative-offset
+   implementation. */
+@media (max-width:1100px){
+  .hero{
+    min-height:auto!important;
+    height:auto!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr);
+    align-items:start;
+    padding:clamp(108px,13vw,140px) var(--gutter) clamp(64px,8vw,88px)!important;
+    overflow:hidden!important;
+  }
+
+  .hero-copy{
+    width:100%!important;
+    max-width:760px!important;
+    margin-inline:auto!important;
+    min-width:0!important;
+  }
+
+  .hero-product-visual{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    max-width:820px!important;
+    height:auto!important;
+    margin:clamp(34px,5vw,58px) auto 0!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr);
+    gap:clamp(14px,2.2vw,20px);
+    align-items:stretch;
+    justify-items:stretch;
+    transform:none!important;
+    overflow:visible!important;
+  }
+
+  .hero-sfp-scene{
+    width:100%!important;
+    max-width:680px!important;
+    height:clamp(210px,32vw,330px)!important;
+    margin:0 auto!important;
+    padding:0!important;
+    overflow:hidden!important;
+    isolation:isolate;
+  }
+
+  .hero-sfp-image,
+  .hero-sfp-image.is-product{
+    position:relative!important;
+    inset:auto!important;
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:100%!important;
+    max-height:100%!important;
+    margin:0!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    transform:none!important;
+  }
+
+  .hero-sfp-halo{
+    width:88%!important;
+    max-width:620px!important;
+    height:78%!important;
+    left:50%!important;
+    top:50%!important;
+    transform:translate(-50%,-50%)!important;
+  }
+
+  .compat-finder{
+    width:100%!important;
+    max-width:680px!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0 auto!important;
+    transform:none!important;
+    box-sizing:border-box!important;
+  }
+
+  .scroll-cue{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    margin:28px auto 0!important;
+    width:100%!important;
+    max-width:820px!important;
+  }
+}
+
+@media (max-width:760px){
+  :root{--gutter:var(--gutter-mobile);}
+
+  .nav{height:64px!important;padding-inline:0!important;backdrop-filter:blur(12px);}
+  .nav.scrolled{height:60px!important;}
+  .nav-shell{width:calc(100% - 2 * var(--gutter-mobile))!important;gap:10px;}
+  .brand{flex:0 0 auto!important;width:clamp(112px,31vw,136px)!important;height:40px!important;}
+  .nav-actions{gap:8px!important;}
+  .nav-cta{padding:10px 12px!important;font-size:11px!important;}
+  .menu{width:44px!important;height:44px!important;display:grid!important;place-items:center!important;flex:0 0 44px!important;border:1px solid rgba(255,255,255,.14)!important;border-radius:12px!important;}
+
+  .hero{
+    padding-inline:var(--gutter-mobile)!important;
+    padding-top:96px!important;
+    padding-bottom:52px!important;
+  }
+  .hero h1{
+    font-size:clamp(40px,11.8vw,56px)!important;
+    line-height:.95!important;
+    letter-spacing:-.06em!important;
+    overflow-wrap:normal!important;
+  }
+  .hero-lead{font-size:14px!important;line-height:1.65!important;max-width:52ch!important;margin:20px 0 12px!important;}
+  .hero-trust{font-size:11px!important;line-height:1.5!important;}
+  .hero-buttons{width:100%!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px!important;}
+  .hero-buttons .button{width:100%!important;min-width:0!important;justify-content:space-between!important;padding:13px 13px!important;}
+  .hero-stats{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px!important;margin-top:34px!important;}
+  .hero-stats>div{min-width:0!important;}
+
+  .hero-product-visual{
+    margin-top:30px!important;
+    gap:12px!important;
+  }
+  .hero-sfp-scene{
+    width:100%!important;
+    height:clamp(150px,43vw,205px)!important;
+    max-width:620px!important;
+    overflow:hidden!important;
+    border-radius:4px;
+  }
+  .hero-sfp-image,
+  .hero-sfp-image.is-product{
+    width:100%!important;
+    height:100%!important;
+    max-width:100%!important;
+    max-height:100%!important;
+    transform:none!important;
+    animation:none!important;
+  }
+  .hero-sfp-scene.is-product-active{animation:none!important;}
+  .hero-sfp-halo{width:90%!important;height:75%!important;}
+
+  .compat-finder{
+    padding:15px!important;
+    border-radius:14px!important;
+    backdrop-filter:none!important;
+  }
+  .finder-head{align-items:flex-start!important;gap:10px!important;}
+  .finder-head strong{font-size:17px!important;}
+  .finder-subtitle{font-size:10px!important;line-height:1.45!important;}
+  .finder-live{font-size:8px!important;}
+  .finder-fields{grid-template-columns:1fr!important;gap:9px!important;}
+  .finder-fields select{min-height:44px!important;padding:10px 11px!important;font-size:12px!important;}
+  .finder-match{flex-direction:column!important;align-items:stretch!important;gap:10px!important;}
+  .finder-get{width:100%!important;justify-content:center!important;}
+  .finder-empty{flex-direction:column!important;align-items:flex-start!important;}
+
+  .scroll-cue{display:none!important;}
+
+  /* Mobile sections: tighter vertical rhythm and no accidental horizontal
+     tracks from desktop minimum heights. */
+  .intro,.products,.tools,.cases{padding-block:78px 68px!important;}
+  .statement,.solutions,.knowledge{padding-block:82px 72px!important;}
+  .section-heading,.intro .split{gap:18px!important;}
+  .section-heading h2,.intro h2{font-size:clamp(38px,10.5vw,52px)!important;line-height:.98!important;}
+  .intro-copy p,.section-heading>div:last-child p{font-size:14px!important;line-height:1.65!important;}
+
+  .ecosystem{grid-template-columns:minmax(0,1fr)!important;gap:12px!important;margin-top:48px!important;}
+  .eco-panel,.eco-panel-large,.eco-panel-medium,.eco-panel-small{
+    grid-column:auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:20px!important;
+  }
+  .eco-panel h3{font-size:clamp(27px,8vw,36px)!important;}
+  .eco-panel p{font-size:12.5px!important;}
+  .eco-partner{grid-template-columns:minmax(62px,82px) minmax(0,1fr)!important;gap:10px!important;}
+  .eco-partner-copy{min-width:0!important;}
+  .eco-partner-copy span,.eco-partner-copy p{overflow-wrap:anywhere!important;}
+  .eco-optics-spec-strip{grid-template-columns:1fr!important;}
+  .eco-trust-strip{justify-content:flex-start!important;gap:10px 12px!important;padding:14px!important;}
+  .eco-cert{min-width:0!important;max-width:100%!important;}
+  .eco-credibility{font-size:11px!important;line-height:1.7!important;}
+
+  .product-stage{grid-template-columns:minmax(0,1fr)!important;min-height:0!important;}
+  .product-visual{min-height:clamp(240px,70vw,330px)!important;}
+  .product-info{padding:32px 20px!important;}
+  .product-info h3{font-size:clamp(35px,10vw,52px)!important;}
+  .spec-row{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;}
+  .product-rail{grid-template-columns:minmax(0,1fr)!important;}
+  .sfp-large{width:min(86%,360px)!important;height:auto!important;aspect-ratio:2.7/1;}
+
+  .ctc-inner{grid-template-columns:minmax(0,1fr)!important;gap:22px!important;}
+  .ctc-copy h2{font-size:clamp(39px,10.5vw,55px)!important;}
+  .ctc-visual{height:auto!important;min-height:0!important;aspect-ratio:1.45/1;}
+  .ctc-visual svg{width:100%!important;height:100%!important;}
+  .ctc-project-badge{right:4px!important;bottom:4px!important;width:min(158px,46%)!important;transform:none!important;}
+
+  .solution-grid,.tools-grid,.article-grid,.case-grid{grid-template-columns:minmax(0,1fr)!important;gap:12px!important;}
+  .solution-card,.tool-card,.article-card,.case-card{width:100%!important;min-width:0!important;}
+  .solution-card{min-height:300px!important;}
+  .tool-card{min-height:250px!important;}
+  .article-feature,.case-card.big{grid-column:auto!important;}
+  .article-image{height:220px!important;}
+  .article-card .article-image{height:190px!important;}
+  .case-image,.case-card:not(.big) .case-image{height:230px!important;}
+
+  .footer-top-row{grid-template-columns:minmax(0,1fr)!important;gap:34px!important;}
+  .footer-contact-groups{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:18px!important;}
+  .footer-links-column{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:30px 18px!important;}
+  .footer-contact-item,.footer-column a{overflow-wrap:anywhere!important;word-break:break-word!important;}
+  .footer-map-card{width:100%!important;max-width:330px!important;}
+}
+
+@media (max-width:430px){
+  .nav-cta{font-size:10px!important;padding:10px 11px!important;}
+  .hero-buttons{grid-template-columns:minmax(0,1fr)!important;}
+  .hero h1{font-size:clamp(39px,11.6vw,48px)!important;}
+  .hero-sfp-scene{height:clamp(142px,43vw,190px)!important;}
+  .hero-product-visual{margin-top:26px!important;}
+  .compat-finder{padding:13px!important;}
+  .finder-head{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;}
+  .finder-live{justify-self:end!important;}
+  .footer-contact-groups,.footer-links-column{grid-template-columns:minmax(0,1fr)!important;}
+}
+
+@media (max-width:360px){
+  .nav-shell{width:calc(100% - 28px)!important;}
+  .brand{width:108px!important;}
+  .nav-cta{display:none!important;}
+  .menu{margin-left:auto!important;}
+  .hero{padding-inline:14px!important;}
+  .hero h1{font-size:39px!important;}
+  .hero-sfp-scene{height:140px!important;}
+  .hero-stats{gap:15px 12px!important;}
+  .finder-head{grid-template-columns:1fr!important;}
+  .finder-live{justify-self:start!important;}
+}
+
+/* Touch devices should not pay for desktop hover effects or large blur layers. */
+@media (hover:none), (pointer:coarse){
+  .eco-panel:hover,.tool-card:hover,.rail-card:hover,.solution-card:hover,
+  .brand:hover img,.button.primary:hover,.hero-sfp-scene:hover .hero-sfp-image{
+    transform:none!important;
+  }
+  .hero-sfp-scene:hover .hero-sfp-image{filter:inherit!important;}
+}
+
+@media (max-width:800px){
+  .hero-orb{filter:blur(30px)!important;}
+  .orb-a{width:250px!important;height:250px!important;}
+  .orb-b{width:190px!important;height:190px!important;}
+  .orb-c{width:150px!important;height:150px!important;}
+  .footer-map-card iframe{filter:brightness(.62) saturate(.78)!important;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+
+
+/* =========================================================
+   SLICE-INSPIRED RESPONSIVE REFINEMENT
+   Fluid sizing, safer grid children, and laptop-width tuning.
+   This layer preserves Netro's existing visual language.
+   ========================================================= */
+
+/* Prevent intrinsic content sizes from forcing grid/flex overflow. */
+.section-wrap,
+.nav-shell,
+.hero-copy,
+.hero-product-visual,
+.product-stage > *,
+.ctc-inner > *,
+.solution-card,
+.solution-content,
+.tool-card,
+.article-feature,
+.article-card,
+.case-card,
+.footer-mega > *,
+.footer-bottom > * {
+  min-width: 0;
+}
+
+img,
+picture,
+video,
+svg {
+  max-width: 100%;
+}
+
+/* More fluid desktop rhythm instead of abrupt jumps between large screens. */
+@media (min-width: 1001px) and (max-width: 1280px) {
+  .nav {
+    padding-inline: clamp(22px, 3vw, 42px);
+  }
+
+  .nav-shell {
+    width: calc(100% - clamp(36px, 5vw, 64px));
+  }
+
+  .nav-links {
+    gap: clamp(3px, .55vw, 9px);
+  }
+
+  .nav-link {
+    padding-inline: clamp(4px, .55vw, 8px);
+  }
+
+  .nav-actions {
+    gap: clamp(7px, .9vw, 14px);
+  }
+
+  .nav-cta {
+    padding: 10px clamp(10px, 1vw, 15px);
+    white-space: nowrap;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 5.25vw, 68px);
+    letter-spacing: -.06em;
+  }
+
+  .hero-copy {
+    max-width: 620px;
+  }
+
+  .hero-product-visual {
+    max-width: 58%;
+  }
+
+  .section-wrap {
+    width: min(1400px, calc(100% - clamp(44px, 7vw, 96px)));
+  }
+
+  .section-heading {
+    gap: clamp(24px, 4vw, 56px);
+  }
+}
+
+/* Keep the hero's fixed-width finder and optics scene inside tablet layouts. */
+@media (min-width: 801px) and (max-width: 1000px) {
+  .hero-sfp-scene,
+  .compat-finder {
+    width: min(100%, 620px);
+    max-width: 100%;
+  }
+
+  .hero-product-visual {
+    max-width: 100%;
+  }
+
+  .section-wrap {
+    width: calc(100% - 48px);
+  }
+
+  .ctc-inner {
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: clamp(22px, 3vw, 36px);
+  }
+
+  .ctc-visual {
+    min-width: 0;
+  }
+}
+
+/* Fluid section spacing and safer two-column transitions at compact widths. */
+@media (min-width: 651px) and (max-width: 900px) {
+  .intro,
+  .products,
+  .tools,
+  .cases {
+    padding-block: clamp(76px, 10vw, 104px);
+  }
+
+  .statement,
+  .solutions,
+  .knowledge {
+    padding-block: clamp(82px, 11vw, 112px);
+  }
+
+  .section-wrap {
+    width: calc(100% - clamp(40px, 7vw, 64px));
+  }
+
+  .product-info {
+    padding: clamp(28px, 5vw, 50px);
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .solution-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .article-grid,
+  .case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Small-screen content should wrap rather than be clipped or force a wider page. */
+@media (max-width: 650px) {
+  .hero h1,
+  .hero h1 > span,
+  .hero h1 > span:last-child {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: normal;
+  }
+
+  .hero-sfp-scene,
+  .compat-finder {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .finder-fields,
+  .finder-fields > * {
+    min-width: 0;
+  }
+
+  .finder-fields select {
+    max-width: 100%;
+  }
+
+  .button,
+  .nav-cta {
+    max-width: 100%;
+  }
+
+  .section-wrap {
+    width: calc(100% - 40px);
+  }
+
+  .footer-mega > *,
+  .footer-legal-social-row,
+  .footer-legal-left,
+  .footer-legal-right {
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 380px) {
+  .section-wrap {
+    width: calc(100% - 32px);
+  }
+
+  .hero {
+    padding-inline: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(39px, 12vw, 48px);
+    letter-spacing: -.055em;
+  }
+
+  .hero-buttons {
+    gap: 8px;
+  }
+
+  .hero-buttons .button {
+    gap: 12px;
+  }
+
+  .finder-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* Exhibition photo hover: slow, controlled zoom, matching the hero SFP feel.
+   Fast-scroll rules above still disable transitions while scrolling quickly. */
+.industry-photo-main img,
+.industry-photo-secondary img{
+  transition:transform .75s cubic-bezier(.2,.8,.2,1), opacity .55s ease !important;
+}
+.industry-photo-wrap:hover .industry-photo-main img{transform:scale(1.025);}
+.industry-photo-wrap:hover .industry-photo-secondary img{transform:scale(1.035);}
+
+
+
+/* ACCC conductor wires: increase contrast against pale light-theme skies. */
+html[data-theme="light"] .ctc-wire{
+  stroke:#71899a;
+  stroke-width:5.5;
+  opacity:1;
+  filter:drop-shadow(0 1px 1px rgba(35,58,76,.22)) drop-shadow(0 0 5px rgba(255,255,255,.72));
+}
+html[data-theme="light"] .ctc-wire-low{
+  stroke:#91a5b3;
+  stroke-width:3.5;
+  opacity:1;
+}
+
+
+/* Realistic metallic ACCC conductor treatment: steel body, darker edge,
+   and a narrow reflected highlight rather than a flat pale stroke. */
+.ctc-wire{
+  stroke:#77858c !important;
+  stroke-width:6 !important;
+  opacity:1 !important;
+  filter:drop-shadow(0 1px 1px rgba(20,35,44,.34));
+}
+.ctc-wire-low{
+  stroke:#87959c !important;
+  stroke-width:4.5 !important;
+  opacity:1 !important;
+}
+.ctc-wire-sheen{
+  fill:none;
+  stroke:#e4eaed;
+  stroke-width:1.35;
+  stroke-linecap:round;
+  opacity:.88;
+  pointer-events:none;
+}
+.ctc-wire-sheen-low{
+  stroke:#dce3e6;
+  stroke-width:1;
+  opacity:.76;
+}
+html[data-theme="light"] .ctc-wire{
+  stroke:#71818a !important;
+  filter:drop-shadow(0 1px 1px rgba(35,58,76,.24));
+}
+html[data-theme="light"] .ctc-wire-low{stroke:#8999a1 !important;}
+html[data-theme="light"] .ctc-wire-sheen{stroke:#f8fbfc;opacity:.96;}
+
+
+/* Suspension strings connect the conductors to the tower crossarms. */
+.ctc-suspension-strings{fill:none;stroke:#65747d;stroke-width:2.2;stroke-linecap:round;opacity:.95;}
+html[data-theme="light"] .ctc-suspension-strings{stroke:#5d6e78;}
+
+
+/* Keep the current animation confined to the conductor: no detached-looking glow streaks. */
+.ctc-energy{
+  stroke-width:2;
+  stroke-dasharray:.018 .982;
+  filter:none !important;
+  opacity:.72;
+}
+.ctc-energy-low{opacity:.48;}
+
+
+/* Center the closing contact CTA in the space above the footer. */
+.contact{
+  padding-top:90px;
+}
+.contact-inner{
+  margin-top:auto;
+  margin-bottom:auto;
+  padding-top:35px;
+  padding-bottom:75px;
+}
+.contact footer{
+  margin-top:0;
+}
+@media(max-width:650px){
+  .contact{padding-top:55px;}
+  .contact-inner{padding-top:25px;padding-bottom:55px;}
+}

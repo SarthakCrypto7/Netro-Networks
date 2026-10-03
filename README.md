@@ -92,3 +92,12 @@ V51 — Netro Ecosystem content/readability refinement: partner descriptions, re
 - Improved “and more” alignment and ensured JS-controlled cycling remains reliable.
 - Increased certification badge and trust-line sizing/contrast.
 - Reduced ecosystem section vertical padding.
+
+
+## V95 — deep responsive architecture pass
+- Reworked responsive layout around fluid containers and minmax(0, 1fr) tracks.
+- Hero switches from desktop absolute composition to normal document flow below 1100px.
+- SFP visual is now bounded by its own container at every mobile width; no negative image offsets or oversized mobile image rules remain active.
+- Added dedicated 760px, 430px and 360px behavior for navigation, hero, finder, grids and footer.
+- Reduced mobile animation/parallax workload and consolidated the primary scroll runtime into one requestAnimationFrame loop.
+- Exhibition image preloading remains section-scoped and scroll-safe.

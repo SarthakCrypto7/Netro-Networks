@@ -1,180 +1,288 @@
 (() => {
   const nav = document.getElementById('nav');
   const year = document.getElementById('year');
-  year.textContent = new Date().getFullYear();
+  if (year) year.textContent = new Date().getFullYear();
 
-  let navTicking = false;
-  window.addEventListener('scroll', () => {
-    if (navTicking) return;
-    navTicking = true;
-    requestAnimationFrame(() => {
-      nav.classList.toggle('scrolled', window.scrollY > 35);
-      navTicking = false;
+  /* Animate only the hero metrics once on the first visit to the hero.
+     Ecosystem ordinal numbers remain static. */
+  const heroMetrics = [...document.querySelectorAll('.hero-stats strong')];
+  if (heroMetrics.length) {
+    const finalValues = heroMetrics.map(el => {
+      const value = Number((el.textContent || '').replace(/[^\d]/g, ''));
+      return Number.isFinite(value) ? value : null;
     });
-  }, { passive:true });
-
-  // During a rapid scroll, temporarily quiet the exhibition's non-essential
-  // transitions. This targets the exact Ecosystem → Exhibition hand-off without
-  // adding another per-frame animation loop.
-  let fastScrollTimer = 0;
-  let lastScrollY = window.scrollY;
-  let lastScrollTime = performance.now();
-  let fastScrollRaf = 0;
-  window.addEventListener('scroll', () => {
-    if (fastScrollRaf) return;
-    fastScrollRaf = requestAnimationFrame(() => {
-      fastScrollRaf = 0;
-      const now = performance.now();
-      const dy = Math.abs(window.scrollY - lastScrollY);
-      const dt = Math.max(16, now - lastScrollTime);
-      const velocity = dy / dt;
-      lastScrollY = window.scrollY;
-      lastScrollTime = now;
-      const industry = document.querySelector('.industry-story');
-      if (!industry) return;
-      if (velocity > 1.25) {
-        industry.classList.add('is-fast-scroll');
-        clearTimeout(fastScrollTimer);
-        fastScrollTimer = window.setTimeout(() => industry.classList.remove('is-fast-scroll'), 140);
-      }
-    });
-  }, {passive:true});
-
-  const reveal = document.querySelectorAll('.reveal:not(.eco-panel):not(.eco-trust)');
-  if (window.gsap && window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray(reveal).forEach((el, i) => {
-      gsap.fromTo(el, {y:55, opacity:0}, {y:0, opacity:1, duration:.85, ease:'power3.out', delay:(i%4)*.045, scrollTrigger:{trigger:el, start:'top 88%', once:true}});
-    });
-    gsap.fromTo('.hero-copy > *', {y:30, opacity:0}, {y:0, opacity:1, duration:1, stagger:.12, ease:'power3.out', delay:.25});
-    gsap.to('.hero-visual', {y:-50, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:1}});
-    gsap.to('.statement-glow', {x:-130, y:70, ease:'none', scrollTrigger:{trigger:'.statement', start:'top bottom', end:'bottom top', scrub:1}});
-    gsap.to('.contact-glow', {scale:1.2, x:90, ease:'none', scrollTrigger:{trigger:'.contact', start:'top bottom', end:'bottom top', scrub:1}});
-  } else { reveal.forEach(x => x.classList.add('visible')); }
-
-  // Ecosystem panels enter sequentially so the three-column composition reads as one story.
-  if (window.gsap && window.ScrollTrigger) {
-    const ecoPanels = gsap.utils.toArray('.ecosystem .eco-panel');
-    gsap.fromTo(ecoPanels, {y:42, opacity:0}, {y:0, opacity:1, duration:.72, stagger:.16, ease:'power3.out', scrollTrigger:{trigger:'.ecosystem', start:'top 82%', once:true}});
-  } else {
-    document.querySelectorAll('.ecosystem .eco-panel').forEach(x => { x.style.opacity='1'; x.style.transform='none'; });
-  }
-
-  const counters = document.querySelectorAll('[data-count]');
-  const counterObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target, target = Number(el.dataset.count), decimals = String(target).includes('.') ? 1 : 0, suffix = el.dataset.suffix || '';
-      const start = performance.now(), duration = 1500;
-      const tick = now => { const p=Math.min((now-start)/duration,1), eased=1-Math.pow(1-p,3); el.textContent=(target*eased).toFixed(decimals)+suffix; if(p<1) requestAnimationFrame(tick); };
-      requestAnimationFrame(tick); counterObserver.unobserve(el);
-    });
-  }, {threshold:.7});
-  counters.forEach(x => counterObserver.observe(x));
-
-  // Cycle the "and more" partner names reliably instead of relying on
-  // overlapping CSS animations.
-  const moreCycle = document.querySelector('.eco-more-cycle');
-  if (moreCycle) {
-    const names = [...moreCycle.querySelectorAll(':scope > span')];
-    let active = 0;
-    const showMoreName = index => names.forEach((name, i) => name.classList.toggle('is-active', i === index));
-    showMoreName(0);
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && names.length > 1) {
-      let cycleTimer = null;
-      const cycle = () => {
-        active = (active + 1) % names.length;
-        showMoreName(active);
+    const motionPreference = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    if (motionPreference?.matches) {
+      heroMetrics.forEach((el, i) => { if (finalValues[i] !== null) el.textContent = String(finalValues[i]); });
+    } else {
+      heroMetrics.forEach(el => { el.textContent = '0'; });
+      let hasAnimated = false;
+      const runHeroCounters = () => {
+        if (hasAnimated) return;
+        hasAnimated = true;
+        const duration = 1250;
+        const start = performance.now();
+        const tick = now => {
+          const progress = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          heroMetrics.forEach((el, i) => {
+            const target = finalValues[i];
+            if (target !== null) el.textContent = String(Math.round(target * eased));
+          });
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
       };
-      const startCycle = () => {
-        if (!cycleTimer) cycleTimer = window.setInterval(cycle, 2200);
-      };
-      const stopCycle = () => {
-        if (cycleTimer) { window.clearInterval(cycleTimer); cycleTimer = null; }
-      };
-      const eco = moreCycle.closest('.ecosystem');
-      if (eco) {
-        const ecoVisibility = new IntersectionObserver(entries => {
-          const visible = entries[0]?.isIntersecting;
-          eco.classList.toggle('is-offscreen', !visible);
-          if (visible && document.visibilityState === 'visible') startCycle();
-          else stopCycle();
-        }, { threshold: 0.02 });
-        ecoVisibility.observe(eco);
-        document.addEventListener('visibilitychange', () => {
-          if (document.visibilityState === 'visible' && !eco.classList.contains('is-offscreen')) startCycle();
-          else stopCycle();
-        });
+      const hero = document.querySelector('.hero');
+      if ('IntersectionObserver' in window && hero) {
+        const counterObserver = new IntersectionObserver(entries => {
+          if (entries.some(entry => entry.isIntersecting)) {
+            runHeroCounters();
+            counterObserver.disconnect();
+          }
+        }, { threshold: 0.15 });
+        counterObserver.observe(hero);
       } else {
-        startCycle();
+        runHeroCounters();
       }
     }
   }
 
-  // Pause small continuous CSS effects when their sections are outside the viewport.
-  const motionSections = document.querySelectorAll('.hero, .statement, .contact');
-  if (motionSections.length) {
-    const motionObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
-    }, { threshold: 0.02 });
-    motionSections.forEach(section => motionObserver.observe(section));
+
+  const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+  const touchQuery = window.matchMedia?.('(hover: none), (pointer: coarse)');
+  const tabletQuery = window.matchMedia?.('(max-width: 1100px)');
+  const mobileQuery = window.matchMedia?.('(max-width: 760px)');
+  const desktopMotion = window.matchMedia?.('(min-width: 1101px)');
+
+  /* One scroll listener for the whole responsive runtime. The previous build
+     had separate scroll loops for the navbar and fast-scroll detection. */
+  let ticking = false;
+  let lastY = window.scrollY;
+  let lastTime = performance.now();
+  let fastTimer = 0;
+
+  const updateScrollState = () => {
+    ticking = false;
+    const y = window.scrollY;
+    const now = performance.now();
+    const dy = Math.abs(y - lastY);
+    const dt = Math.max(16, now - lastTime);
+
+    if (nav) nav.classList.toggle('scrolled', y > 35);
+
+    /* Fast-scroll suppression is only useful for the photograph-heavy
+       exhibition section and is disabled on small screens. */
+    const story = document.querySelector('.industry-story');
+    if (story && !mobileQuery?.matches) {
+      const velocity = dy / dt;
+      if (velocity > 1.25) {
+        story.classList.add('is-fast-scroll');
+        clearTimeout(fastTimer);
+        fastTimer = window.setTimeout(() => story.classList.remove('is-fast-scroll'), 140);
+      }
+    }
+
+    lastY = y;
+    lastTime = now;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateScrollState);
+    }
+  }, {passive:true});
+  updateScrollState();
+
+  const reveal = document.querySelectorAll('.reveal:not(.eco-panel):not(.eco-trust)');
+
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const isLightMotion = () => reduceMotion?.matches || mobileQuery?.matches;
+    const revealDuration = isLightMotion() ? .48 : .85;
+    const revealY = isLightMotion() ? 22 : 55;
+
+    gsap.utils.toArray(reveal).forEach((el, i) => {
+      gsap.fromTo(el,
+        {y:revealY, opacity:0},
+        {y:0, opacity:1, duration:revealDuration, ease:'power3.out', delay:isLightMotion()?0:(i%4)*.045,
+         scrollTrigger:{trigger:el,start:'top 88%',once:true}}
+      );
+    });
+
+    gsap.fromTo('.hero-copy > *',
+      {y:isLightMotion()?18:30, opacity:0},
+      {y:0, opacity:1, duration:isLightMotion()?.65:1, stagger:isLightMotion()?.06:.12, ease:'power3.out', delay:isLightMotion()?0:.2}
+    );
+
+    /* Scroll-scrub layers exist only on desktop, where there is enough visual
+       space for them to read as depth rather than movement/noise. */
+    if (desktopMotion?.matches && !reduceMotion?.matches) {
+      gsap.to('.hero-visual', {y:-50,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
+      gsap.to('.statement-glow', {x:-130,y:70,ease:'none',scrollTrigger:{trigger:'.statement',start:'top bottom',end:'bottom top',scrub:1}});
+      gsap.to('.contact-glow', {scale:1.2,x:90,ease:'none',scrollTrigger:{trigger:'.contact',start:'top bottom',end:'bottom top',scrub:1}});
+    }
+
+    const ecoPanels = gsap.utils.toArray('.ecosystem .eco-panel');
+    if (ecoPanels.length) {
+      gsap.fromTo(ecoPanels,{y:isLightMotion()?18:42,opacity:0},{y:0,opacity:1,duration:isLightMotion()?.5:.72,stagger:isLightMotion()?0:.16,ease:'power3.out',scrollTrigger:{trigger:'.ecosystem',start:'top 82%',once:true}});
+    }
+  } else {
+    reveal.forEach(x => x.classList.add('visible'));
+    document.querySelectorAll('.ecosystem .eco-panel').forEach(x => { x.style.opacity='1'; x.style.transform='none'; });
   }
 
-  // Presentation-style section lifecycle: keep normal scrolling, but only let the
-  // section currently being viewed keep its CSS animation workload active.
+  /* Pause decorative section animations when the section is not visible. This
+     is an observer, not a per-frame scroll calculation. */
+  const motionSections = document.querySelectorAll('.hero,.statement,.contact,.ecosystem');
+  if ('IntersectionObserver' in window && motionSections.length) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
+    }, {threshold:0.02});
+    motionSections.forEach(section => observer.observe(section));
+  }
+
+  /* Keep the existing presentation lifecycle because the CSS uses it to pause
+     expensive decorative animations. It is observer-driven and does not run on
+     every scroll frame. */
   const presentationSections = [...document.querySelectorAll('main > section')];
   if (presentationSections.length && 'IntersectionObserver' in window) {
     let activeSection = null;
     let raf = 0;
     const ratios = new Map();
-
     const applySectionState = () => {
       raf = 0;
-      let winner = null;
-      let bestRatio = 0;
+      let winner = null, bestRatio = 0;
       presentationSections.forEach(section => {
         const ratio = ratios.get(section) || 0;
         if (ratio > bestRatio) { bestRatio = ratio; winner = section; }
       });
-      if (!winner && presentationSections.length) winner = presentationSections[0];
+      if (!winner) winner = presentationSections[0];
       if (winner === activeSection) return;
       activeSection = winner;
-
-      presentationSections.forEach(section => {
+      const winnerIndex = presentationSections.indexOf(winner);
+      presentationSections.forEach((section,i) => {
         const ratio = ratios.get(section) || 0;
         const near = ratio > 0 || section === winner;
-        section.classList.toggle('section-active', section === winner);
-        section.classList.toggle('section-nearby', near);
-        section.classList.toggle('section-dormant', !near);
-        section.classList.toggle('section-past', !!winner && presentationSections.indexOf(section) < presentationSections.indexOf(winner));
+        section.classList.toggle('section-active',section===winner);
+        section.classList.toggle('section-nearby',near);
+        section.classList.toggle('section-dormant',!near);
+        section.classList.toggle('section-past',i<winnerIndex);
       });
-
-      // GSAP scrub triggers are intentionally left intact here. Enabling/disabling
-      // ScrollTriggers on every section hand-off can itself cause work during a
-      // fast scroll. Their animated properties are compositor-friendly, while
-      // the presentation lifecycle handles the heavier CSS effects.
     };
-
-    const sectionObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => ratios.set(entry.target, entry.isIntersecting ? entry.intersectionRatio : 0));
-      if (!raf) raf = requestAnimationFrame(applySectionState);
-    }, { threshold: [0, .08, .2, .4, .6, .8], rootMargin: '-18% 0px -18% 0px' });
-
-    presentationSections.forEach(section => sectionObserver.observe(section));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => ratios.set(entry.target,entry.isIntersecting?entry.intersectionRatio:0));
+      if (!raf) raf=requestAnimationFrame(applySectionState);
+    },{threshold:[0,.08,.2,.4,.6,.8],rootMargin:'-18% 0px -18% 0px'});
+    presentationSections.forEach(section=>observer.observe(section));
     applySectionState();
   }
 
-  // Keep the hero product/finder container static. Product motion is handled
-  // independently by the SFP scene animation so mouse movement cannot jiggle the finder.
+  /* Partner-name cycling is intentionally timer-based and only runs while the
+     ecosystem is visible. It never touches layout on scroll. */
+  const moreCycle = document.querySelector('.eco-more-cycle');
+  if (moreCycle) {
+    const names=[...moreCycle.querySelectorAll(':scope > span')];
+    let active=0, timer=0;
+    const render=()=>names.forEach((n,i)=>n.classList.toggle('is-active',i===active));
+    render();
+    if (names.length>1 && !reduceMotion?.matches) {
+      const eco=moreCycle.closest('.ecosystem');
+      const start=()=>{ if(!timer) timer=window.setInterval(()=>{active=(active+1)%names.length;render();},2200); };
+      const stop=()=>{ if(timer){clearInterval(timer);timer=0;} };
+      if(eco && 'IntersectionObserver' in window){
+        const o=new IntersectionObserver(e=>e[0]?.isIntersecting?start():stop(),{threshold:.02});
+        o.observe(eco);
+        document.addEventListener('visibilitychange',()=>document.visibilityState==='visible'?start():stop());
+      }
+    }
+  }
 })();
 
-/* V5 mega-menu interaction */
+/* Responsive navbar: hover on desktop, hamburger + accordions on mobile */
 (() => {
-  const items=[...document.querySelectorAll('.nav-item.has-menu')];
-  const closeAll=()=>items.forEach(i=>{i.classList.remove('open');i.querySelector('.nav-link')?.setAttribute('aria-expanded','false')});
-  items.forEach(item=>item.querySelector('.nav-link').addEventListener('click',e=>{e.stopPropagation();const open=item.classList.contains('open');closeAll();if(!open){item.classList.add('open');item.querySelector('.nav-link').setAttribute('aria-expanded','true')}}));
-  document.addEventListener('click',e=>{if(!e.target.closest('.nav-item.has-menu'))closeAll()});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+  const nav = document.getElementById('nav');
+  if (!nav) return;
+  const menu = nav.querySelector('.menu');
+  const items = [...nav.querySelectorAll('.nav-item.has-menu')];
+  const mobile = () => window.matchMedia('(max-width: 800px)').matches;
+
+  const closeItems = () => items.forEach(item => {
+    item.classList.remove('open');
+    item.querySelector('.nav-link')?.setAttribute('aria-expanded', 'false');
+  });
+
+  const closeMobileMenu = () => {
+    nav.classList.remove('mobile-open');
+    menu?.setAttribute('aria-expanded', 'false');
+    menu?.setAttribute('aria-label', 'Open menu');
+    closeItems();
+  };
+
+  // Desktop: hover/focus is handled by CSS. Keep clicks inert so opening does not depend on clicking.
+  items.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      if (!mobile()) {
+        closeItems();
+        item.classList.add('open');
+        item.querySelector('.nav-link')?.setAttribute('aria-expanded', 'true');
+      }
+    });
+    item.addEventListener('mouseleave', () => {
+      if (!mobile() && !item.matches(':focus-within')) {
+        item.classList.remove('open');
+        item.querySelector('.nav-link')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    item.querySelector('.nav-link')?.addEventListener('click', e => {
+      if (!mobile()) {
+        e.preventDefault();
+        return;
+      }
+      e.preventDefault();
+      const isOpen = item.classList.contains('open');
+      item.classList.toggle('open', !isOpen);
+      item.querySelector('.nav-link')?.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  menu?.addEventListener('click', e => {
+    e.preventDefault();
+    if (!mobile()) return;
+    const isOpen = nav.classList.toggle('mobile-open');
+    menu.setAttribute('aria-expanded', String(isOpen));
+    menu.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    if (!isOpen) closeItems();
+  });
+
+  nav.querySelectorAll('.mega-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobile()) closeMobileMenu();
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!mobile() && !e.target.closest('.nav-item.has-menu')) closeItems();
+    if (mobile() && nav.classList.contains('mobile-open') && !e.target.closest('#nav')) closeMobileMenu();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeItems();
+      if (mobile()) closeMobileMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (!mobile()) {
+      nav.classList.remove('mobile-open');
+      menu?.setAttribute('aria-expanded', 'false');
+      menu?.setAttribute('aria-label', 'Open menu');
+    }
+  }, { passive: true });
 })();
 
 
@@ -231,12 +339,30 @@
   };
 
   let imageRequest = 0;
+  // Keep the generic optic ready so switching back never exposes an empty frame.
+  const genericPreload = new Image();
+  genericPreload.src = genericImage;
+
   const showGenericImage = () => {
-    imageRequest++;
-    heroImage.classList.remove('is-product');
+    const request = ++imageRequest;
     heroScene && heroScene.classList.remove('is-product-active');
+
+    if (heroImage.getAttribute('src') === genericImage ||
+        heroImage.src.endsWith('/' + genericImage)) {
+      heroImage.alt = 'Netro SFP optical transceiver';
+      return;
+    }
+
+    // Swap immediately to the preloaded generic image, then run the same
+    // entrance animation used by a selected optic. No fade-to-empty phase.
+    heroImage.classList.remove('is-changing', 'is-product');
     heroImage.src = genericImage;
     heroImage.alt = 'Netro SFP optical transceiver';
+    requestAnimationFrame(() => {
+      if (request !== imageRequest) return;
+      void heroImage.offsetWidth;
+      heroImage.classList.add('is-product');
+    });
   };
   const showProductImage = (match) => {
     const request = ++imageRequest;
@@ -483,7 +609,6 @@
   const eventKicker = root.querySelector('.industry-event-kicker');
   const eventTitle = root.querySelector('.industry-event-title');
   const eventLocation = root.querySelector('.industry-event-location');
-  const captionTitle = root.querySelector('.industry-photo-caption-title');
   const progress = root.querySelector('.industry-timeline-track span');
   const steps = [...root.querySelectorAll('.industry-step')];
   const visual = root.querySelector('.industry-visual');
@@ -492,11 +617,11 @@
   if (!mainImage || !secondaryImage || !photoMain || !story) return;
 
   const events = [
-    {main:'images/industry/2021-delhi-main.webp',secondary:'images/industry/2021-delhi-secondary.webp',kicker:'MARCH 2021 · PRAGATI MAIDAN',title:'Pragati Maidan',location:'New Delhi · India',caption:'THE FLOOR IS WHERE CONNECTIONS START.',alt:'Netro Networks exhibition booth at Pragati Maidan, New Delhi, March 2021'},
-    {main:'images/industry/2021-hyderabad-main.webp',secondary:'images/industry/2021-hyderabad-secondary.webp',kicker:'AUGUST 2021 · HITEX',title:'HITEX Exhibition Center',location:'Hyderabad · India',caption:'PRODUCTS MEET THE PEOPLE WHO USE THEM.',alt:'Netro Networks exhibition booth at HITEX Exhibition Center, Hyderabad, August 2021'},
-    {main:'images/industry/2022-delhi-main.webp',secondary:'images/industry/2022-delhi-secondary.webp',kicker:'MARCH 2022 · PRAGATI MAIDAN',title:'Pragati Maidan',location:'New Delhi · India',caption:'THE FLOOR IS WHERE CONNECTIONS START.',alt:'Netro Networks exhibition booth at Pragati Maidan, New Delhi, March 2022'},
-    {main:'images/industry/2022-hyderabad-main.webp',secondary:'images/industry/2022-hyderabad-secondary.webp',kicker:'AUGUST 2022 · HITEX',title:'HITEX Exhibition Center',location:'Hyderabad · India',caption:'THE NETWORKING COMMUNITY, IN ONE PLACE.',alt:'Visitors gathered at the Netro Networks exhibition booth at HITEX, Hyderabad, August 2022'},
-    {main:'images/industry/2023-kolkata-main.webp',secondary:'images/industry/2023-kolkata-secondary.webp',kicker:'JANUARY 2023 · SCIENCE CITY',title:'Science City',location:'Kolkata · India',caption:'FROM DEMOS TO THE NEXT CONNECTION.',alt:'Visitors and the Netro Networks team at an exhibition in Science City, Kolkata, January 2023'}
+    {main:'images/industry/2021-delhi-main.webp',secondary:'images/industry/2021-delhi-secondary.webp',kicker:'MARCH 2021 · PRAGATI MAIDAN',title:'Pragati Maidan',location:'New Delhi · India',alt:'Netro Networks exhibition booth at Pragati Maidan, New Delhi, March 2021'},
+    {main:'images/industry/2021-hyderabad-main.webp',secondary:'images/industry/2021-hyderabad-secondary.webp',kicker:'AUGUST 2021 · HITEX',title:'HITEX Exhibition Center',location:'Hyderabad · India',alt:'Netro Networks exhibition booth at HITEX Exhibition Center, Hyderabad, August 2021'},
+    {main:'images/industry/2022-delhi-main.webp',secondary:'images/industry/2022-delhi-secondary.webp',kicker:'MARCH 2022 · PRAGATI MAIDAN',title:'Pragati Maidan',location:'New Delhi · India',alt:'Netro Networks exhibition booth at Pragati Maidan, New Delhi, March 2022'},
+    {main:'images/industry/2022-hyderabad-main.webp',secondary:'images/industry/2022-hyderabad-secondary.webp',kicker:'AUGUST 2022 · HITEX',title:'HITEX Exhibition Center',location:'Hyderabad · India',alt:'Visitors gathered at the Netro Networks exhibition booth at HITEX, Hyderabad, August 2022'},
+    {main:'images/industry/2023-kolkata-main.webp',secondary:'images/industry/2023-kolkata-secondary.webp',kicker:'JANUARY 2023 · SCIENCE CITY',title:'Science City',location:'Kolkata · India',alt:'Visitors and the Netro Networks team at an exhibition in Science City, Kolkata, January 2023'}
   ];
 
   const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -582,7 +707,6 @@
     if (eventKicker) eventKicker.textContent = ev.kicker;
     if (eventTitle) eventTitle.textContent = ev.title;
     if (eventLocation) eventLocation.textContent = ev.location;
-    if (captionTitle) captionTitle.textContent = ev.caption;
   };
 
   const setActive = (next, immediate = false) => {
@@ -675,14 +799,16 @@
       visible = entry.isIntersecting;
       story.classList.toggle('is-offscreen', !visible);
       if (visible) {
-        // The exhibition gallery is a small, fixed five-event sequence. Once the
-        // section enters the viewport, prepare the complete gallery in the
-        // background so later transitions never wait for network/decode work.
-        // This is intentionally scoped to this section rather than page load.
-        events.forEach(ev => {
-          preload(ev);
-          preloadSecondary(ev);
-        });
+        // Only prepare the next two slides. Preloading the complete gallery at
+        // section entry created a burst of image fetch/decode work on phones.
+        // The current slide is already visible; the next slides are enough to
+        // keep the transition seamless without warming the whole gallery.
+        const next1 = events[(active + 1) % events.length];
+        const next2 = events[(active + 2) % events.length];
+        preload(next1);
+        preloadSecondary(next1);
+        preload(next2);
+        preloadSecondary(next2);
         scheduleNext();
       } else {
         clearTimer();

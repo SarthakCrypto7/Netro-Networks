@@ -108,10 +108,13 @@
     .fw-support h2 em { color:#ff8a25;font-style:normal; }
     .fw-support p { color:#91a5b7;line-height:1.65;max-width:570px;margin:20px 0 0;font-size:14px; }
     .fw-support-actions { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
-    .fw-support-card { padding:22px;border:1px solid rgba(255,255,255,.1);border-radius:15px;background:rgba(255,255,255,.035);text-decoration:none;color:#fff;transition:.2s; }
+    .fw-support-card { padding:24px;border:1px solid rgba(255,255,255,.1);border-radius:15px;background:rgba(255,255,255,.035);text-decoration:none;color:#fff;transition:.2s; }
     .fw-support-card:hover { border-color:rgba(255,138,37,.45);transform:translateY(-2px); }
-    .fw-support-card b { display:block;font:700 13px Manrope;margin-bottom:7px; }
-    .fw-support-card span { display:block;color:#7f95a7;font-size:11px;line-height:1.5; }
+    .fw-support-card b { display:flex;align-items:center;gap:10px;font:700 16px/1.25 Manrope;margin-bottom:9px; }
+    .fw-support-icon { width:22px;height:22px;flex:0 0 22px;display:block; }
+    .fw-support-icon.email { color:#8ed0ff; }
+    .fw-support-icon.whatsapp { color:#63df8c; }
+    .fw-support-card span { display:block;color:#7f95a7;font-size:13px;line-height:1.55; }
     .fw-whatsapp { cursor:pointer; }
     .fw-toast { position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#101b25;color:#fff;border:1px solid rgba(255,255,255,.12);padding:12px 16px;border-radius:10px;font:600 11px Manrope;z-index:2000;transition:.25s;box-shadow:0 15px 45px rgba(0,0,0,.3); }
     .fw-toast.show { opacity:1;transform:translate(-50%,0); }
@@ -379,8 +382,14 @@
       <div class="section-wrap fw-support-inner">
         <div><p class="fw-eyebrow">NEED HELP?</p><h2>Upgrade with confidence.<br><em>We're here if you need us.</em></h2><p>If you're unsure about hardware compatibility, firmware selection or the upgrade process, contact the Netro technical team before proceeding.</p></div>
         <div class="fw-support-actions">
-          <a class="fw-support-card" href="mailto:info@netronetworks.in?subject=Firmware%20Support"><b>✉ Email Support</b><span>Ask about compatibility, firmware or upgrade issues.</span></a>
-          <a class="fw-support-card fw-whatsapp" href="#" data-whatsapp><b>◉ WhatsApp Support</b><span>Quick technical assistance from the Netro team.</span></a>
+          <a class="fw-support-card" href="mailto:support@netronetworks.in?subject=Firmware%20Support">
+            <b><svg class="fw-support-icon email" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 5.5h17A1.5 1.5 0 0 1 22 7v10a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 17V7a1.5 1.5 0 0 1 1.5-1.5Z" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 7 9-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Email Support</b>
+            <span>Ask about compatibility, firmware or upgrade issues.</span>
+          </a>
+          <a class="fw-support-card fw-whatsapp" href="https://wa.me/918447979550?text=Hi,%20I%20need%20help%20in%20upgrading%20my%20Rikom/Raisecom%20device%2E" target="_blank" rel="noopener noreferrer">
+            <b><svg class="fw-support-icon whatsapp" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.7 21.5l4.9-1.1A9.5 9.5 0 1 0 12 2.5Z" stroke="currentColor" stroke-width="1.7"/><path d="M8.2 7.7c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.6.7c.8 1.4 1.8 2.4 3.3 3.2l.7-.7c.2-.2.4-.2.7-.1l1.6.7c.3.1.4.3.4.6v.5c0 .3-.1.6-.4.8-.5.4-1.1.6-1.7.5-2.2-.3-4.4-1.6-6-3.2-1.7-1.7-2.9-3.8-3.2-6-.1-.6.1-1.2.5-1.7Z" fill="currentColor"/></svg>WhatsApp Support</b>
+            <span>Quick technical assistance from the Netro team.</span>
+          </a>
         </div>
       </div>
     </section>
@@ -501,7 +510,6 @@
       const toast=document.getElementById('fwToast');
       const show=(msg)=>{toast.textContent=msg;toast.classList.add('show');clearTimeout(window.__fwToast);window.__fwToast=setTimeout(()=>toast.classList.remove('show'),2800)};
       document.querySelectorAll('.fw-drive,.fw-guide').forEach(a=>a.addEventListener('click',e=>{if(a.getAttribute('href')==='#'){e.preventDefault();show(a.classList.contains('fw-drive')?'Drive download link will be connected here.':'Upgrade guide will be connected here.')}}));
-      document.querySelector('[data-whatsapp]')?.addEventListener('click',e=>{e.preventDefault();show('WhatsApp number will be connected here.')});
     })();
   </script>
 </body>
