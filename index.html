@@ -47,7 +47,27 @@
 })();
 </script>
   <link rel="stylesheet" href="styles.css" />
-</head>
+<style>
+/* Shared Netro gradient atmosphere, aligned with the SFP catalogue visual language. */
+body:not(.firmware-page){background-color:var(--page-bg,#03070c)}
+body:not(.firmware-page)::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+ radial-gradient(ellipse at 82% 8%,rgba(30,116,255,.105),transparent 34%),
+ radial-gradient(ellipse at 8% 38%,rgba(255,137,45,.07),transparent 38%);}
+html[data-theme="light"] body:not(.firmware-page){background-color:#f7f8fa}
+html[data-theme="light"] body:not(.firmware-page)::before{background:
+ radial-gradient(ellipse at 82% 8%,rgba(30,116,255,.075),transparent 34%),
+ radial-gradient(ellipse at 8% 38%,rgba(255,137,45,.07),transparent 38%);}
+body.firmware-page{background:#03070c}
+body.firmware-page::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+ radial-gradient(ellipse at 82% 8%,rgba(30,116,255,.13),transparent 36%),
+ radial-gradient(ellipse at 8% 38%,rgba(255,137,45,.08),transparent 40%);}
+html[data-theme="light"] body.firmware-page{background:#f7f8fa;color:#171c24}
+html[data-theme="light"] body.firmware-page::before{background:
+ radial-gradient(ellipse at 82% 8%,rgba(30,116,255,.08),transparent 36%),
+ radial-gradient(ellipse at 8% 38%,rgba(255,137,45,.075),transparent 40%);}
+footer#company{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 12% 0%,rgba(255,137,45,.13),transparent 38%),radial-gradient(ellipse at 88% 15%,rgba(30,116,255,.20),transparent 42%),linear-gradient(135deg,#080d14,#101722)}
+footer#company:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
+</style></head>
 <body>
   <div class="noise"></div>
   <header class="nav" id="nav">
@@ -64,7 +84,7 @@
             <small>PRODUCTS</small>
           </div>
           <div class="mega-links">
-            <div class="mega-group"><h4>OPTICAL</h4><a href="#products">Optical Transceivers</a><a href="#products">SFP / SFP+</a><a href="#products">BiDi & CWDM</a><a href="#products">DWDM</a></div>
+            <div class="mega-group"><h4>OPTICAL</h4><a href="sfp-sfp-plus.html">SFP / SFP+ / SFP28 (1G–10G–25G)</a><a href="qsfp-40g-100g.html">QSFP+ / QSFP28 (40G–100G)</a><a href="qsfp56-qsfpdd-200g-400g.html">QSFP56 / QSFP-DD (200G–400G)</a><a href="index.html#products">CWDM &amp; DWDM</a><a href="index.html#products">AOC &amp; DAC Cables</a></div>
             <div class="mega-group"><h4>NETWORKING</h4><a href="#products">Managed Switches</a><a href="#products">L2 / L3 Switching</a><a href="#products">Industrial Switches</a><a href="#products">Media Converters</a></div>
             <div class="mega-group"><h4>FTTx</h4><a href="#products">GPON / EPON</a><a href="#products">OLT / ONU</a><a href="#products">Fiber Splitters</a><a href="#products">FTTH Accessories</a></div>
             <div class="mega-group"><h4>PASSIVE</h4><a href="#products">Fiber Cables</a><a href="#products">ODF & Patch Panels</a><a href="#products">Connectors</a><a href="#products">Racks & Accessories</a></div>
@@ -111,7 +131,7 @@
         </div>
       </div>
 
-      <a class="nav-link ctc-nav-link" href="#ctc-global"><b>CTC</b> ACCC Conductors</a>
+      <a class="nav-link ctc-nav-link" href="ctc-accc-conductors.html"><b>CTC</b> ACCC Conductors</a>
     </nav>
 
     <div class="nav-actions">
@@ -365,7 +385,7 @@
           <h2>Moving more power with <em>ACCC® conductor.</em></h2>
           <p>Netro Networks partners with CTC Global to deploy ACCC® high-capacity conductor technology across transmission networks in India, Sri Lanka, Bangladesh, Nepal, and many more markets.</p>
           <div class="ctc-meta"><span>India</span><i></i><span>Sri Lanka</span><i></i><span>Bangladesh</span><i></i><span>Nepal</span><i></i><span>And many more</span></div>
-          <a class="ctc-project-link" href="ctc-project.html">View project details <span>↗</span></a>
+          <a class="ctc-project-link" href="ctc-accc-conductors.html">View project details <span>↗</span></a>
         </div>
         <div class="ctc-visual reveal" aria-label="Electricity transmission towers with animated current flowing along ACCC conductor lines">
           <svg class="ctc-grid" viewBox="0 0 760 430" preserveAspectRatio="none" aria-hidden="true">
@@ -516,7 +536,23 @@
     <div class="footer-links-column">
       <div class="footer-column">
         <h4>PRODUCTS</h4>
-        <a href="#products">Optical Transceivers</a><a href="#products">Network Switches</a><a href="#products">GPON / EPON</a><a href="#products">OLT / ONU</a><a href="#products">Passive Fiber</a><a href="#products">DWDM</a><a href="#products">Media Converters</a><a href="#products">Testing Equipment</a><a href="#products">Accessories</a>
+        <a href="sfp-sfp-plus.html">SFP / SFP+ / SFP28 (1G–10G–25G)</a>
+        <a href="qsfp-40g-100g.html">QSFP+ / QSFP28 (40G–100G)</a>
+        <a href="qsfp56-qsfpdd-200g-400g.html">QSFP56 / QSFP-DD (200G–400G)</a>
+        <a href="index.html#products">CWDM &amp; DWDM</a>
+        <a href="index.html#products">AOC &amp; DAC Cables</a>
+        <a href="index.html#products">Managed Switches</a>
+        <a href="index.html#products">L2 / L3 Switching</a>
+        <a href="index.html#products">Industrial Switches</a>
+        <a href="index.html#products">Media Converters</a>
+        <a href="index.html#products">GPON / EPON</a>
+        <a href="index.html#products">OLT / ONU</a>
+        <a href="index.html#products">Fiber Splitters</a>
+        <a href="index.html#products">FTTH Accessories</a>
+        <a href="index.html#products">Fiber Cables</a>
+        <a href="index.html#products">ODF &amp; Patch Panels</a>
+        <a href="index.html#products">Connectors</a>
+        <a href="index.html#products">Racks &amp; Accessories</a>
       </div>
       <div class="footer-column">
         <h4>SOLUTIONS</h4>

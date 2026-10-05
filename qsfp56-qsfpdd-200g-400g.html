@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Netro Networks 200G–400G QSFP56 and QSFP-DD optical transceivers. Catalogue coming soon.">
+<title>200G–400G Optical Transceivers | Netro Networks</title>
+<script>
+(() => {
+  try {
+    const saved = localStorage.getItem('netro-theme');
+    if (saved === 'light' || saved === 'dark') {
+      document.documentElement.dataset.theme = saved;
+    } else {
+      const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = systemDark ? 'dark' : 'light';
+    }
+  } catch (_) {
+    document.documentElement.dataset.theme = 'light';
+  }
+})();
+</script>
+<link rel="icon" type="image/webp" href="images/netro_favicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.catalog-page{min-height:100vh;background:var(--white);color:var(--ink);padding:120px 5vw 90px}
+.catalog-wrap{max-width:1440px;margin:auto}.catalog-hero{margin-bottom:34px}.catalog-kicker{font:800 11px/1.2 Manrope,sans-serif;letter-spacing:.16em;color:var(--orange);text-transform:uppercase}
+.catalog-hero h1{font:800 clamp(34px,5vw,62px)/1.04 Manrope,sans-serif;letter-spacing:-.055em;margin:14px 0 12px}.catalog-hero p{color:var(--muted);font-size:17px;margin:0}
+.catalog-layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:34px;align-items:start}
+.catalog-sidebar{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--white);position:sticky;top:92px}
+.filter-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}.filter-head strong{font:800 13px Manrope,sans-serif;letter-spacing:.08em}.text-action{border:0;background:none;color:var(--blue);font:700 12px "DM Sans";cursor:pointer;padding:5px}
+.filter-group{border-top:1px solid var(--line);padding:16px 0 13px}.filter-group h3{font:800 11px Manrope,sans-serif;letter-spacing:.12em;margin:0 0 12px;color:var(--muted)}
+.filter-option{display:flex;align-items:center;gap:9px;font-size:13px;margin:10px 0;cursor:pointer}.filter-option input{accent-color:var(--blue);width:15px;height:15px}.filter-option:has(input:disabled){opacity:.35;cursor:not-allowed}
+.catalog-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;flex-wrap:wrap}.result-count{font-size:13px;color:var(--muted)}.toolbar-controls{display:flex;align-items:center;gap:10px}.catalog-select{border:1px solid var(--line);background:transparent;color:inherit;border-radius:9px;padding:9px 11px;font:600 12px "DM Sans"}.view-toggle{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}.view-toggle button{border:0;background:transparent;padding:8px 11px;color:var(--muted);font:700 12px "DM Sans";cursor:pointer}.view-toggle button.active{background:var(--ink);color:var(--white)}
+.filter-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.filter-chip{border:1px solid var(--line);border-radius:99px;padding:6px 10px;background:transparent;font-size:12px;color:inherit;cursor:pointer}.filter-chip span{color:var(--orange);font-weight:800;margin-left:5px}
+.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.product-card{border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0;background:var(--white);transition:transform .25s ease,border-color .25s ease}.product-card:hover{transform:translateY(-3px);border-color:#9fcde4}.product-visual{height:154px;border-radius:12px;background:linear-gradient(145deg,#f0f5f8,#e5edf3);display:flex;align-items:center;justify-content:center;margin-bottom:16px;overflow:hidden}.product-visual img{width:88%;height:88%;object-fit:contain;transition:transform .55s cubic-bezier(.2,.75,.25,1)}.product-card:hover .product-visual img{transform:scale(1.045)}.part-number{font:800 13px Manrope,sans-serif;letter-spacing:.01em;margin:0 0 7px}.product-spec{font-weight:800;font-size:14px;margin:0 0 5px}.product-meta{font-size:12px;line-height:1.5;color:var(--muted);margin:0 0 17px}.details-link{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:9px;padding:10px 12px;color:inherit;text-decoration:none;font-size:12px;font-weight:700;transition:background .2s,border-color .2s}.details-link:hover{background:var(--orange-soft);border-color:#ffc28a}
+.catalog-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}.catalog-table{border-collapse:collapse;width:100%;font-size:12px;white-space:nowrap}.catalog-table th,.catalog-table td{text-align:left;padding:14px 15px;border-bottom:1px solid var(--line)}.catalog-table th{font:800 10px Manrope,sans-serif;letter-spacing:.08em;color:var(--muted);background:rgba(120,150,170,.06)}.catalog-table tr:last-child td{border-bottom:0}.catalog-table a{color:var(--blue);font-weight:700;text-decoration:none}
+.no-match{border:1px dashed #a8b9c5;border-radius:16px;padding:48px 22px;text-align:center;grid-column:1/-1}.no-match h3{font:800 20px Manrope;margin:0 0 10px}.no-match p{color:var(--muted);font-size:14px;line-height:1.6;max-width:500px;margin:0 auto 20px}.team-button{display:inline-flex;background:var(--orange);color:#111;text-decoration:none;font-weight:800;font-size:13px;padding:13px 18px;border-radius:10px}
+ .catalog-trust{max-width:960px;margin:30px auto 0;padding:15px 22px;text-align:center;color:var(--ink);font-size:clamp(13px,1vw,15px);font-weight:750;line-height:1.55;letter-spacing:.015em;border:1px solid rgba(120,145,175,.18);border-radius:14px;background:linear-gradient(100deg,rgba(255,137,45,.09),rgba(30,116,255,.10));box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}.mobile-filter-trigger{display:none}
+@media(max-width:1050px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.catalog-page{padding:100px 5vw 42px}.catalog-layout{display:block}.catalog-sidebar{display:none}.mobile-filter-trigger{display:inline-flex;border:1px solid var(--line);border-radius:9px;background:transparent;color:inherit;padding:9px 12px;font:700 12px "DM Sans";cursor:pointer}.catalog-grid{grid-template-columns:1fr}.catalog-toolbar{align-items:flex-start}.toolbar-controls{flex-wrap:wrap}.catalog-select{max-width:145px}.catalog-filter-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.52);align-items:flex-end}.catalog-filter-overlay.open{display:flex}.catalog-filter-panel{width:100%;max-height:86vh;overflow:auto;background:var(--white);color:var(--ink);border-radius:22px 22px 0 0;padding:22px 22px 30px;box-shadow:0 -12px 40px #0002}.catalog-filter-panel .catalog-sidebar{display:block;position:static;border:0;padding:0}.filter-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font:800 16px Manrope}.close-filters{border:0;background:none;font-size:24px;color:inherit;cursor:pointer}.product-visual{height:190px}}
+
+/* Refined catalog visual system: inherit the site's theme and visual language. */
+.catalog-page{padding:132px 5vw 88px;background:var(--page-bg,#f6f7f9);color:var(--page-ink,#17202b);transition:background .25s,color .25s}
+.catalog-wrap{max-width:1320px}
+.catalog-hero{position:relative;padding:34px 38px 32px;margin:0 0 28px;border:1px solid var(--catalog-border);border-radius:24px;overflow:hidden;background:var(--catalog-hero-bg);box-shadow:var(--catalog-shadow)}
+.catalog-hero:after{content:"";position:absolute;width:340px;height:340px;right:-80px;top:-210px;border-radius:50%;background:radial-gradient(circle,rgba(35,151,221,.16),transparent 68%);pointer-events:none}
+.catalog-kicker{display:inline-flex;align-items:center;gap:9px;font:800 10px/1.2 Manrope,sans-serif;letter-spacing:.15em;color:var(--orange);text-transform:uppercase}
+.catalog-kicker:before{content:"";width:18px;height:2px;background:currentColor;border-radius:2px}
+.catalog-hero h1{font-size:clamp(34px,4.3vw,54px);max-width:800px;margin:16px 0 10px;letter-spacing:-.06em;line-height:1.06}
+.catalog-hero p{font-size:15px;line-height:1.65;max-width:620px}
+.catalog-layout{grid-template-columns:236px minmax(0,1fr);gap:26px}
+.catalog-sidebar{border-radius:18px;background:var(--catalog-panel);border-color:var(--catalog-border);box-shadow:var(--catalog-shadow);padding:19px 20px}
+.filter-head strong{font-size:12px;letter-spacing:.13em}
+.filter-group{padding:17px 0 12px;border-color:var(--catalog-border)}
+.filter-group h3{font-size:10px;letter-spacing:.14em;color:var(--catalog-muted)}
+.filter-option{font-size:13px;gap:10px;margin:12px 0;color:var(--catalog-text)}
+.filter-option input{accent-color:#168bd0;width:16px;height:16px;cursor:pointer}
+.text-action{border-radius:7px}.text-action:hover{background:var(--catalog-hover)}
+.catalog-results{min-width:0}
+.catalog-toolbar{padding:0 1px 13px;border-bottom:1px solid var(--catalog-border);margin-bottom:15px}
+.result-count{font-size:12px;font-weight:600;color:var(--catalog-muted)}
+.toolbar-controls{gap:8px}
+.catalog-select{min-height:37px;border-radius:10px;border-color:var(--catalog-border);background:var(--catalog-panel);color:var(--catalog-text);padding:8px 30px 8px 11px;font-size:12px}
+.view-toggle{border-color:var(--catalog-border);border-radius:10px;padding:3px;background:var(--catalog-panel)}
+.view-toggle button{border-radius:7px;padding:7px 10px;color:var(--catalog-muted)}
+.view-toggle button.active{background:var(--catalog-active);color:#fff}
+.filter-chips{gap:7px;margin-bottom:16px}
+.filter-chip{border-color:var(--catalog-border);background:var(--catalog-panel);font-size:11px;padding:7px 10px;color:var(--catalog-text);transition:border-color .2s,background .2s}
+.filter-chip:hover{border-color:#78b9df;background:var(--catalog-hover)}
+.catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.product-card{border-radius:17px;border-color:var(--catalog-border);background:var(--catalog-panel);padding:13px;box-shadow:0 5px 18px rgba(20,35,50,.035);display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.75,.25,1),box-shadow .35s,border-color .3s}
+.product-card:hover{transform:translateY(-4px);border-color:rgba(45,151,210,.55);box-shadow:0 15px 35px rgba(20,35,50,.10)}
+.product-visual{height:166px;margin-bottom:15px;border:1px solid var(--catalog-visual-border);border-radius:12px;background:var(--catalog-visual-bg)}
+.product-visual img{width:86%;height:86%}
+.part-number{font-size:12px;letter-spacing:.025em;color:var(--catalog-muted);margin-bottom:9px}
+.product-spec{font:800 17px/1.25 Manrope,sans-serif;letter-spacing:-.025em;margin-bottom:6px;color:var(--catalog-text)}
+.product-meta{font-size:12px;line-height:1.55;margin-bottom:18px;color:var(--catalog-muted)}
+.details-link{margin-top:auto;align-self:flex-start;border-color:var(--catalog-border);border-radius:9px;padding:10px 12px;font-size:11px;background:transparent}
+.details-link:hover{background:var(--catalog-hover);border-color:#79bde2}
+.catalog-table-wrap{border-color:var(--catalog-border);border-radius:15px;background:var(--catalog-panel);box-shadow:var(--catalog-shadow)}
+.catalog-table{color:var(--catalog-text)}
+.catalog-table th,.catalog-table td{border-color:var(--catalog-border);padding:15px 16px}
+.catalog-table th{background:var(--catalog-table-head);color:var(--catalog-muted)}
+.catalog-table tbody tr:hover{background:var(--catalog-hover)}
+.catalog-table a{color:var(--catalog-link)}
+.no-match{border-color:var(--catalog-border);background:var(--catalog-panel);padding:54px 24px}
+.no-match h3{font-size:21px;letter-spacing:-.03em;color:var(--catalog-text)}
+.no-match p{color:var(--catalog-muted)}
+.team-button{border-radius:10px;padding:13px 17px;transition:transform .2s,filter .2s}
+.team-button:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.catalog-trust{margin-top:42px;padding-top:22px;border-color:var(--catalog-border);font-size:12px;color:var(--catalog-muted)}
+/* The shared site theme toggle sets data-theme on the html element. */
+html[data-theme="light"]{
+ --page-bg:#f5f7fa;--page-ink:#101b29;--catalog-panel:#fff;--catalog-border:#e1e7ee;
+ --catalog-muted:#687789;--catalog-text:#172333;--catalog-shadow:0 8px 26px rgba(17,35,54,.045);
+ --catalog-hero-bg:linear-gradient(115deg,#fff 0%,#f5faff 72%,#fff7ef 100%);
+ --catalog-visual-bg:linear-gradient(145deg,#f4f7fa,#eaf0f5);--catalog-visual-border:#e7edf2;
+ --catalog-hover:#f1f8fc;--catalog-active:#122b40;--catalog-link:#087dbb;--catalog-table-head:#f6f8fa;
+}
+html[data-theme="dark"]{
+ --page-bg:#050b12;--page-ink:#f2f6fb;--catalog-panel:#0b1521;--catalog-border:rgba(172,199,220,.15);
+ --catalog-muted:#9aabba;--catalog-text:#edf4fa;--catalog-shadow:0 12px 34px rgba(0,0,0,.18);
+ --catalog-hero-bg:radial-gradient(ellipse at 78% 0%,rgba(20,100,180,.20),transparent 48%),linear-gradient(120deg,#0b1725,#08111c 72%,#111a24);
+ --catalog-visual-bg:linear-gradient(145deg,#142536,#0d1a28);--catalog-visual-border:rgba(170,204,228,.12);
+ --catalog-hover:#102437;--catalog-active:#168bd0;--catalog-link:#75c7f2;--catalog-table-head:#101e2c;
+}
+html:not([data-theme="light"]):not([data-theme="dark"]){
+ --page-bg:#050b12;--page-ink:#f2f6fb;--catalog-panel:#0b1521;--catalog-border:rgba(172,199,220,.15);
+ --catalog-muted:#9aabba;--catalog-text:#edf4fa;--catalog-shadow:0 12px 34px rgba(0,0,0,.18);
+ --catalog-hero-bg:radial-gradient(ellipse at 78% 0%,rgba(20,100,180,.20),transparent 48%),linear-gradient(120deg,#0b1725,#08111c 72%,#111a24);
+ --catalog-visual-bg:linear-gradient(145deg,#142536,#0d1a28);--catalog-visual-border:rgba(170,204,228,.12);
+ --catalog-hover:#102437;--catalog-active:#168bd0;--catalog-link:#75c7f2;--catalog-table-head:#101e2c;
+}
+@media(max-width:1100px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .catalog-page{padding:104px 20px 58px}
+ .catalog-hero{padding:27px 23px 25px;border-radius:19px;margin-bottom:22px}
+ .catalog-hero h1{font-size:clamp(32px,8vw,44px)}
+ .catalog-hero p{font-size:14px}
+ .catalog-layout{display:block}
+ .catalog-toolbar{align-items:center;gap:12px}
+ .result-count{flex:1;min-width:140px}
+ .toolbar-controls{width:100%;justify-content:space-between}
+ .catalog-grid{grid-template-columns:1fr;gap:13px}
+ .product-card{padding:14px}
+ .product-visual{height:190px}
+ .catalog-trust{line-height:1.7;margin-top:32px}
+}
+@media(prefers-reduced-motion:reduce){.product-card,.product-visual img,.details-link,.team-button{transition:none!important}}
+
+/* Keep the mobile filter drawer out of document flow on desktop. */
+.catalog-filter-overlay{display:none}
+.catalog-sidebar{align-self:start;height:max-content;position:sticky;top:110px}
+@media(max-width:760px){.catalog-filter-overlay{display:none}.catalog-filter-overlay.open{display:flex}}
+ 
+/* Catalogue visual polish */
+.catalog-hero{background:radial-gradient(ellipse at 8% 0%,rgba(255,145,58,.16),transparent 48%),linear-gradient(135deg,rgba(255,255,255,.82),rgba(255,245,235,.62));border:1px solid var(--line);border-radius:24px;padding:clamp(24px,4vw,48px);position:relative;overflow:hidden}
+[data-theme="dark"] .catalog-hero,body.dark .catalog-hero{background:radial-gradient(ellipse at 8% 0%,rgba(255,145,58,.2),transparent 48%),linear-gradient(135deg,rgba(30,35,43,.96),rgba(23,27,34,.88))}
+.product-card{background:linear-gradient(155deg,var(--white),color-mix(in srgb,var(--white) 88%,#ff8c32 12%));border:1px solid var(--line);box-shadow:0 10px 30px rgba(30,35,45,.045);transition:transform .25s ease,box-shadow .25s ease}
+[data-theme="dark"] .product-card,body.dark .product-card{background:linear-gradient(155deg,#202630,#252a32 70%,#30291f)}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(255,132,42,.13)}
+.catalog-filter-overlay{display:none}
+.catalog-filter-panel{background:linear-gradient(160deg,var(--white),color-mix(in srgb,var(--white) 92%,#ff923d 8%))}
+.catalog-filter-panel .filter-head{position:sticky;top:0;background:transparent;padding:8px 0 14px}
+.filter-panel-top{position:sticky;top:0;z-index:2;padding:4px 0 16px;background:inherit;border-bottom:1px solid var(--line)}
+.close-filters{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:rgba(120,120,120,.08);font-size:24px;line-height:1;cursor:pointer}
+@media(max-width:760px){
+ .catalog-filter-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,14,20,.58);backdrop-filter:blur(5px);align-items:flex-end;justify-content:center;padding:0}
+ .catalog-filter-overlay.open{display:flex}
+ .catalog-filter-panel{width:100%;max-width:620px;max-height:min(88dvh,760px);overflow:auto;border-radius:24px 24px 0 0;padding:18px 20px max(28px,env(safe-area-inset-bottom));box-shadow:0 -18px 60px rgba(0,0,0,.22);animation:filterSheetIn .24s ease-out}
+ .catalog-filter-panel #mobileFilters{display:block!important;position:static!important;width:100%;max-height:none;overflow:visible;border:0;padding:0;background:transparent;box-shadow:none}
+ .catalog-filter-panel .filter-group{padding:14px 0;border-bottom:1px solid var(--line)}
+ .catalog-filter-panel .filter-option{display:flex;align-items:center;gap:12px;min-height:42px;padding:7px 2px;font-size:14px}
+ .catalog-filter-panel input[type=checkbox]{width:18px;height:18px;accent-color:#f28a32}
+}
+@keyframes filterSheetIn{from{transform:translateY(28px);opacity:.7}to{transform:translateY(0);opacity:1}}
+
+/* Firmware-inspired atmosphere: subtle technical grid, blue/orange light blooms. */
+.catalog-page{position:relative;isolation:isolate;overflow:hidden;background:
+ radial-gradient(ellipse at 82% 8%,rgba(30,116,255,.10),transparent 34%),
+ radial-gradient(ellipse at 10% 30%,rgba(255,137,45,.075),transparent 38%),
+ var(--white)}
+.catalog-page:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(rgba(110,130,155,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(110,130,155,.055) 1px,transparent 1px);
+ background-size:64px 64px;mask-image:linear-gradient(to bottom,black,transparent 78%)}
+.catalog-hero{background:radial-gradient(ellipse at 90% 0%,rgba(30,116,255,.17),transparent 42%),radial-gradient(ellipse at 0% 100%,rgba(255,137,45,.13),transparent 48%),linear-gradient(135deg,rgba(255,255,255,.94),rgba(245,248,253,.84))}
+[data-theme="dark"] .catalog-page,body.dark .catalog-page{background:radial-gradient(ellipse at 80% 5%,rgba(30,116,255,.14),transparent 38%),radial-gradient(ellipse at 5% 45%,rgba(255,137,45,.08),transparent 42%),var(--white)}
+[data-theme="dark"] .catalog-hero,body.dark .catalog-hero{background:radial-gradient(ellipse at 90% 0%,rgba(30,116,255,.26),transparent 44%),radial-gradient(ellipse at 0% 100%,rgba(255,137,45,.16),transparent 48%),linear-gradient(135deg,#101720,#171c25)}
+/* Give the footer the same layered glow language as the Rikom firmware page. */
+footer#company{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 12% 0%,rgba(255,137,45,.13),transparent 38%),radial-gradient(ellipse at 88% 15%,rgba(30,116,255,.20),transparent 42%),linear-gradient(135deg,#080d14,#101722)}
+footer#company:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
+footer#company:after{content:"";position:absolute;z-index:-1;pointer-events:none;width:520px;height:380px;right:-180px;top:-160px;background:radial-gradient(circle,rgba(30,116,255,.22),transparent 70%);filter:blur(18px)}
+/* Ensure mobile filter sheet has legible foreground colors in either theme. */
+.catalog-filter-panel{color:#202630;background:linear-gradient(160deg,#fff 0%,#f7f8fb 72%,#fff2e7 100%)}
+.catalog-filter-panel .filter-head,
+.catalog-filter-panel .filter-head strong,
+.catalog-filter-panel .filter-group h3,
+.catalog-filter-panel .filter-option,
+.catalog-filter-panel .filter-panel-top{color:#202630!important}
+.catalog-filter-panel .text-action{color:#a94f12!important}
+.catalog-filter-panel input[type=checkbox]{accent-color:#e87924}
+.catalog-filter-panel .filter-option input{flex:0 0 auto}
+[data-theme="dark"] .catalog-filter-panel,body.dark .catalog-filter-panel{color:#f3f6fa;background:linear-gradient(155deg,#171e28 0%,#202834 70%,#2b251f 100%)}
+[data-theme="dark"] .catalog-filter-panel .filter-head,
+[data-theme="dark"] .catalog-filter-panel .filter-head strong,
+[data-theme="dark"] .catalog-filter-panel .filter-group h3,
+[data-theme="dark"] .catalog-filter-panel .filter-option,
+[data-theme="dark"] .catalog-filter-panel .filter-panel-top,
+body.dark .catalog-filter-panel .filter-head,
+body.dark .catalog-filter-panel .filter-head strong,
+body.dark .catalog-filter-panel .filter-group h3,
+body.dark .catalog-filter-panel .filter-option,
+body.dark .catalog-filter-panel .filter-panel-top{color:#f3f6fa!important}
+[data-theme="dark"] .catalog-filter-panel .text-action,body.dark .catalog-filter-panel .text-action{color:#ffb36f!important}
+.catalog-filter-panel .filter-group{border-color:rgba(120,130,145,.24)}
+.catalog-filter-panel .close-filters{color:inherit;border-color:rgba(120,130,145,.35)}
+@media(max-width:760px){.catalog-filter-panel{color:#202630}.catalog-filter-panel .filter-option{line-height:1.45}}
+
+/* Preserve the original dark page canvas while retaining the added glow gradients. */
+[data-theme="dark"] .catalog-page,body.dark .catalog-page{
+  background-color:#03070c;
+  background-image:
+    radial-gradient(ellipse at 80% 5%,rgba(30,116,255,.14),transparent 38%),
+    radial-gradient(ellipse at 5% 45%,rgba(255,137,45,.08),transparent 42%);
+}
+</style>
+<style>
+.coming-soon-page{min-height:calc(100vh - 1px);padding:142px 5vw 100px;background:var(--white);color:var(--ink);position:relative;overflow:hidden}
+.coming-soon-wrap{max-width:1240px;margin:0 auto}
+.coming-soon-panel{position:relative;isolation:isolate;min-height:490px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);align-items:center;gap:48px;padding:clamp(30px,6vw,82px);border:1px solid var(--line);border-radius:32px;background:linear-gradient(125deg,rgba(255,133,34,.09),transparent 42%,rgba(25,133,220,.12)),var(--card);overflow:hidden}
+.coming-soon-copy{position:relative;z-index:2}.coming-soon-kicker{font:800 11px/1.2 Manrope,sans-serif;letter-spacing:.17em;text-transform:uppercase;color:var(--orange)}
+.coming-soon-copy h1{font:800 clamp(38px,5.5vw,68px)/1.02 Manrope,sans-serif;letter-spacing:-.055em;margin:16px 0 18px}
+.coming-soon-copy p{max-width:590px;color:var(--muted);font-size:17px;line-height:1.7;margin:0}
+.coming-soon-note{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:11px 16px;border:1px solid var(--line);border-radius:999px;font:700 12px Manrope,sans-serif;letter-spacing:.04em;background:rgba(128,150,170,.08)}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#ff8a28;box-shadow:0 0 0 5px rgba(255,138,40,.12);animation:statusPulse 1.8s ease-in-out infinite}
+.coming-visual{height:340px;position:relative;display:grid;place-items:center}
+.orbit{position:absolute;width:270px;height:270px;border:1px solid rgba(68,160,220,.28);border-radius:50%;animation:orbitSpin 24s linear infinite}
+.orbit:before,.orbit:after{content:"";position:absolute;inset:28px;border:1px dashed rgba(255,139,39,.32);border-radius:50%}
+.orbit:after{inset:62px;border-style:solid;border-color:rgba(68,160,220,.24)}
+.chip-core{width:158px;height:158px;display:grid;place-items:center;border:1px solid rgba(100,175,225,.38);border-radius:28px;background:linear-gradient(145deg,rgba(29,100,150,.22),rgba(255,255,255,.035));box-shadow:0 20px 70px rgba(25,120,190,.12);animation:chipFloat 4s ease-in-out infinite}
+.chip-core svg{width:92px;height:92px;overflow:visible}
+.chip-core .chip-lines{stroke:var(--orange);stroke-width:2;stroke-linecap:round;fill:none}
+.chip-core .chip-body{stroke:#3298d6;stroke-width:2;fill:rgba(40,140,205,.1)}
+.visual-label{position:absolute;bottom:0;font:800 10px Manrope,sans-serif;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}@keyframes chipFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}@keyframes statusPulse{0%,100%{opacity:1}50%{opacity:.45}}
+@media(max-width:760px){.coming-soon-page{padding:112px 18px 64px}.coming-soon-panel{grid-template-columns:1fr;gap:14px;padding:30px 24px;min-height:0;border-radius:24px}.coming-visual{height:250px;grid-row:1}.orbit{width:220px;height:220px}.chip-core{width:132px;height:132px}.coming-soon-copy h1{font-size:clamp(36px,10vw,54px)}.coming-soon-copy p{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.orbit,.chip-core,.status-dot{animation:none!important}}
+</style><style>
+.coming-soon-page{transition:background .45s ease,color .45s ease}
+.coming-soon-panel{transition:background .45s ease,border-color .45s ease,box-shadow .45s ease}
+.coming-visual{isolation:isolate;perspective:900px}
+.orbit{will-change:transform;border-color:var(--orbit-color)}
+.orbit-one{animation:orbitSpin 18s linear infinite}
+.orbit-two{width:220px;height:220px;border-style:dashed;animation:orbitSpinReverse 13s linear infinite}
+.orbit-three{width:320px;height:320px;border-width:1px;border-style:dotted;animation:orbitSpin 32s linear infinite}
+.signal-ring{position:absolute;width:185px;height:185px;border:1px solid var(--signal-color);border-radius:50%;animation:signalWave 3.2s ease-out infinite}
+.chip-core{position:relative;z-index:2;animation:chipFloat 3.6s ease-in-out infinite,chipGlow 4s ease-in-out infinite;transform-style:preserve-3d}
+.chip-core svg{filter:drop-shadow(0 0 12px var(--chip-glow))}
+.chip-inner{fill:var(--chip-fill);stroke:var(--chip-stroke);stroke-width:1.5}
+.chip-circuit{fill:none;stroke:var(--chip-stroke);stroke-width:2;stroke-linecap:round;stroke-dasharray:3 4;animation:circuitFlow 2.4s linear infinite}
+.data-pulse{position:absolute;z-index:3;width:8px;height:8px;border-radius:50%;background:var(--pulse-color);box-shadow:0 0 16px var(--pulse-color);offset-path:ellipse(135px 135px at 50% 50%);animation:dataOrbit 5s linear infinite}
+.pulse-b{animation-delay:-1.7s;animation-duration:6.5s}.pulse-c{animation-delay:-3.2s;animation-duration:4.2s}
+.visual-label{z-index:3;letter-spacing:.22em}
+@keyframes orbitSpinReverse{to{transform:rotate(-360deg)}}
+@keyframes signalWave{0%{transform:scale(.72);opacity:.8}85%,100%{transform:scale(1.55);opacity:0}}
+@keyframes chipGlow{0%,100%{box-shadow:0 18px 55px var(--chip-glow)}50%{box-shadow:0 22px 85px var(--chip-glow)}}
+@keyframes circuitFlow{to{stroke-dashoffset:-28}}
+@keyframes dataOrbit{from{offset-distance:0%}to{offset-distance:100%}}
+html[data-theme="dark"] .coming-soon-page{--orbit-color:rgba(73,171,236,.35);--signal-color:rgba(255,144,53,.34);--chip-glow:rgba(15,125,210,.22);--chip-fill:rgba(20,126,194,.18);--chip-stroke:#ff9a43;--pulse-color:#55c2ff;background:radial-gradient(ellipse at 78% 46%,rgba(13,87,144,.15),transparent 48%),var(--white)}
+html[data-theme="dark"] .coming-soon-panel{background:linear-gradient(125deg,rgba(255,137,45,.10),transparent 42%,rgba(22,119,198,.16)),var(--card);box-shadow:0 25px 80px rgba(0,0,0,.16)}
+html[data-theme="light"] .coming-soon-page{--orbit-color:rgba(20,111,180,.26);--signal-color:rgba(237,119,29,.35);--chip-glow:rgba(32,133,200,.13);--chip-fill:rgba(38,145,210,.09);--chip-stroke:#e87820;--pulse-color:#1685c7;background:radial-gradient(ellipse at 78% 46%,rgba(255,157,67,.13),transparent 48%),var(--white)}
+html[data-theme="light"] .coming-soon-panel{background:linear-gradient(125deg,rgba(255,145,45,.13),transparent 42%,rgba(33,137,207,.10)),var(--card);box-shadow:0 22px 65px rgba(33,83,120,.08)}
+@media(max-width:760px){.orbit-three{width:275px;height:275px}.orbit-one{width:230px;height:230px}.orbit-two{width:185px;height:185px}}
+@media(prefers-reduced-motion:reduce){.orbit,.signal-ring,.chip-core,.chip-circuit,.data-pulse{animation:none!important}}
+</style>
+<style>
+/* Dark-mode canvas and optical visual: prevent inherited light-theme whites. */
+html[data-theme="dark"] .coming-soon-page, body.dark .coming-soon-page {
+  background-color:#070d15 !important;
+  background-image:radial-gradient(ellipse at 78% 42%,rgba(16,105,174,.19),transparent 48%),radial-gradient(ellipse at 8% 82%,rgba(220,105,35,.075),transparent 42%) !important;
+  color:#f2f6fb !important;
+}
+html[data-theme="dark"] .coming-soon-panel, body.dark .coming-soon-panel {
+  background:linear-gradient(125deg,rgba(255,137,45,.095),transparent 42%,rgba(22,119,198,.17)),linear-gradient(145deg,#111b28,#0b1420 72%,#121923) !important;
+  border-color:rgba(157,190,216,.18) !important;
+  box-shadow:0 25px 80px rgba(0,0,0,.34) !important;
+}
+html[data-theme="dark"] .coming-soon-copy h1, body.dark .coming-soon-copy h1 {color:#f4f7fb}
+html[data-theme="dark"] .coming-soon-copy p, body.dark .coming-soon-copy p {color:#aab9c9}
+html[data-theme="dark"] .coming-soon-note, body.dark .coming-soon-note {background:rgba(133,163,190,.08);border-color:rgba(157,190,216,.18);color:#dce7f1}
+html[data-theme="dark"] .chip-core, body.dark .chip-core {background:linear-gradient(145deg,rgba(20,126,194,.24),rgba(13,25,39,.78));border-color:rgba(93,177,226,.42)}
+html[data-theme="dark"] .chip-circuit, body.dark .chip-circuit {opacity:.9}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<header class="nav" id="nav">
+  <div class="nav-shell">
+    <a class="brand" href="index.html#top" aria-label="Netro Networks home"><img class="logo-dark" src="images/netro_logo.webp" alt="Netro Networks" /><img class="logo-light" src="images/netro_logo_light.webp" alt="Netro Networks" /></a>
+
+    <nav class="nav-links" aria-label="Primary navigation">
+      <div class="nav-item has-menu">
+        <button class="nav-link" type="button" aria-expanded="false">Products <i class="chevron" aria-hidden="true"></i></button>
+        <div class="mega-menu products-mega">
+          <div class="mega-visual product-visual">
+            <div class="visual-grid"></div><div class="visual-orbit orbit-a"></div><div class="visual-orbit orbit-b"></div>
+            <div class="visual-chip"><span>NETRO</span><b>OPTICAL<br>INFRA</b><i></i><i></i><i></i><i></i></div>
+            <small>PRODUCTS</small>
+          </div>
+          <div class="mega-links">
+            <div class="mega-group"><h4>OPTICAL</h4><a href="sfp-sfp-plus.html">QSFP+ / QSFP28 (1G–10G–25G)</a><a href="qsfp-40g-100g.html">QSFP+ / QSFP28 (40G–100G)</a><a href="qsfp56-qsfpdd-200g-400g.html">QSFP56 / QSFP-DD (200G–400G)</a><a href="index.html#products">CWDM &amp; DWDM</a><a href="index.html#products">AOC &amp; DAC Cables</a></div>
+            <div class="mega-group"><h4>NETWORKING</h4><a href="index.html#products">Managed Switches</a><a href="index.html#products">L2 / L3 Switching</a><a href="index.html#products">Industrial Switches</a><a href="index.html#products">Media Converters</a></div>
+            <div class="mega-group"><h4>FTTx</h4><a href="index.html#products">GPON / EPON</a><a href="index.html#products">OLT / ONU</a><a href="index.html#products">Fiber Splitters</a><a href="index.html#products">FTTH Accessories</a></div>
+            <div class="mega-group"><h4>PASSIVE</h4><a href="index.html#products">Fiber Cables</a><a href="index.html#products">ODF & Patch Panels</a><a href="index.html#products">Connectors</a><a href="index.html#products">Racks & Accessories</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-menu">
+        <button class="nav-link" type="button" aria-expanded="false">Solutions <i class="chevron" aria-hidden="true"></i></button>
+        <div class="mega-menu solutions-mega">
+          <div class="mega-visual solutions-visual"><div class="network-map"><span></span><span></span><span></span><span></span><span></span><b></b></div><small>SOLUTIONS</small></div>
+          <div class="mega-links">
+            <div class="mega-group"><h4>CONNECTIVITY</h4><a href="index.html#solutions">ISP Solutions</a><a href="index.html#solutions">FTTH / Broadband</a><a href="index.html#solutions">Last-Mile Networks</a></div>
+            <div class="mega-group"><h4>ENTERPRISE</h4><a href="index.html#solutions">Enterprise Networks</a><a href="index.html#solutions">Data Centers</a><a href="index.html#solutions">Industrial Networks</a></div>
+            <div class="mega-group"><h4>CRITICAL INFRASTRUCTURE</h4><a href="index.html#solutions">Government & PSU</a><a href="index.html#solutions">Defense</a><a href="index.html#solutions">Power & Utilities</a></div>
+            <div class="mega-group"><h4>DEPLOYMENTS</h4><a href="index.html#solutions">Rural Connectivity</a><a href="index.html#solutions">Secure Networks</a><a href="index.html#solutions">Power & Utilities</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-menu">
+        <button class="nav-link" type="button" aria-expanded="false">Resources <i class="chevron" aria-hidden="true"></i></button>
+        <div class="mega-menu resources-mega">
+          <div class="mega-visual resources-visual"><div class="terminal"><span>NETRO / RESOURCES</span><b>01</b><i></i><i></i><i></i><em></em></div><small>RESOURCES</small></div>
+          <div class="mega-links">
+            <div class="mega-group"><h4>ENGINEERING</h4><a href="rikom-firmware.html">Rikom Firmwares</a><a href="index.html#resources">Configuration Guides</a><a href="index.html#resources">Datasheets</a><a href="index.html#resources">Application Notes</a></div>
+            <div class="mega-group"><h4>KNOWLEDGE</h4><a href="index.html#resources">Knowledge Base</a><a href="index.html#resources">Troubleshooting</a><a href="index.html#resources">Deployment Guides</a><a href="index.html#resources">FAQs</a></div>
+            <div class="mega-group"><h4>TOOLS</h4><a href="#tools">Fiber Budget Calculator</a><a href="#tools">Optical Power Calculator</a><a href="#tools">GPON Split Calculator</a><a href="#tools">Network Calculators</a></div>
+            <div class="mega-group"><h4>MEDIA</h4><a href="index.html#resources">Gallery</a><a href="index.html#resources">Project Stories</a><a href="index.html#resources">Announcements</a><a href="index.html#resources">Partner Updates</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-menu">
+        <button class="nav-link" type="button" aria-expanded="false">Company <i class="chevron" aria-hidden="true"></i></button>
+        <div class="mega-menu company-mega">
+          <div class="mega-visual company-visual"><div class="company-mark">N<span>•</span></div><div class="company-lines"></div><small>NETRO NETWORKS</small></div>
+          <div class="mega-links">
+            <div class="mega-group"><h4>ABOUT</h4><a href="index.html#company">About Netro</a><a href="index.html#company">Our Team</a><a href="index.html#company">Projects</a>
+<a href="ctc-accc-conductors.html">CTC ACCC Conductors</a><a href="index.html#company">Partners</a></div>
+            <div class="mega-group"><h4>WORK WITH US</h4><a href="index.html#company">Careers</a><a href="#contact">Contact Us</a><a href="#contact">Request a Quote</a><a href="#contact">Technical Support</a></div>
+            <div class="mega-group"><h4>COMPANY</h4><a href="index.html#company">News & Updates</a><a href="index.html#company">Gallery</a><a href="index.html#company">Social</a></div>
+            <div class="mega-group"><h4>CONTACT</h4><a href="#contact">Sales</a><a href="#contact">Support</a><a href="#contact">Partnerships</a><a href="#contact">Locations</a></div>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav-link ctc-nav-link" href="ctc-accc-conductors.html"><b>CTC</b> ACCC Conductors</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+        <span class="theme-icon theme-sun" aria-hidden="true"></span>
+        <span class="theme-icon theme-moon" aria-hidden="true"></span>
+      </button>
+      <button class="search-btn" aria-label="Search"><span></span></button>
+      <a class="nav-cta" href="#contact">Talk to us <b>↗</b></a>
+    </div>
+    <button class="menu" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+<main class="coming-soon-page"><div class="coming-soon-wrap">
+<section class="coming-soon-panel" aria-labelledby="comingSoonTitle">
+<div class="coming-soon-copy">
+<div class="coming-soon-kicker">NETRO OPTICS · NEXT-GENERATION OPTICS</div>
+<h1 id="comingSoonTitle">200G–400G.<br>Coming into focus.</h1>
+<p>We’re working on the next generation of Netro high-speed optical transceivers. Product specifications, compatibility details, and the complete catalogue are being prepared.</p>
+<div class="coming-soon-note"><span class="status-dot" aria-hidden="true"></span> Catalogue in development</div>
+</div>
+<div class="coming-visual" aria-hidden="true">
+<div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+<div class="signal-ring"></div>
+<div class="chip-core"><svg viewBox="0 0 100 100"><rect class="chip-body" x="25" y="25" width="50" height="50" rx="10"/><path class="chip-lines" d="M35 14v11M50 14v11M65 14v11M35 75v11M50 75v11M65 75v11M14 35h11M14 50h11M14 65h11M75 35h11M75 50h11M75 65h11"/><rect class="chip-inner" x="37" y="37" width="26" height="26" rx="5"/><path class="chip-circuit" d="M43 45h14M43 50h14M43 55h14"/></svg></div>
+<span class="data-pulse pulse-a"></span><span class="data-pulse pulse-b"></span><span class="data-pulse pulse-c"></span>
+<div class="visual-label">200G · 400G optical platform</div>
+</div>
+</section>
+</div></main>
+<div class="catalog-filter-overlay" id="filterOverlay" aria-hidden="true"><div class="catalog-filter-panel"><div class="filter-panel-top">Filters <button class="close-filters" id="closeFilters" aria-label="Close filters">×</button></div><div id="mobileFilterMount"></div></div></div>
+<footer id="company">
+        <div class="section-wrap footer-mega footer-mega-enhanced">
+  <div class="footer-top-row">
+    <div class="footer-brand-column footer-brand-enhanced">
+      <a class="footer-logo" href="index.html#top" aria-label="Netro Networks home">
+        <img class="logo-dark" src="images/netro_logo.webp" alt="Netro Networks" /><img class="logo-light" src="images/netro_logo_light.webp" alt="Netro Networks" />
+      </a>
+
+      <div class="footer-contact-column">
+        <h4>CONTACT</h4>
+        <div class="footer-contact-groups">
+          <div class="footer-contact-group">
+            <span class="footer-contact-group-label">SUPPORT</span>
+            <a href="mailto:support@netronetworks.in" class="footer-contact-item"><span class="footer-contact-icon" aria-hidden="true">✉</span><span>support@netronetworks.in</span></a>
+            <a href="tel:+918447979550" class="footer-contact-item"><span class="footer-contact-icon" aria-hidden="true">☎</span><span>+91-84479 79550</span></a>
+          </div>
+          <div class="footer-contact-group">
+            <span class="footer-contact-group-label">SALES</span>
+            <a href="mailto:sales@netronetworks.in" class="footer-contact-item"><span class="footer-contact-icon" aria-hidden="true">✉</span><span>sales@netronetworks.in</span></a>
+            <a href="tel:+917755006777" class="footer-contact-item"><span class="footer-contact-icon" aria-hidden="true">☎</span><span>+91-77550 06777</span></a>
+            <a href="tel:+918888888158" class="footer-contact-item"><span class="footer-contact-icon" aria-hidden="true">☎</span><span>+91-88888 88158</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-map-column">
+      <h4>FIND US</h4>
+      <div class="footer-map-card">
+        <iframe title="Netro Networks location" loading="eager" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=28.6159178,77.3816036&z=15&output=embed"></iframe>
+        <a class="footer-map-overlay" href="https://maps.app.goo.gl/6ky6R2pVxZU5AjcM8" target="_blank" rel="noopener noreferrer" aria-label="Open Netro Networks location in Google Maps">
+          <span class="footer-map-pin">●</span><span>Open in Google Maps <b>↗</b></span>
+        </a>
+      </div>
+      <div class="footer-map-address"><strong>NETRO NETWORKS</strong><p>C-21, 3rd Floor, Sector 63<br>Noida, Uttar Pradesh — 201301, India</p></div>
+    </div>
+
+    <div class="footer-links-column">
+      <div class="footer-column">
+        <h4>PRODUCTS</h4>
+        <a href="sfp-sfp-plus.html">QSFP+ / QSFP28 (1G–10G–25G)</a>
+        <a href="qsfp-40g-100g.html">QSFP+ / QSFP28 (40G–100G)</a>
+        <a href="qsfp56-qsfpdd-200g-400g.html">QSFP56 / QSFP-DD (200G–400G)</a>
+        <a href="index.html#products">CWDM &amp; DWDM</a>
+        <a href="index.html#products">AOC &amp; DAC Cables</a>
+        <a href="index.html#products">Managed Switches</a>
+        <a href="index.html#products">L2 / L3 Switching</a>
+        <a href="index.html#products">Industrial Switches</a>
+        <a href="index.html#products">Media Converters</a>
+        <a href="index.html#products">GPON / EPON</a>
+        <a href="index.html#products">OLT / ONU</a>
+        <a href="index.html#products">Fiber Splitters</a>
+        <a href="index.html#products">FTTH Accessories</a>
+        <a href="index.html#products">Fiber Cables</a>
+        <a href="index.html#products">ODF &amp; Patch Panels</a>
+        <a href="index.html#products">Connectors</a>
+        <a href="index.html#products">Racks &amp; Accessories</a>
+      </div>
+      <div class="footer-column">
+        <h4>SOLUTIONS</h4>
+        <a href="index.html#solutions">ISP Solutions</a><a href="index.html#solutions">Enterprise</a><a href="index.html#solutions">Government &amp; PSU</a><a href="index.html#solutions">Defense</a><a href="index.html#solutions">Data Centers</a><a href="index.html#solutions">Power &amp; Utilities</a><a href="index.html#solutions">FTTH / Broadband</a><a href="index.html#solutions">Industrial Networks</a>
+      </div>
+      <div class="footer-column">
+        <h4>RESOURCES</h4>
+        <a class="active-resource-link" href="rikom-firmware.html">Rikom Firmwares</a><a href="index.html#resources">Configuration Guides</a><a href="index.html#resources">Datasheets</a><a href="index.html#resources">Gallery</a><a href="#tools">Network Tools</a><a href="index.html#resources">Knowledge Base</a>
+      </div>
+      <div class="footer-column">
+        <h4>COMPANY</h4>
+        <a href="index.html#company">About Netro</a><a href="index.html#company">Our Partners</a><a href="index.html#company">Projects</a><a href="index.html#company">Support</a><a href="#contact">Contact Us</a><a href="#contact">Request a Quote</a><a href="index.html#company">Careers</a><a href="index.html#company">News &amp; Updates</a>
+      </div>
+    </div>
+  </div>
+
+        <div class="section-wrap footer-social-row">
+  <div class="footer-legal-social-row">
+    <span>© <span id="year"></span> Netro Networks Private Limited. All rights reserved.</span>
+    <a href="index.html#company">Privacy Policy</a>
+    <a href="index.html#company">Terms of Service</a>
+    <span class="footer-made-india" aria-label="Made in India">
+      Made in India <b aria-hidden="true">↗</b>
+    </span>
+  </div>
+  <div class="footer-socials" aria-label="Social media">
+  <a href="https://x.com/netro_networks" target="_blank" rel="noopener noreferrer" aria-label="X">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 3.5h4.65l3.18 4.28 3.72-4.28h4.05l-5.77 6.63 6.04 8.37h-4.64l-3.53-4.88-4.23 4.88H3.62l6.3-7.25L4.2 3.5Zm3.9 1.95 8.3 11.4h1.58L9.68 5.45H8.1Z"/></svg>
+  </a>
+  <a href="https://www.youtube.com/channel/UC1aRez-lEJpDdEZnfZw4e8w" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.58 7.15a2.85 2.85 0 0 0-2-2C17.8 4.65 12 4.65 12 4.65s-5.8 0-7.58.5a2.85 2.85 0 0 0-2 2C1.92 8.93 1.92 12 1.92 12s0 3.07.5 4.85a2.85 2.85 0 0 0 2 2c1.78.5 7.58.5 7.58.5s5.8 0 7.58-.5a2.85 2.85 0 0 0 2-2c.5-1.78.5-4.85.5-4.85s0-3.07-.5-4.85ZM10 15.3V8.7l5.7 3.3-5.7 3.3Z"/></svg>
+  </a>
+  <a href="https://www.instagram.com/netronetworks/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 2.8h9.6A3.4 3.4 0 0 1 20.2 6v12a3.4 3.4 0 0 1-3.4 3.2H7.2A3.4 3.4 0 0 1 3.8 18V6a3.4 3.4 0 0 1 3.4-3.2Zm0 2A1.4 1.4 0 0 0 5.8 6v12c0 .77.63 1.2 1.4 1.2h9.6c.77 0 1.4-.43 1.4-1.2V6c0-.77-.63-1.2-1.4-1.2H7.2Zm4.8 2.1A5.1 5.1 0 1 1 11.99 17.1 5.1 5.1 0 0 1 12 6.9Zm0 2A3.1 3.1 0 1 0 15.1 12 3.1 3.1 0 0 0 12 8.9Zm5.35-2.45a1.15 1.15 0 1 1-1.15 1.15 1.15 0 0 1 1.15-1.15Z"/></svg>
+  </a>
+  <a href="https://www.facebook.com/netronetworkspvtltd" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.8 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3 0-1.35-.1-2.55-.1-2.52 0-4.25 1.54-4.25 4.37v2.03H7.5V13h2.7v8h3.6Z"/></svg>
+  </a>
+  <a href="https://www.linkedin.com/company/netronetworks/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.1 3.7A2.3 2.3 0 1 1 5.1 8.3 2.3 2.3 0 0 1 5.1 3.7ZM3.3 9.8h3.6V21H3.3V9.8Zm5.8 0h3.4v1.5h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45V21h-3.55v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9.1V9.8Z"/></svg>
+  </a>
+</div>
+</div>
+          <div class="footer-legal-right">
+          </div>
+        </div>
+      </footer>
+</div>
+
+<script src="script.js"></script>
+</body></html>
